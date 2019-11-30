@@ -1,0 +1,632 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{237BD9A3-8431-478F-8009-05382EEC3A71}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GUI</RootNamespace>
+    <AssemblyName>GUI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.CodeParser.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dashboard.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Compression.Base, Version=17.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Compression.Base.17.3.0.29\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=17.3460.0.29, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.17.3.0.29\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Base, Version=17.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.XlsIO.WinForms.17.3.0.29\lib\net46\Syncfusion.XlsIO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Manager Forms\Area\ucAreas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Area\ucAreas.Designer.cs">
+      <DependentUpon>ucAreas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QLBH_v1DataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLBH_v1DataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QLBH_v1DataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLBH_v1DataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QLBH_v1DataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLBH_v1DataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QLBH_v1DataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLBH_v1DataSet8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="System Forms\frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System Forms\frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Area\frmUpdateArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Area\frmUpdateArea.Designer.cs">
+      <DependentUpon>frmUpdateArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Catergory\frmUpdateCatergory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Catergory\frmUpdateCatergory.Designer.cs">
+      <DependentUpon>frmUpdateCatergory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Customer\frmInserCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Customer\frmInserCustomer.Designer.cs">
+      <DependentUpon>frmInserCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Customer\frmUpdateCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Customer\frmUpdateCustomer.Designer.cs">
+      <DependentUpon>frmUpdateCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\ExRate\frmUpdateExRate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\ExRate\frmUpdateExRate.Designer.cs">
+      <DependentUpon>frmUpdateExRate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Parts\frmInsertParts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Parts\frmInsertParts.Designer.cs">
+      <DependentUpon>frmInsertParts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Parts\frmUpdateParts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Parts\frmUpdateParts.Designer.cs">
+      <DependentUpon>frmUpdateParts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Product\frmInsertProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Product\frmInsertProduct.Designer.cs">
+      <DependentUpon>frmInsertProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Product\frmUpdateProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Product\frmUpdateProduct.Designer.cs">
+      <DependentUpon>frmUpdateProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Staff\frmInsertStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Staff\frmInsertStaff.Designer.cs">
+      <DependentUpon>frmInsertStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Staff\frmUpdateStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Staff\frmUpdateStaff.Designer.cs">
+      <DependentUpon>frmUpdateStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Supplier\frmInserSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Supplier\frmInserSupplier.Designer.cs">
+      <DependentUpon>frmInserSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Area\frmInsertArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Area\frmInsertArea.Designer.cs">
+      <DependentUpon>frmInsertArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Catergory\frmInsertCatergory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Catergory\frmInsertCatergory.Designer.cs">
+      <DependentUpon>frmInsertCatergory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\ExRate\frmInsertExRate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\ExRate\frmInsertExRate.Designer.cs">
+      <DependentUpon>frmInsertExRate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Supplier\frmUpdateSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Supplier\frmUpdateSupplier.Designer.cs">
+      <DependentUpon>frmUpdateSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Parts\ucParts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Parts\ucParts.Designer.cs">
+      <DependentUpon>ucParts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Unit\frmInsertUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Unit\frmInsertUnit.Designer.cs">
+      <DependentUpon>frmInsertUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Unit\frmUpdateUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Unit\frmUpdateUnit.Designer.cs">
+      <DependentUpon>frmUpdateUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Warehouse\frmInsertWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Warehouse\frmInsertWarehouse.Designer.cs">
+      <DependentUpon>frmInsertWarehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Warehouse\frmUpdateWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Warehouse\frmUpdateWarehouse.Designer.cs">
+      <DependentUpon>frmUpdateWarehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QLBH_v1DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLBH_v1DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Catergory\ucCatergory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Catergory\ucCatergory.Designer.cs">
+      <DependentUpon>ucCatergory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Customer\ucCustomer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Customer\ucCustomer.Designer.cs">
+      <DependentUpon>ucCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\ExRate\ucExRate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\ExRate\ucExRate.Designer.cs">
+      <DependentUpon>ucExRate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QLBH_v1DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLBH_v1DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QLBH_v1DataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLBH_v1DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QLBH_v1DataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLBH_v1DataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QLBH_v1DataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLBH_v1DataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ucFather.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucFather.Designer.cs">
+      <DependentUpon>ucFather.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UcFucntion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcFucntion.Designer.cs">
+      <DependentUpon>UcFucntion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Product\ucProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Product\ucProduct.Designer.cs">
+      <DependentUpon>ucProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Staff\ucStaff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Staff\ucStaff.Designer.cs">
+      <DependentUpon>ucStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Supplier\ucSupplier.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Supplier\ucSupplier.Designer.cs">
+      <DependentUpon>ucSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Unit\ucUnit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Unit\ucUnit.Designer.cs">
+      <DependentUpon>ucUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Warehouse\ucWarehouse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Warehouse\ucWarehouse.Designer.cs">
+      <DependentUpon>ucWarehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WfValidation Components\CheckPassword.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WfValidation Components\RegExValidator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WfValidation Components\CheckEmail.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WfValidation Components\CheckName.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WfValidation Components\BaseValidator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WfValidation Components\CheckUserName.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System Forms\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System Forms\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="System Forms\frmRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System Forms\frmRegister.Designer.cs">
+      <DependentUpon>frmRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPermission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPermission.Designer.cs">
+      <DependentUpon>frmPermission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Product\frmProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Product\frmProduct.Designer.cs">
+      <DependentUpon>frmProduct.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Manager Forms\Area\ucAreas.resx">
+      <DependentUpon>ucAreas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System Forms\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Area\frmUpdateArea.resx">
+      <DependentUpon>frmUpdateArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Catergory\frmUpdateCatergory.resx">
+      <DependentUpon>frmUpdateCatergory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Customer\frmUpdateCustomer.resx">
+      <DependentUpon>frmUpdateCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\ExRate\frmUpdateExRate.resx">
+      <DependentUpon>frmUpdateExRate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Customer\frmInserCustomer.resx">
+      <DependentUpon>frmInserCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Parts\frmInsertParts.resx">
+      <DependentUpon>frmInsertParts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Parts\frmUpdateParts.resx">
+      <DependentUpon>frmUpdateParts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Product\frmInsertProduct.resx">
+      <DependentUpon>frmInsertProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Product\frmUpdateProduct.resx">
+      <DependentUpon>frmUpdateProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Staff\frmInsertStaff.resx">
+      <DependentUpon>frmInsertStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Staff\frmUpdateStaff.resx">
+      <DependentUpon>frmUpdateStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Staff\ucStaff.resx">
+      <DependentUpon>ucStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Supplier\frmInserSupplier.resx">
+      <DependentUpon>frmInserSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Area\frmInsertArea.resx">
+      <DependentUpon>frmInsertArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Catergory\frmInsertCatergory.resx">
+      <DependentUpon>frmInsertCatergory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\ExRate\frmInsertExRate.resx">
+      <DependentUpon>frmInsertExRate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Supplier\frmUpdateSupplier.resx">
+      <DependentUpon>frmUpdateSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Parts\ucParts.resx">
+      <DependentUpon>ucParts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Unit\frmInsertUnit.resx">
+      <DependentUpon>frmInsertUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Unit\frmUpdateUnit.resx">
+      <DependentUpon>frmUpdateUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Warehouse\frmInsertWarehouse.resx">
+      <DependentUpon>frmInsertWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Warehouse\frmUpdateWarehouse.resx">
+      <DependentUpon>frmUpdateWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Catergory\ucCatergory.resx">
+      <DependentUpon>ucCatergory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Customer\ucCustomer.resx">
+      <DependentUpon>ucCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\ExRate\ucExRate.resx">
+      <DependentUpon>ucExRate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucFather.resx">
+      <DependentUpon>ucFather.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcFucntion.resx">
+      <DependentUpon>UcFucntion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Product\ucProduct.resx">
+      <DependentUpon>ucProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Supplier\ucSupplier.resx">
+      <DependentUpon>ucSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Unit\ucUnit.resx">
+      <DependentUpon>ucUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Warehouse\ucWarehouse.resx">
+      <DependentUpon>ucWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System Forms\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System Forms\frmRegister.resx">
+      <DependentUpon>frmRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPermission.resx">
+      <DependentUpon>frmPermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Product\frmProduct.resx">
+      <DependentUpon>frmProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="QLBH_v1DataSet.xsc">
+      <DependentUpon>QLBH_v1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QLBH_v1DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLBH_v1DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLBH_v1DataSet.xss">
+      <DependentUpon>QLBH_v1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QLBH_v1DataSet1.xsc">
+      <DependentUpon>QLBH_v1DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="QLBH_v1DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLBH_v1DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLBH_v1DataSet1.xss">
+      <DependentUpon>QLBH_v1DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="QLBH_v1DataSet2.xsc">
+      <DependentUpon>QLBH_v1DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="QLBH_v1DataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLBH_v1DataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLBH_v1DataSet2.xss">
+      <DependentUpon>QLBH_v1DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="QLBH_v1DataSet3.xsc">
+      <DependentUpon>QLBH_v1DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="QLBH_v1DataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLBH_v1DataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLBH_v1DataSet3.xss">
+      <DependentUpon>QLBH_v1DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="QLBH_v1DataSet4.xsc">
+      <DependentUpon>QLBH_v1DataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="QLBH_v1DataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLBH_v1DataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLBH_v1DataSet4.xss">
+      <DependentUpon>QLBH_v1DataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="QLBH_v1DataSet5.xsc">
+      <DependentUpon>QLBH_v1DataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="QLBH_v1DataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLBH_v1DataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLBH_v1DataSet5.xss">
+      <DependentUpon>QLBH_v1DataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="QLBH_v1DataSet6.xsc">
+      <DependentUpon>QLBH_v1DataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="QLBH_v1DataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLBH_v1DataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLBH_v1DataSet6.xss">
+      <DependentUpon>QLBH_v1DataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="QLBH_v1DataSet7.xsc">
+      <DependentUpon>QLBH_v1DataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="QLBH_v1DataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLBH_v1DataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLBH_v1DataSet7.xss">
+      <DependentUpon>QLBH_v1DataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="QLBH_v1DataSet8.xsc">
+      <DependentUpon>QLBH_v1DataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="QLBH_v1DataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLBH_v1DataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLBH_v1DataSet8.xss">
+      <DependentUpon>QLBH_v1DataSet8.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BUS\BUS.csproj">
+      <Project>{4be85726-1c0b-4235-a599-b717b6046412}</Project>
+      <Name>BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{f48c8b23-c5b1-4931-ae6f-0f112656dab9}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
