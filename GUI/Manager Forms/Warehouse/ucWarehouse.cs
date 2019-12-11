@@ -11,7 +11,7 @@ using DevExpress.XtraEditors;
 using GUI.Manager_Forms.Warehouse;
 using BUS;
 using DTO;
-using Syncfusion.XlsIO;
+//using Syncfusion.XlsIO;
 
 namespace GUI
 {
@@ -111,32 +111,32 @@ namespace GUI
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            using (ExcelEngine excelEngine = new ExcelEngine())
-            {
-                //Initialize Application
-                IApplication application = excelEngine.Excel;
+            //using (ExcelEngine excelEngine = new ExcelEngine())
+            //{
+            //    //Initialize Application
+            //    IApplication application = excelEngine.Excel;
 
-                //Set the default application version as Excel 2016
-                application.DefaultVersion = ExcelVersion.Excel2016;
+            //    //Set the default application version as Excel 2016
+            //    application.DefaultVersion = ExcelVersion.Excel2016;
 
-                //Create a new workbook
-                IWorkbook workbook = application.Workbooks.Create(1);
+            //    //Create a new workbook
+            //    IWorkbook workbook = application.Workbooks.Create(1);
 
-                //Access first worksheet from the workbook instance
-                IWorksheet worksheet = workbook.Worksheets[0];
+            //    //Access first worksheet from the workbook instance
+            //    IWorksheet worksheet = workbook.Worksheets[0];
 
-                //Exporting DataTable to worksheet
-                WarehouseBUS bus = new WarehouseBUS();
-                DataTable dataTable = new DataTable();
-                dataTable = bus.ShowWarehouses();
-                worksheet.ImportDataTable(dataTable, true, 1, 1);
-                worksheet.UsedRange.AutofitColumns();
+            //    //Exporting DataTable to worksheet
+            //    WarehouseBUS bus = new WarehouseBUS();
+            //    DataTable dataTable = new DataTable();
+            //    dataTable = bus.ShowWarehouses();
+            //    worksheet.ImportDataTable(dataTable, true, 1, 1);
+            //    worksheet.UsedRange.AutofitColumns();
 
-                //Save the workbook to disk in xlsx format
-                workbook.SaveAs("Output.xlsx");
+            //    //Save the workbook to disk in xlsx format
+            //    workbook.SaveAs("Output.xlsx");
 
-                MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug");
-            }
+            //    MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug");
+            //}
         }
     }
 }

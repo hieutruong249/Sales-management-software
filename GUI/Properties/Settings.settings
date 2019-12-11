@@ -10,5 +10,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=DESKTOP-59A5HQG\SQLEXPRESS;Initial Catalog=QLBH_v1;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="ProductID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">gridColumn1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

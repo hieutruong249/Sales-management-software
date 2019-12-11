@@ -33,5 +33,17 @@ namespace GUI.Properties {
                 return ((string)(this["QLBH_v1ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("gridColumn1")]
+        public string ProductID {
+            get {
+                return ((string)(this["ProductID"]));
+            }
+            set {
+                this["ProductID"] = value;
+            }
+        }
     }
 }

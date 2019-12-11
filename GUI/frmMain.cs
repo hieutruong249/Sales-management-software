@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
 using GUI.Manager_Forms;
+using GUI.Business.SaleProduct;
 
 namespace GUI
 {
@@ -170,6 +171,31 @@ namespace GUI
             pcMain.Dock = DockStyle.Fill;
 
             ucParts uc = new ucParts();
+            uc.Dock = DockStyle.Fill;
+            pcMain.Controls.Add(uc);
+        }
+
+        private void pcMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnOrders_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            pcMain.Controls.Clear();
+            pcMain.Dock = DockStyle.Fill;
+
+            ucImportProduct uc = new ucImportProduct();
+            uc.Dock = DockStyle.Fill;
+            pcMain.Controls.Add(uc);
+        }
+
+        private void btnSales_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            pcMain.Controls.Clear();
+            pcMain.Dock = DockStyle.Fill;
+
+            ucSellProduct uc = new ucSellProduct();
             uc.Dock = DockStyle.Fill;
             pcMain.Controls.Add(uc);
         }

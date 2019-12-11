@@ -11,7 +11,7 @@ using DevExpress.XtraEditors;
 using GUI.Manager_Forms.Supplier;
 using BUS;
 using DTO;
-using Syncfusion.XlsIO;
+//using Syncfusion.XlsIO;
 
 namespace GUI
 {
@@ -35,21 +35,21 @@ namespace GUI
             this.Controls.Clear();
         }
 
-        public string FindNextID(DataTable dtbl)
-        {
-            string txtID = null;
-            if (dtbl.Rows.Count > 0)
-            {
-                string ma = dtbl.Rows[dtbl.Rows.Count - 1]["SupplierID"].ToString();
-                int lastIndex = int.Parse(ma.Substring(2)) + 1;
-                txtID = "NCC" + lastIndex.ToString("00000");
-            }
-            else
-            {
-                txtID = "NCC00001";
-            }
-            return txtID;
-        }
+        //public string FindNextID(DataTable dtbl)
+        //{
+        //    string txtID = null;
+        //    if (dtbl.Rows.Count > 0)
+        //    {
+        //        string ma = dtbl.Rows[dtbl.Rows.Count - 1]["SupplierID"].ToString();
+        //        int lastIndex = int.Parse(ma.Substring(2)) + 1;
+        //        txtID = "NCC" + lastIndex.ToString("00000");
+        //    }
+        //    else
+        //    {
+        //        txtID = "NCC00001";
+        //    }
+        //    return txtID;
+        //}
 
         private void btnRefesh_Click(object sender, EventArgs e)
         {
@@ -60,11 +60,11 @@ namespace GUI
 
 
             //send data to insert form
-            string txtID = null;
-            txtID = FindNextID(dtbl);
-            frmInserSupplier frm = new frmInserSupplier();
-            SendTxtID send = new SendTxtID(frm.ReceiveTxtID);
-            send(txtID);
+            //string txtID = null;
+            //txtID = FindNextID(dtbl);
+            //frmInserSupplier frm = new frmInserSupplier();
+            //SendTxtID send = new SendTxtID(frm.ReceiveTxtID);
+            //send(txtID);
         }
 
         private void ucSupplier_Load(object sender, EventArgs e)
@@ -75,12 +75,12 @@ namespace GUI
             gcSuppliers.DataSource = dtbl;
 
 
-            //send data to insert form
-            string txtID = null;
-            txtID = FindNextID(dtbl);
-            frmInserSupplier frm = new frmInserSupplier();
-            SendTxtID send = new SendTxtID(frm.ReceiveTxtID);
-            send(txtID);
+            ////send data to insert form
+            //string txtID = null;
+            //txtID = FindNextID(dtbl);
+            //frmInserSupplier frm = new frmInserSupplier();
+            //SendTxtID send = new SendTxtID(frm.ReceiveTxtID);
+            //send(txtID);
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -108,7 +108,7 @@ namespace GUI
             supplier.Phone = gridView1.GetRowCellValue(rowHandle, "Phone").ToString();
             supplier.Email = gridView1.GetRowCellValue(rowHandle, "Email").ToString();
             supplier.Bank = gridView1.GetRowCellValue(rowHandle, "Bank").ToString();
-            supplier.Discount = float.Parse(gridView1.GetRowCellValue(rowHandle, "Discount").ToString());
+            //supplier.Discount = float.Parse(gridView1.GetRowCellValue(rowHandle, "Discount").ToString());
             supplier.AccountBank = gridView1.GetRowCellValue(rowHandle, "AccountBank").ToString();
 
             //send data to update form
@@ -119,32 +119,37 @@ namespace GUI
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            using (ExcelEngine excelEngine = new ExcelEngine())
-            {
-                //Initialize Application
-                IApplication application = excelEngine.Excel;
+            //using (ExcelEngine excelEngine = new ExcelEngine())
+            //{
+            //    //Initialize Application
+            //    IApplication application = excelEngine.Excel;
 
-                //Set the default application version as Excel 2016
-                application.DefaultVersion = ExcelVersion.Excel2016;
+            //    //Set the default application version as Excel 2016
+            //    application.DefaultVersion = ExcelVersion.Excel2016;
 
-                //Create a new workbook
-                IWorkbook workbook = application.Workbooks.Create(1);
+            //    //Create a new workbook
+            //    IWorkbook workbook = application.Workbooks.Create(1);
 
-                //Access first worksheet from the workbook instance
-                IWorksheet worksheet = workbook.Worksheets[0];
+            //    //Access first worksheet from the workbook instance
+            //    IWorksheet worksheet = workbook.Worksheets[0];
 
-                //Exporting DataTable to worksheet
-                SupplierBUS bus = new SupplierBUS();
-                DataTable dataTable = new DataTable();
-                dataTable = bus.ShowSupplier();
-                worksheet.ImportDataTable(dataTable, true, 1, 1);
-                worksheet.UsedRange.AutofitColumns();
+            //    //Exporting DataTable to worksheet
+            //    SupplierBUS bus = new SupplierBUS();
+            //    DataTable dataTable = new DataTable();
+            //    dataTable = bus.ShowSupplier();
+            //    worksheet.ImportDataTable(dataTable, true, 1, 1);
+            //    worksheet.UsedRange.AutofitColumns();
 
-                //Save the workbook to disk in xlsx format
-                workbook.SaveAs("Output.xlsx");
+            //    //Save the workbook to disk in xlsx format
+            //    workbook.SaveAs("Output.xlsx");
 
-                MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug");
-            }
+            //    MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug");
+            //}
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

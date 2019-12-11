@@ -52,6 +52,7 @@
             // 
             this.gridView1.GridControl = this.gcProducts;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
             this.gridView1.Click += new System.EventHandler(this.gridView1_Click);
             // 
             // gcProducts

@@ -51,11 +51,8 @@
             this.btnStaffs = new DevExpress.XtraBars.BarButtonItem();
             this.btnOrders = new DevExpress.XtraBars.BarButtonItem();
             this.btnSales = new DevExpress.XtraBars.BarButtonItem();
-            this.btnInventory = new DevExpress.XtraBars.BarButtonItem();
-            this.btnExpiry_date = new DevExpress.XtraBars.BarButtonItem();
             this.btnCollect_money = new DevExpress.XtraBars.BarButtonItem();
             this.btnPay_bill = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem27 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem28 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem29 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem30 = new DevExpress.XtraBars.BarButtonItem();
@@ -69,6 +66,8 @@
             this.lbUsername = new DevExpress.XtraBars.BarStaticItem();
             this.lbNamePC = new DevExpress.XtraBars.BarStaticItem();
             this.lbdate = new DevExpress.XtraBars.BarStaticItem();
+            this.lbTime = new DevExpress.XtraBars.BarStaticItem();
+            this.lbNameDB = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -80,15 +79,12 @@
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.pcMain = new DevExpress.XtraEditors.PanelControl();
-            this.lbTime = new DevExpress.XtraBars.BarStaticItem();
-            this.lbNameDB = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcMain)).BeginInit();
             this.SuspendLayout();
@@ -120,11 +116,8 @@
             this.btnStaffs,
             this.btnOrders,
             this.btnSales,
-            this.btnInventory,
-            this.btnExpiry_date,
             this.btnCollect_money,
             this.btnPay_bill,
-            this.barButtonItem27,
             this.barButtonItem28,
             this.barButtonItem29,
             this.barButtonItem30,
@@ -141,14 +134,14 @@
             this.lbTime,
             this.lbNameDB});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 46;
+            this.ribbon.MaxItemId = 47;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage4,
             this.ribbonPage2,
             this.ribbonPage3,
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(862, 157);
+            this.ribbon.Size = new System.Drawing.Size(1231, 157);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // btnExit
@@ -320,43 +313,35 @@
             // 
             this.btnOrders.Caption = "Orders";
             this.btnOrders.Id = 22;
+            this.btnOrders.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnOrders.ImageOptions.Image")));
+            this.btnOrders.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnOrders.ImageOptions.LargeImage")));
             this.btnOrders.Name = "btnOrders";
+            this.btnOrders.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnOrders_ItemClick);
             // 
             // btnSales
             // 
             this.btnSales.Caption = "Sales";
             this.btnSales.Id = 23;
+            this.btnSales.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSales.ImageOptions.Image")));
+            this.btnSales.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSales.ImageOptions.LargeImage")));
             this.btnSales.Name = "btnSales";
-            // 
-            // btnInventory
-            // 
-            this.btnInventory.Caption = "Inventory";
-            this.btnInventory.Id = 24;
-            this.btnInventory.Name = "btnInventory";
-            // 
-            // btnExpiry_date
-            // 
-            this.btnExpiry_date.Caption = "Expiry date";
-            this.btnExpiry_date.Id = 25;
-            this.btnExpiry_date.Name = "btnExpiry_date";
+            this.btnSales.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSales_ItemClick);
             // 
             // btnCollect_money
             // 
             this.btnCollect_money.Caption = "Collect money";
             this.btnCollect_money.Id = 26;
+            this.btnCollect_money.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCollect_money.ImageOptions.Image")));
+            this.btnCollect_money.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCollect_money.ImageOptions.LargeImage")));
             this.btnCollect_money.Name = "btnCollect_money";
             // 
             // btnPay_bill
             // 
             this.btnPay_bill.Caption = "Pay bill";
             this.btnPay_bill.Id = 27;
+            this.btnPay_bill.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPay_bill.ImageOptions.Image")));
+            this.btnPay_bill.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnPay_bill.ImageOptions.LargeImage")));
             this.btnPay_bill.Name = "btnPay_bill";
-            // 
-            // barButtonItem27
-            // 
-            this.barButtonItem27.Caption = "barButtonItem27";
-            this.barButtonItem27.Id = 28;
-            this.barButtonItem27.Name = "barButtonItem27";
             // 
             // barButtonItem28
             // 
@@ -460,6 +445,30 @@
             this.lbdate.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
+            // lbTime
+            // 
+            this.lbTime.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.lbTime.Caption = "Time";
+            this.lbTime.Id = 42;
+            this.lbTime.ItemAppearance.Disabled.BackColor = System.Drawing.Color.PowderBlue;
+            this.lbTime.ItemAppearance.Disabled.Options.UseBackColor = true;
+            this.lbTime.ItemAppearance.Normal.BackColor = System.Drawing.Color.PowderBlue;
+            this.lbTime.ItemAppearance.Normal.Options.UseBackColor = true;
+            this.lbTime.Name = "lbTime";
+            // 
+            // lbNameDB
+            // 
+            this.lbNameDB.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.lbNameDB.Caption = "NameDB";
+            this.lbNameDB.Id = 43;
+            this.lbNameDB.ItemAppearance.Disabled.BackColor = System.Drawing.Color.PowderBlue;
+            this.lbNameDB.ItemAppearance.Disabled.Options.UseBackColor = true;
+            this.lbNameDB.ItemAppearance.Normal.BackColor = System.Drawing.Color.PowderBlue;
+            this.lbNameDB.ItemAppearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.lbNameDB.ItemAppearance.Normal.Options.UseBackColor = true;
+            this.lbNameDB.ItemAppearance.Normal.Options.UseForeColor = true;
+            this.lbNameDB.Name = "lbNameDB";
+            // 
             // ribbonPage4
             // 
             this.ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -532,7 +541,6 @@
             this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup3,
             this.ribbonPageGroup9,
-            this.ribbonPageGroup10,
             this.ribbonPageGroup11});
             this.ribbonPage3.Name = "ribbonPage3";
             this.ribbonPage3.Text = "Bussiness";
@@ -541,8 +549,6 @@
             // 
             this.ribbonPageGroup3.ItemLinks.Add(this.btnOrders);
             this.ribbonPageGroup3.ItemLinks.Add(this.btnSales);
-            this.ribbonPageGroup3.ItemLinks.Add(this.btnInventory);
-            this.ribbonPageGroup3.ItemLinks.Add(this.btnExpiry_date);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "Sales manager";
             // 
@@ -552,15 +558,6 @@
             this.ribbonPageGroup9.ItemLinks.Add(this.btnPay_bill);
             this.ribbonPageGroup9.Name = "ribbonPageGroup9";
             this.ribbonPageGroup9.Text = "Liabilities";
-            // 
-            // ribbonPageGroup10
-            // 
-            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem27);
-            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem28);
-            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem29);
-            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem30);
-            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
-            this.ribbonPageGroup10.Text = "Utilities";
             // 
             // ribbonPageGroup11
             // 
@@ -599,48 +596,25 @@
             this.ribbonStatusBar.ItemLinks.Add(this.lbNameDB);
             this.ribbonStatusBar.ItemLinks.Add(this.lbTime);
             this.ribbonStatusBar.ItemLinks.Add(this.lbdate);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 427);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 674);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(862, 22);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1231, 22);
             // 
             // pcMain
             // 
             this.pcMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pcMain.Location = new System.Drawing.Point(0, 157);
             this.pcMain.Name = "pcMain";
-            this.pcMain.Size = new System.Drawing.Size(862, 270);
+            this.pcMain.Size = new System.Drawing.Size(1231, 517);
             this.pcMain.TabIndex = 2;
-            // 
-            // lbTime
-            // 
-            this.lbTime.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.lbTime.Caption = "Time";
-            this.lbTime.Id = 42;
-            this.lbTime.ItemAppearance.Disabled.BackColor = System.Drawing.Color.PowderBlue;
-            this.lbTime.ItemAppearance.Disabled.Options.UseBackColor = true;
-            this.lbTime.ItemAppearance.Normal.BackColor = System.Drawing.Color.PowderBlue;
-            this.lbTime.ItemAppearance.Normal.Options.UseBackColor = true;
-            this.lbTime.Name = "lbTime";
-            // 
-            // lbNameDB
-            // 
-            this.lbNameDB.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.lbNameDB.Caption = "NameDB";
-            this.lbNameDB.Id = 43;
-            this.lbNameDB.ItemAppearance.Disabled.BackColor = System.Drawing.Color.PowderBlue;
-            this.lbNameDB.ItemAppearance.Disabled.Options.UseBackColor = true;
-            this.lbNameDB.ItemAppearance.Normal.BackColor = System.Drawing.Color.PowderBlue;
-            this.lbNameDB.ItemAppearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.lbNameDB.ItemAppearance.Normal.Options.UseBackColor = true;
-            this.lbNameDB.ItemAppearance.Normal.Options.UseForeColor = true;
-            this.lbNameDB.Name = "lbNameDB";
+            this.pcMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pcMain_Paint);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 449);
+            this.ClientSize = new System.Drawing.Size(1231, 696);
             this.Controls.Add(this.pcMain);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
@@ -694,13 +668,9 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraBars.BarButtonItem btnOrders;
         private DevExpress.XtraBars.BarButtonItem btnSales;
-        private DevExpress.XtraBars.BarButtonItem btnInventory;
-        private DevExpress.XtraBars.BarButtonItem btnExpiry_date;
         private DevExpress.XtraBars.BarButtonItem btnCollect_money;
         private DevExpress.XtraBars.BarButtonItem btnPay_bill;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem27;
         private DevExpress.XtraBars.BarButtonItem barButtonItem28;
         private DevExpress.XtraBars.BarButtonItem barButtonItem29;
         private DevExpress.XtraBars.BarButtonItem barButtonItem30;

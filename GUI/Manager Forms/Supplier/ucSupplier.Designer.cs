@@ -136,6 +136,7 @@
             this.btnImport.Size = new System.Drawing.Size(79, 32);
             this.btnImport.TabIndex = 8;
             this.btnImport.Text = "Import";
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // btnRefesh
             // 

@@ -11,7 +11,7 @@ using DevExpress.XtraEditors;
 using GUI.Manager_Forms.Unit;
 using BUS;
 using DTO;
-using Syncfusion.XlsIO;
+//using Syncfusion.XlsIO;
 
 namespace GUI
 {
@@ -79,11 +79,11 @@ namespace GUI
             gcUnit.DataSource = dtbl;
 
             //send data to Insert form
-            string txtID = null;
-            txtID = FindNextID(dtbl);
-            frmInsertUnit frm = new frmInsertUnit();
-            SendTxtID send = new SendTxtID(frm.ReceiveTxtID);
-            send(txtID);
+            //string txtID = null;
+            //txtID = FindNextID(dtbl);
+            //frmInsertUnit frm = new frmInsertUnit();
+            //SendTxtID send = new SendTxtID(frm.ReceiveTxtID);
+            //send(txtID);
         }
 
         private void gridView1_Click(object sender, EventArgs e)
@@ -125,32 +125,32 @@ namespace GUI
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            using (ExcelEngine excelEngine = new ExcelEngine())
-            {
-                //Initialize Application
-                IApplication application = excelEngine.Excel;
+            //using (ExcelEngine excelEngine = new ExcelEngine())
+            //{
+            //    //Initialize Application
+            //    IApplication application = excelEngine.Excel;
 
-                //Set the default application version as Excel 2016
-                application.DefaultVersion = ExcelVersion.Excel2016;
+            //    //Set the default application version as Excel 2016
+            //    application.DefaultVersion = ExcelVersion.Excel2016;
 
-                //Create a new workbook
-                IWorkbook workbook = application.Workbooks.Create(1);
+            //    //Create a new workbook
+            //    IWorkbook workbook = application.Workbooks.Create(1);
 
-                //Access first worksheet from the workbook instance
-                IWorksheet worksheet = workbook.Worksheets[0];
+            //    //Access first worksheet from the workbook instance
+            //    IWorksheet worksheet = workbook.Worksheets[0];
 
-                //Exporting DataTable to worksheet
-                UnitBUS bus = new UnitBUS();
-                DataTable dataTable = new DataTable();
-                dataTable = bus.ShowUnit();
-                worksheet.ImportDataTable(dataTable, true, 1, 1);
-                worksheet.UsedRange.AutofitColumns();
+            //    //Exporting DataTable to worksheet
+            //    UnitBUS bus = new UnitBUS();
+            //    DataTable dataTable = new DataTable();
+            //    dataTable = bus.ShowUnit();
+            //    worksheet.ImportDataTable(dataTable, true, 1, 1);
+            //    worksheet.UsedRange.AutofitColumns();
 
-                //Save the workbook to disk in xlsx format
-                workbook.SaveAs("Output.xlsx");
+            //    //Save the workbook to disk in xlsx format
+            //    workbook.SaveAs("Output.xlsx");
 
-                MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug");
-            }
+            //    MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug");
+            //}
         }
     }
 }
