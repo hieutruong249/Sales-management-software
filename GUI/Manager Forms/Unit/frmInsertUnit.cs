@@ -23,6 +23,7 @@ namespace GUI
         public frmInsertUnit()
         {
             InitializeComponent();
+            this.CenterToParent();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

@@ -23,6 +23,7 @@ namespace GUI.Manager_Forms.Warehouse
         public frmUpdateWarehouse()
         {
             InitializeComponent();
+            this.CenterToParent();
         }
 
         private void frmUpdateWarehouse_Load(object sender, EventArgs e)
@@ -39,8 +40,7 @@ namespace GUI.Manager_Forms.Warehouse
             txtEmail.Text = warehouse.Email;
             txtDescription.Text = warehouse.Decription;
 
-            WarehouseBUS warehouseBUS = new WarehouseBUS();
-            warehouseBUS.UpdateWarehouse(warehouse);
+           
 
         }
 

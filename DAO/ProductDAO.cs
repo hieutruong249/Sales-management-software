@@ -11,7 +11,7 @@ namespace DAO
 {
     public class ProductDAO
     {
-        public int InsertProduct(Product u)
+        public int InsertProduct(Products u)
         {
             Provider provider = new Provider();
             int nRow = 0;
@@ -49,7 +49,7 @@ namespace DAO
             return nRow;
         }
 
-        public int UpdateProduct(Product u)
+        public int UpdateProduct(Products u)
         {
             Provider provider = new Provider();
             int nRow = 0;
@@ -92,7 +92,7 @@ namespace DAO
             return nRow;
         }
 
-        public int DeleteProduct(Product u)
+        public int DeleteProduct(Products u)
         {
             Provider provider = new Provider();
             int nRow = 0;

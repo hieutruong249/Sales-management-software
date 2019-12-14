@@ -13,5 +13,8 @@
     <Setting Name="ProductID" Type="System.String" Scope="User">
       <Value Profile="(Default)">gridColumn1</Value>
     </Setting>
+    <Setting Name="ID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ID</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

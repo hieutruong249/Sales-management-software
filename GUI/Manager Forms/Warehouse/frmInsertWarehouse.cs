@@ -23,6 +23,7 @@ namespace GUI
         public frmInsertWarehouse()
         {
             InitializeComponent();
+            this.CenterToParent();
         }       
 
         private void frmInsertWarehouse_Load(object sender, EventArgs e)

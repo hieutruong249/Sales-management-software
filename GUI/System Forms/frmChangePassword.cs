@@ -16,6 +16,7 @@ namespace GUI
         public frmChangePassword()
         {
             InitializeComponent();
+            this.CenterToParent();
         }
 
         private void frmChangePassword_Load(object sender, EventArgs e)

@@ -23,6 +23,7 @@ namespace GUI.Manager_Forms.Supplier
         public frmUpdateSupplier()
         {
             InitializeComponent();
+            this.CenterToParent();
         }
 
         private void frmUpdateSupplier_Load(object sender, EventArgs e)

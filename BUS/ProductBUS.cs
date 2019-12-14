@@ -16,15 +16,15 @@ namespace BUS
         {
             return productDAO.ShowProducts();
         }
-        public int InsertProduct(Product u)
+        public int InsertProduct(Products u)
         {
             return productDAO.InsertProduct(u);
         }
-        public int UpdateProduct(Product u)
+        public int UpdateProduct(Products u)
         {
             return productDAO.UpdateProduct(u);
         }
-        public int DeleteProduct(Product u)
+        public int DeleteProduct(Products u)
         {
             return productDAO.DeleteProduct(u);
         }

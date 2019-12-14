@@ -51,11 +51,11 @@
             this.lkProductID = new DevExpress.XtraEditors.LookUpEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.lkExRate = new DevExpress.XtraEditors.LookUpEdit();
+            this.exRateBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qLBH_v1DataSet11 = new GUI.QLBH_v1DataSet11();
             this.label5 = new System.Windows.Forms.Label();
             this.txtDiscount = new DevExpress.XtraEditors.TextEdit();
             this.label7 = new System.Windows.Forms.Label();
-            this.qLBH_v1DataSet11 = new GUI.QLBH_v1DataSet11();
-            this.exRateBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.exRateTableAdapter = new GUI.QLBH_v1DataSet11TableAdapters.ExRateTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.lkUnit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
@@ -68,9 +68,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.mudCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkProductID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkExRate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDiscount.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exRateBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiscount.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lkUnit
@@ -245,6 +245,16 @@
             this.lkExRate.Size = new System.Drawing.Size(100, 20);
             this.lkExRate.TabIndex = 30;
             // 
+            // exRateBindingSource
+            // 
+            this.exRateBindingSource.DataMember = "ExRate";
+            this.exRateBindingSource.DataSource = this.qLBH_v1DataSet11;
+            // 
+            // qLBH_v1DataSet11
+            // 
+            this.qLBH_v1DataSet11.DataSetName = "QLBH_v1DataSet11";
+            this.qLBH_v1DataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -269,16 +279,6 @@
             this.label7.Size = new System.Drawing.Size(52, 13);
             this.label7.TabIndex = 31;
             this.label7.Text = "Discount:";
-            // 
-            // qLBH_v1DataSet11
-            // 
-            this.qLBH_v1DataSet11.DataSetName = "QLBH_v1DataSet11";
-            this.qLBH_v1DataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // exRateBindingSource
-            // 
-            this.exRateBindingSource.DataMember = "ExRate";
-            this.exRateBindingSource.DataSource = this.qLBH_v1DataSet11;
             // 
             // exRateTableAdapter
             // 
@@ -307,6 +307,8 @@
             this.Controls.Add(this.mudCount);
             this.Controls.Add(this.lkProductID);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmInsertR";
             this.Text = "frmInsertR";
             this.Load += new System.EventHandler(this.frmInsertR_Load);
@@ -321,9 +323,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.mudCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkProductID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkExRate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDiscount.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exRateBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiscount.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

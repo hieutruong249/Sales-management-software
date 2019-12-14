@@ -15,14 +15,15 @@ namespace GUI
 {
     public partial class frmUpdateProduct : DevExpress.XtraEditors.XtraForm
     {
-        public static Product product = new Product();
-        public void ReceiveData(Product p)
+        public static Products product = new Products();
+        public void ReceiveData(Products p)
         {
             product = p;
         }
         public frmUpdateProduct()
         {
             InitializeComponent();
+            this.CenterToParent();
         }
 
         private void btnClose_Click_1(object sender, EventArgs e)

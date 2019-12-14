@@ -504,6 +504,9 @@
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.btnClose);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmUpdateProduct";
             this.Text = "frmUpdateProduct";
             this.Load += new System.EventHandler(this.frmUpdateProduct_Load);

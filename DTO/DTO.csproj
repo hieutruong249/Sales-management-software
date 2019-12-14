@@ -47,10 +47,11 @@
     <Compile Include="ExRates.cs" />
     <Compile Include="GlobalVar.cs" />
     <Compile Include="Partss.cs" />
+    <Compile Include="PermissionForm.cs" />
     <Compile Include="RoleForm.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderDetail.cs" />
-    <Compile Include="Product.cs" />
+    <Compile Include="Products.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Staffs.cs" />
     <Compile Include="Suppliers.cs" />

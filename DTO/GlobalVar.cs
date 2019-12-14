@@ -9,5 +9,6 @@ namespace DTO
     public class GlobalVar
     {
         public static Dictionary<int,RoleForm> dicmyRoleForm = new Dictionary<int,RoleForm>();
+        public static string _username = null;
     }
 }

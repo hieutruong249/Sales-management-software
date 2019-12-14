@@ -23,6 +23,7 @@ namespace GUI.Manager_Forms.Unit
         public frmUpdateUnit()
         {
             InitializeComponent();
+            this.CenterToParent();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

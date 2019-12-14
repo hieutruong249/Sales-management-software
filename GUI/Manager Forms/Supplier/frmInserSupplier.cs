@@ -23,6 +23,7 @@ namespace GUI
         public frmInserSupplier()
         {
             InitializeComponent();
+            this.CenterToParent();
         }
 
         private void btnInserArea_Click(object sender, EventArgs e)

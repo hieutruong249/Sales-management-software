@@ -49,14 +49,14 @@
             this.txtID = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.lkManager = new DevExpress.XtraEditors.LookUpEdit();
-            this.lkParts = new DevExpress.XtraEditors.LookUpEdit();
-            this.qLBH_v1DataSet2 = new GUI.QLBH_v1DataSet2();
-            this.partsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.partsTableAdapter = new GUI.QLBH_v1DataSet2TableAdapters.PartsTableAdapter();
-            this.qLBH_v1DataSet3 = new GUI.QLBH_v1DataSet3();
             this.staffsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qLBH_v1DataSet3 = new GUI.QLBH_v1DataSet3();
+            this.lkParts = new DevExpress.XtraEditors.LookUpEdit();
+            this.partsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qLBH_v1DataSet2 = new GUI.QLBH_v1DataSet2();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.partsTableAdapter = new GUI.QLBH_v1DataSet2TableAdapters.PartsTableAdapter();
             this.staffsTableAdapter = new GUI.QLBH_v1DataSet3TableAdapters.StaffsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).BeginInit();
@@ -67,14 +67,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lkManager.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staffsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkParts.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.partsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lkManager.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkParts.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.partsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.staffsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -238,6 +238,50 @@
             this.groupControl2.TabIndex = 36;
             this.groupControl2.Text = "Manage";
             // 
+            // lkManager
+            // 
+            this.lkManager.Location = new System.Drawing.Point(86, 166);
+            this.lkManager.Name = "lkManager";
+            this.lkManager.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lkManager.Properties.DataSource = this.staffsBindingSource;
+            this.lkManager.Properties.DisplayMember = "Name";
+            this.lkManager.Properties.ValueMember = "ID";
+            this.lkManager.Size = new System.Drawing.Size(266, 20);
+            this.lkManager.TabIndex = 17;
+            // 
+            // staffsBindingSource
+            // 
+            this.staffsBindingSource.DataMember = "Staffs";
+            this.staffsBindingSource.DataSource = this.qLBH_v1DataSet3;
+            // 
+            // qLBH_v1DataSet3
+            // 
+            this.qLBH_v1DataSet3.DataSetName = "QLBH_v1DataSet3";
+            this.qLBH_v1DataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lkParts
+            // 
+            this.lkParts.Location = new System.Drawing.Point(86, 140);
+            this.lkParts.Name = "lkParts";
+            this.lkParts.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lkParts.Properties.DataSource = this.partsBindingSource;
+            this.lkParts.Properties.DisplayMember = "Name";
+            this.lkParts.Properties.ValueMember = "ID";
+            this.lkParts.Size = new System.Drawing.Size(266, 20);
+            this.lkParts.TabIndex = 16;
+            // 
+            // partsBindingSource
+            // 
+            this.partsBindingSource.DataMember = "Parts";
+            this.partsBindingSource.DataSource = this.qLBH_v1DataSet2;
+            // 
+            // qLBH_v1DataSet2
+            // 
+            this.qLBH_v1DataSet2.DataSetName = "QLBH_v1DataSet2";
+            this.qLBH_v1DataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.txtNote);
@@ -252,53 +296,9 @@
             this.groupControl1.TabIndex = 35;
             this.groupControl1.Text = "Information";
             // 
-            // lkManager
-            // 
-            this.lkManager.Location = new System.Drawing.Point(86, 166);
-            this.lkManager.Name = "lkManager";
-            this.lkManager.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lkManager.Properties.DataSource = this.staffsBindingSource;
-            this.lkManager.Properties.DisplayMember = "Name";
-            this.lkManager.Properties.ValueMember = "ID";
-            this.lkManager.Size = new System.Drawing.Size(266, 20);
-            this.lkManager.TabIndex = 17;
-            // 
-            // lkParts
-            // 
-            this.lkParts.Location = new System.Drawing.Point(86, 140);
-            this.lkParts.Name = "lkParts";
-            this.lkParts.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lkParts.Properties.DataSource = this.partsBindingSource;
-            this.lkParts.Properties.DisplayMember = "Name";
-            this.lkParts.Properties.ValueMember = "ID";
-            this.lkParts.Size = new System.Drawing.Size(266, 20);
-            this.lkParts.TabIndex = 16;
-            // 
-            // qLBH_v1DataSet2
-            // 
-            this.qLBH_v1DataSet2.DataSetName = "QLBH_v1DataSet2";
-            this.qLBH_v1DataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // partsBindingSource
-            // 
-            this.partsBindingSource.DataMember = "Parts";
-            this.partsBindingSource.DataSource = this.qLBH_v1DataSet2;
-            // 
             // partsTableAdapter
             // 
             this.partsTableAdapter.ClearBeforeFill = true;
-            // 
-            // qLBH_v1DataSet3
-            // 
-            this.qLBH_v1DataSet3.DataSetName = "QLBH_v1DataSet3";
-            this.qLBH_v1DataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // staffsBindingSource
-            // 
-            this.staffsBindingSource.DataMember = "Staffs";
-            this.staffsBindingSource.DataSource = this.qLBH_v1DataSet3;
             // 
             // staffsTableAdapter
             // 
@@ -313,6 +313,9 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmUpdateStaff";
             this.Text = "Update Staff form";
             this.Load += new System.EventHandler(this.frmUpdateStaff_Load);
@@ -326,15 +329,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lkManager.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staffsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkParts.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.partsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lkManager.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkParts.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.partsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.staffsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

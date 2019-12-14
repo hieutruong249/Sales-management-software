@@ -133,6 +133,9 @@
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmUpdateArea";
             this.Text = "Update Area form";
             this.Load += new System.EventHandler(this.frmUpdateArea_Load);

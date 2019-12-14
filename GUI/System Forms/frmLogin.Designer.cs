@@ -126,7 +126,10 @@
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.lbPassword);
             this.Controls.Add(this.lbUsername);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.InactiveGlowColor = System.Drawing.Color.White;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmLogin";
             this.Text = "Login form";
             this.Load += new System.EventHandler(this.XtraForm1_Load);

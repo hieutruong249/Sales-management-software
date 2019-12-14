@@ -19,6 +19,7 @@ namespace GUI
         public frmRegister()
         {
             InitializeComponent();
+            this.CenterToParent();
         }
 
        

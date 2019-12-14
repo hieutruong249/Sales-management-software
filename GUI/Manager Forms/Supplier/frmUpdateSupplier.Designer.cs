@@ -32,6 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUpdateSupplier));
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.lkArea = new DevExpress.XtraEditors.LookUpEdit();
+            this.areasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qLBH_v1DataSet4 = new GUI.QLBH_v1DataSet4();
             this.speDiscount = new DevExpress.XtraEditors.SpinEdit();
             this.btnInserArea = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -51,12 +54,12 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtID = new DevExpress.XtraEditors.TextEdit();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
-            this.lkArea = new DevExpress.XtraEditors.LookUpEdit();
-            this.qLBH_v1DataSet4 = new GUI.QLBH_v1DataSet4();
-            this.areasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.areasTableAdapter = new GUI.QLBH_v1DataSet4TableAdapters.AreasTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lkArea.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.areasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speDiscount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBank.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAccBank.Properties)).BeginInit();
@@ -65,9 +68,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkArea.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.areasBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -106,6 +106,28 @@
             this.groupControl1.Size = new System.Drawing.Size(644, 238);
             this.groupControl1.TabIndex = 33;
             this.groupControl1.Text = "Information";
+            // 
+            // lkArea
+            // 
+            this.lkArea.Location = new System.Drawing.Point(383, 30);
+            this.lkArea.Name = "lkArea";
+            this.lkArea.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lkArea.Properties.DataSource = this.areasBindingSource;
+            this.lkArea.Properties.DisplayMember = "Name";
+            this.lkArea.Properties.ValueMember = "ID";
+            this.lkArea.Size = new System.Drawing.Size(173, 20);
+            this.lkArea.TabIndex = 22;
+            // 
+            // areasBindingSource
+            // 
+            this.areasBindingSource.DataMember = "Areas";
+            this.areasBindingSource.DataSource = this.qLBH_v1DataSet4;
+            // 
+            // qLBH_v1DataSet4
+            // 
+            this.qLBH_v1DataSet4.DataSetName = "QLBH_v1DataSet4";
+            this.qLBH_v1DataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // speDiscount
             // 
@@ -267,28 +289,6 @@
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // lkArea
-            // 
-            this.lkArea.Location = new System.Drawing.Point(383, 30);
-            this.lkArea.Name = "lkArea";
-            this.lkArea.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lkArea.Properties.DataSource = this.areasBindingSource;
-            this.lkArea.Properties.DisplayMember = "Name";
-            this.lkArea.Properties.ValueMember = "ID";
-            this.lkArea.Size = new System.Drawing.Size(173, 20);
-            this.lkArea.TabIndex = 22;
-            // 
-            // qLBH_v1DataSet4
-            // 
-            this.qLBH_v1DataSet4.DataSetName = "QLBH_v1DataSet4";
-            this.qLBH_v1DataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // areasBindingSource
-            // 
-            this.areasBindingSource.DataMember = "Areas";
-            this.areasBindingSource.DataSource = this.qLBH_v1DataSet4;
-            // 
             // areasTableAdapter
             // 
             this.areasTableAdapter.ClearBeforeFill = true;
@@ -301,12 +301,18 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.btnClose);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmUpdateSupplier";
             this.Text = "Update Supplier form";
             this.Load += new System.EventHandler(this.frmUpdateSupplier_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lkArea.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.areasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speDiscount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBank.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAccBank.Properties)).EndInit();
@@ -315,9 +321,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkArea.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.areasBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -132,6 +132,9 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmInsertArea";
             this.Text = "Insert Area form";
             this.Load += new System.EventHandler(this.frmInsertArea_Load);

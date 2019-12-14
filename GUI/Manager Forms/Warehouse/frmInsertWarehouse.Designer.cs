@@ -199,7 +199,7 @@
             this.lkManager.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lkManager.Properties.DataSource = this.staffsBindingSource;
-            this.lkManager.Properties.DisplayMember = "Name";
+            this.lkManager.Properties.DisplayMember = "ID";
             this.lkManager.Properties.ValueMember = "ID";
             this.lkManager.Size = new System.Drawing.Size(267, 20);
             this.lkManager.TabIndex = 6;
@@ -272,6 +272,9 @@
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmInsertWarehouse";
             this.Text = "Insert Warehouse form";
             this.Load += new System.EventHandler(this.frmInsertWarehouse_Load);

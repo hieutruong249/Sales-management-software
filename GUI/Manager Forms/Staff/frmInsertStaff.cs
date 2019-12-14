@@ -23,6 +23,7 @@ namespace GUI.Manager_Forms.Staff
         public frmInsertStaff()
         {
             InitializeComponent();
+            this.CenterToParent();
         }
 
         private void frmInsertStaff_Load(object sender, EventArgs e)

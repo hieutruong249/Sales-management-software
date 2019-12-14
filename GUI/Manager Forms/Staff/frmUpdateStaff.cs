@@ -23,6 +23,7 @@ namespace GUI.Manager_Forms.Staff
         public frmUpdateStaff()
         {
             InitializeComponent();
+            this.CenterToParent();
         }
 
         private void frmUpdateStaff_Load(object sender, EventArgs e)

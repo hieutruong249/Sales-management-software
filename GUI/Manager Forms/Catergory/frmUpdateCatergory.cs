@@ -20,6 +20,7 @@ namespace GUI.Manager_Forms.Catergory
         public frmUpdateCatergory()
         {
             InitializeComponent();
+            this.CenterToParent();
         }
         public void ReceiveData(Categories c)
         {
@@ -46,7 +47,7 @@ namespace GUI.Manager_Forms.Catergory
         {
             txtID.Text = categorie.CategoryID;
             txtName.Text = categorie.CategoryName;
-            txtNote.Text = categorie.CategoryName;
+            txtNote.Text = categorie.Note;
         }
     }
 }

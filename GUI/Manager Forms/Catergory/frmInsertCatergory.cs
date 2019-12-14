@@ -19,6 +19,7 @@ namespace GUI
         public frmInsertCatergory()
         {
             InitializeComponent();
+            this.CenterToParent();
         }
         public void ReceiveTxtID(string textID)
         {

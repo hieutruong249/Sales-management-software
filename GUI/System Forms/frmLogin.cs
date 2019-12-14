@@ -20,6 +20,7 @@ namespace GUI
         public frmLogin()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         private void XtraForm1_Load(object sender, EventArgs e)
@@ -44,6 +45,7 @@ namespace GUI
                     }
 
                     MessageBox.Show("Login successfully" + rol.RoleId);
+                    GlobalVar._username = txtUsername.Text;
                     frmMain frm = new frmMain();
                     this.Hide();
                     frm.Show();

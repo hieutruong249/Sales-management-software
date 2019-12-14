@@ -293,6 +293,9 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmInsertStaff";
             this.Text = "Insert Staff form";
             this.Load += new System.EventHandler(this.frmInsertStaff_Load);

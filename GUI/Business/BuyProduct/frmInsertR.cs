@@ -27,6 +27,7 @@ namespace GUI.Business.BuyProduct
             // TODO: This line of code loads data into the 'qLBH_v1DataSet9.Products' table. You can move, or remove it, as needed.
             this.productsTableAdapter.Fill(this.qLBH_v1DataSet9.Products);
             txtTotal.Text = txtPrice.Text = "0";
+            this.CenterToParent();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -43,8 +44,8 @@ namespace GUI.Business.BuyProduct
             total = (count * price);
             
 
-            ucImportProduct uc = new ucImportProduct();
-            SendData send = new SendData(uc.ReceiveData);
+            frmBuyProduct frm = new frmBuyProduct();
+            SendData send = new SendData(frm.ReceiveData);
             send(pdID, pdname, unit, count, price, total);
 
         }

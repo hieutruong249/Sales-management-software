@@ -278,6 +278,9 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmUpdateCustomer";
             this.Text = "Update Customer form";
             this.Load += new System.EventHandler(this.frmUpdateCustomer_Load);

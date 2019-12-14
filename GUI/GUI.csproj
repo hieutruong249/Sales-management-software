@@ -38,11 +38,15 @@
     <Reference Include="DevExpress.Dashboard.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Diagram.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v19.2.Core, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraDiagram.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -78,8 +82,15 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\BuyProduct\frmBuyProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\BuyProduct\frmBuyProduct.Designer.cs">
+      <DependentUpon>frmBuyProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Business\BuyProduct\frmInsertR.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,17 +103,59 @@
     <Compile Include="Business\BuyProduct\frmUpdateR.Designer.cs">
       <DependentUpon>frmUpdateR.cs</DependentUpon>
     </Compile>
+    <Compile Include="Business\Collect Monney\ucAggregateDebt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Business\Collect Monney\ucAggregateDebt.Designer.cs">
+      <DependentUpon>ucAggregateDebt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\Collect Monney\ucReceiptCollectMoney.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Business\Collect Monney\ucReceiptCollectMoney.Designer.cs">
+      <DependentUpon>ucReceiptCollectMoney.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\Collect Monney\ucCollect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Business\Collect Monney\ucCollect.Designer.cs">
+      <DependentUpon>ucCollect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\Collect Monney\ucCouponsImmediately.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Business\Collect Monney\ucCouponsImmediately.Designer.cs">
+      <DependentUpon>ucCouponsImmediately.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\Collect Monney\ucDetailedDebt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Business\Collect Monney\ucDetailedDebt.Designer.cs">
+      <DependentUpon>ucDetailedDebt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\Collect Monney\ucTrackCookDebt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Business\Collect Monney\ucTrackCookDebt.Designer.cs">
+      <DependentUpon>ucTrackCookDebt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Business\SaleProduct\frmInsertR.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Business\SaleProduct\frmInsertR.Designer.cs">
       <DependentUpon>frmInsertR.cs</DependentUpon>
     </Compile>
-    <Compile Include="Business\SaleProduct\ucSellProduct.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Business\SaleProduct\frmSellProduct.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Business\SaleProduct\ucSellProduct.Designer.cs">
-      <DependentUpon>ucSellProduct.cs</DependentUpon>
+    <Compile Include="Business\SaleProduct\frmSellProduct.Designer.cs">
+      <DependentUpon>frmSellProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Business\Collect Monney\frmCollectMoney.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Business\Collect Monney\frmCollectMoney.Designer.cs">
+      <DependentUpon>frmCollectMoney.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPay.cs">
       <SubType>Form</SubType>
@@ -110,11 +163,71 @@
     <Compile Include="frmPay.Designer.cs">
       <DependentUpon>frmPay.cs</DependentUpon>
     </Compile>
-    <Compile Include="Manager Forms\Area\ucAreas.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Help\frmAbout.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Manager Forms\Area\ucAreas.Designer.cs">
-      <DependentUpon>ucAreas.cs</DependentUpon>
+    <Compile Include="Help\frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Area\frmArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Area\frmArea.Designer.cs">
+      <DependentUpon>frmArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Catergory\frmCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Catergory\frmCategory.Designer.cs">
+      <DependentUpon>frmCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Customer\frmCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Customer\frmCustomer.Designer.cs">
+      <DependentUpon>frmCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\ExRate\frmExRate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\ExRate\frmExRate.Designer.cs">
+      <DependentUpon>frmExRate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Parts\frmPart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Parts\frmPart.Designer.cs">
+      <DependentUpon>frmPart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Product\frmProduct1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Product\frmProduct1.Designer.cs">
+      <DependentUpon>frmProduct1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Staff\frmStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Staff\frmStaff.Designer.cs">
+      <DependentUpon>frmStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Supplier\frmSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Supplier\frmSupplier.Designer.cs">
+      <DependentUpon>frmSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Unit\frmUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Unit\frmUnit.Designer.cs">
+      <DependentUpon>frmUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manager Forms\Warehouse\frmWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manager Forms\Warehouse\frmWarehouse.Designer.cs">
+      <DependentUpon>frmWarehouse.cs</DependentUpon>
     </Compile>
     <Compile Include="QLBH_v1DataSet10.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -253,12 +366,6 @@
     <Compile Include="Manager Forms\Supplier\frmUpdateSupplier.Designer.cs">
       <DependentUpon>frmUpdateSupplier.cs</DependentUpon>
     </Compile>
-    <Compile Include="Manager Forms\Parts\ucParts.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Manager Forms\Parts\ucParts.Designer.cs">
-      <DependentUpon>ucParts.cs</DependentUpon>
-    </Compile>
     <Compile Include="Manager Forms\Unit\frmInsertUnit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,24 +401,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLBH_v1DataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Manager Forms\Catergory\ucCatergory.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Manager Forms\Catergory\ucCatergory.Designer.cs">
-      <DependentUpon>ucCatergory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Manager Forms\Customer\ucCustomer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Manager Forms\Customer\ucCustomer.Designer.cs">
-      <DependentUpon>ucCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Manager Forms\ExRate\ucExRate.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Manager Forms\ExRate\ucExRate.Designer.cs">
-      <DependentUpon>ucExRate.cs</DependentUpon>
-    </Compile>
     <Compile Include="QLBH_v1DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -332,6 +421,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLBH_v1DataSet4.xsd</DependentUpon>
     </Compile>
+    <Compile Include="System Forms\frmUpdatePermission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System Forms\frmUpdatePermission.Designer.cs">
+      <DependentUpon>frmUpdatePermission.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucFather.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -343,42 +438,6 @@
     </Compile>
     <Compile Include="UcFucntion.Designer.cs">
       <DependentUpon>UcFucntion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Manager Forms\Product\ucProduct.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Manager Forms\Product\ucProduct.Designer.cs">
-      <DependentUpon>ucProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Manager Forms\Staff\ucStaff.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Manager Forms\Staff\ucStaff.Designer.cs">
-      <DependentUpon>ucStaff.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Manager Forms\Supplier\ucSupplier.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Manager Forms\Supplier\ucSupplier.Designer.cs">
-      <DependentUpon>ucSupplier.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Manager Forms\Unit\ucUnit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Manager Forms\Unit\ucUnit.Designer.cs">
-      <DependentUpon>ucUnit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Manager Forms\Warehouse\ucWarehouse.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Manager Forms\Warehouse\ucWarehouse.Designer.cs">
-      <DependentUpon>ucWarehouse.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Business\BuyProduct\ucImportProduct.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Business\BuyProduct\ucImportProduct.Designer.cs">
-      <DependentUpon>ucImportProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
@@ -418,10 +477,10 @@
     <Compile Include="System Forms\frmRegister.Designer.cs">
       <DependentUpon>frmRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPermission.cs">
+    <Compile Include="System Forms\frmPermission.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPermission.Designer.cs">
+    <Compile Include="System Forms\frmPermission.Designer.cs">
       <DependentUpon>frmPermission.cs</DependentUpon>
     </Compile>
     <Compile Include="Manager Forms\Product\frmProduct.cs">
@@ -430,23 +489,77 @@
     <Compile Include="Manager Forms\Product\frmProduct.Designer.cs">
       <DependentUpon>frmProduct.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Business\BuyProduct\frmBuyProduct.resx">
+      <DependentUpon>frmBuyProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Business\BuyProduct\frmInsertR.resx">
       <DependentUpon>frmInsertR.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Business\BuyProduct\frmUpdateR.resx">
       <DependentUpon>frmUpdateR.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Business\Collect Monney\ucAggregateDebt.resx">
+      <DependentUpon>ucAggregateDebt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Business\Collect Monney\ucReceiptCollectMoney.resx">
+      <DependentUpon>ucReceiptCollectMoney.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Business\Collect Monney\ucCollect.resx">
+      <DependentUpon>ucCollect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Business\Collect Monney\ucCouponsImmediately.resx">
+      <DependentUpon>ucCouponsImmediately.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Business\Collect Monney\ucDetailedDebt.resx">
+      <DependentUpon>ucDetailedDebt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Business\Collect Monney\ucTrackCookDebt.resx">
+      <DependentUpon>ucTrackCookDebt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Business\SaleProduct\frmInsertR.resx">
       <DependentUpon>frmInsertR.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Business\SaleProduct\ucSellProduct.resx">
-      <DependentUpon>ucSellProduct.cs</DependentUpon>
+    <EmbeddedResource Include="Business\SaleProduct\frmSellProduct.resx">
+      <DependentUpon>frmSellProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Business\Collect Monney\frmCollectMoney.resx">
+      <DependentUpon>frmCollectMoney.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPay.resx">
       <DependentUpon>frmPay.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Manager Forms\Area\ucAreas.resx">
-      <DependentUpon>ucAreas.cs</DependentUpon>
+    <EmbeddedResource Include="Help\frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Area\frmArea.resx">
+      <DependentUpon>frmArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Catergory\frmCategory.resx">
+      <DependentUpon>frmCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Customer\frmCustomer.resx">
+      <DependentUpon>frmCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\ExRate\frmExRate.resx">
+      <DependentUpon>frmExRate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Parts\frmPart.resx">
+      <DependentUpon>frmPart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Product\frmProduct1.resx">
+      <DependentUpon>frmProduct1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Staff\frmStaff.resx">
+      <DependentUpon>frmStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Supplier\frmSupplier.resx">
+      <DependentUpon>frmSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Unit\frmUnit.resx">
+      <DependentUpon>frmUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manager Forms\Warehouse\frmWarehouse.resx">
+      <DependentUpon>frmWarehouse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="System Forms\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
@@ -484,9 +597,6 @@
     <EmbeddedResource Include="Manager Forms\Staff\frmUpdateStaff.resx">
       <DependentUpon>frmUpdateStaff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Manager Forms\Staff\ucStaff.resx">
-      <DependentUpon>ucStaff.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Manager Forms\Supplier\frmInserSupplier.resx">
       <DependentUpon>frmInserSupplier.cs</DependentUpon>
     </EmbeddedResource>
@@ -501,9 +611,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Manager Forms\Supplier\frmUpdateSupplier.resx">
       <DependentUpon>frmUpdateSupplier.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Manager Forms\Parts\ucParts.resx">
-      <DependentUpon>ucParts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manager Forms\Unit\frmInsertUnit.resx">
       <DependentUpon>frmInsertUnit.cs</DependentUpon>
@@ -530,35 +637,14 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Manager Forms\Catergory\ucCatergory.resx">
-      <DependentUpon>ucCatergory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Manager Forms\Customer\ucCustomer.resx">
-      <DependentUpon>ucCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Manager Forms\ExRate\ucExRate.resx">
-      <DependentUpon>ucExRate.cs</DependentUpon>
+    <EmbeddedResource Include="System Forms\frmUpdatePermission.resx">
+      <DependentUpon>frmUpdatePermission.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucFather.resx">
       <DependentUpon>ucFather.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UcFucntion.resx">
       <DependentUpon>UcFucntion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Manager Forms\Product\ucProduct.resx">
-      <DependentUpon>ucProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Manager Forms\Supplier\ucSupplier.resx">
-      <DependentUpon>ucSupplier.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Manager Forms\Unit\ucUnit.resx">
-      <DependentUpon>ucUnit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Manager Forms\Warehouse\ucWarehouse.resx">
-      <DependentUpon>ucWarehouse.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Business\BuyProduct\ucImportProduct.resx">
-      <DependentUpon>ucImportProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
@@ -569,7 +655,7 @@
     <EmbeddedResource Include="System Forms\frmRegister.resx">
       <DependentUpon>frmRegister.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPermission.resx">
+    <EmbeddedResource Include="System Forms\frmPermission.resx">
       <DependentUpon>frmPermission.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manager Forms\Product\frmProduct.resx">
@@ -731,6 +817,8 @@
       <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Business\NewFolder1\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

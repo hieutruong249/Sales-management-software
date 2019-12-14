@@ -45,5 +45,17 @@ namespace GUI.Properties {
                 this["ProductID"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ID")]
+        public string ID {
+            get {
+                return ((string)(this["ID"]));
+            }
+            set {
+                this["ID"] = value;
+            }
+        }
     }
 }

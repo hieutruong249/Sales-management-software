@@ -30,6 +30,7 @@ namespace GUI.Business.SaleProduct
             this.exRateTableAdapter.Fill(this.qLBH_v1DataSet11.ExRate);
             txtTotal.Text = txtPrice.Text = "0";
             txtDiscount.Text = "0";
+            this.CenterToParent();
 
         }
 
@@ -58,7 +59,7 @@ namespace GUI.Business.SaleProduct
             total = (count * price);
 
 
-            ucSellProduct uc = new ucSellProduct();
+            frmSellProduct uc = new frmSellProduct();
             SendData send = new SendData(uc.ReceiveData);
             send(pdID, pdname, unit, count, price, total, exrate, discount);
 

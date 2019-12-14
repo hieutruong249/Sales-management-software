@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+
 using DTO;
 
 namespace GUI
@@ -22,6 +23,7 @@ namespace GUI
         public frmInsertProduct()
         {
             InitializeComponent();
+            this.CenterToParent();
         }
 
         private void frmInsertProduct_Load(object sender, EventArgs e)
@@ -46,7 +48,7 @@ namespace GUI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Product product = new Product();
+            Products product = new Products();
             product.ProductID = txtPdID.Text;
             product.ProductName = txtPdName.Text;
             product.CatergoryID = lkCatergory.Text;
@@ -60,6 +62,27 @@ namespace GUI
             product.Retail = double.Parse(speRetail.Text);
             product.Wholesale = double.Parse(speWholesale.Text);
             product.Image = null;
+
+            MessageBox.Show(product.Purchase.ToString());
+        }
+
+        private void pictureEdit1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fDialog = new OpenFileDialog();
+            fDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+
+            //AreasBUS categoryBUS = new AreasBUS();
+            if (fDialog.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.FileInfo fInfo = new System.IO.FileInfo(fDialog.FileName);
+                string path = fInfo.DirectoryName + "\\" + fInfo.Name;
+                pictureEdit1.Image = Image.FromFile(path); ;
+                //MessageBox.Show(path);
+                //DataTable data = new DataTable();
+                //gcSuppliers.DataSource = categoryBUS.ImportFormExcel("Sheet1", path);
+
+
+            }
         }
     }
 }

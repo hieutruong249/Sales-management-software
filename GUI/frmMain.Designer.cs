@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnExit = new DevExpress.XtraBars.BarButtonItem();
@@ -84,9 +85,11 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.pcMain = new DevExpress.XtraEditors.PanelControl();
+            this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
+            this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -141,7 +144,7 @@
             this.ribbonPage2,
             this.ribbonPage3,
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1231, 157);
+            this.ribbon.Size = new System.Drawing.Size(1091, 147);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // btnExit
@@ -168,6 +171,7 @@
             this.btnInformation.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnInformation.ImageOptions.Image")));
             this.btnInformation.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnInformation.ImageOptions.LargeImage")));
             this.btnInformation.Name = "btnInformation";
+            this.btnInformation.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnInformation_ItemClick);
             // 
             // btnPermission
             // 
@@ -334,6 +338,7 @@
             this.btnCollect_money.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCollect_money.ImageOptions.Image")));
             this.btnCollect_money.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCollect_money.ImageOptions.LargeImage")));
             this.btnCollect_money.Name = "btnCollect_money";
+            this.btnCollect_money.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCollect_money_ItemClick);
             // 
             // btnPay_bill
             // 
@@ -374,6 +379,7 @@
             this.btnUsermanual.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUsermanual.ImageOptions.Image")));
             this.btnUsermanual.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnUsermanual.ImageOptions.LargeImage")));
             this.btnUsermanual.Name = "btnUsermanual";
+            this.btnUsermanual.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUsermanual_ItemClick);
             // 
             // btnContact
             // 
@@ -382,6 +388,7 @@
             this.btnContact.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnContact.ImageOptions.Image")));
             this.btnContact.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnContact.ImageOptions.LargeImage")));
             this.btnContact.Name = "btnContact";
+            this.btnContact.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnContact_ItemClick);
             // 
             // btnRegister
             // 
@@ -407,6 +414,7 @@
             this.btnAbout.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAbout.ImageOptions.Image")));
             this.btnAbout.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnAbout.ImageOptions.LargeImage")));
             this.btnAbout.Name = "btnAbout";
+            this.btnAbout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAbout_ItemClick);
             // 
             // barStaticItem1
             // 
@@ -596,36 +604,38 @@
             this.ribbonStatusBar.ItemLinks.Add(this.lbNameDB);
             this.ribbonStatusBar.ItemLinks.Add(this.lbTime);
             this.ribbonStatusBar.ItemLinks.Add(this.lbdate);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 674);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 822);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1231, 22);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1091, 23);
             // 
-            // pcMain
+            // documentManager1
             // 
-            this.pcMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pcMain.Location = new System.Drawing.Point(0, 157);
-            this.pcMain.Name = "pcMain";
-            this.pcMain.Size = new System.Drawing.Size(1231, 517);
-            this.pcMain.TabIndex = 2;
-            this.pcMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pcMain_Paint);
+            this.documentManager1.MdiParent = this;
+            this.documentManager1.MenuManager = this.ribbon;
+            this.documentManager1.View = this.tabbedView1;
+            this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
+            this.tabbedView1});
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1231, 696);
-            this.Controls.Add(this.pcMain);
+            this.ClientSize = new System.Drawing.Size(1091, 845);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
+            this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Glow;
+            this.IsMdiContainer = true;
+            this.MaximizeBox = false;
             this.Name = "frmMain";
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;
             this.Tag = "1";
-            this.Text = "RibbonForm1";
+            this.Text = "Sale Manager Software";
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -682,12 +692,13 @@
         private DevExpress.XtraBars.BarButtonItem btnUpdateInfo;
         private DevExpress.XtraBars.BarButtonItem btnAbout;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
-        private DevExpress.XtraEditors.PanelControl pcMain;
         private DevExpress.XtraBars.BarStaticItem barStaticItem1;
         private DevExpress.XtraBars.BarStaticItem lbUsername;
         private DevExpress.XtraBars.BarStaticItem lbNamePC;
         private DevExpress.XtraBars.BarStaticItem lbdate;
         private DevExpress.XtraBars.BarStaticItem lbTime;
         private DevExpress.XtraBars.BarStaticItem lbNameDB;
+        private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
+        private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
     }
 }

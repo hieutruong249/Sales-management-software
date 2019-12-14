@@ -141,6 +141,9 @@
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmUpdateExRate";
             this.Text = "Update ExRate form";
             this.Load += new System.EventHandler(this.frmUpdateExRate_Load);

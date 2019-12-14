@@ -51,7 +51,7 @@ namespace DAO
             int nRow = 0;
             try
             {
-                string strSQL = "UPDATE Warehoue SET Name = @Name, Manager = @Manager, Contact = @Contact, Address = @Address, Phone = @Phone, Email = @Email, Decription = @Decription WHERE ID = @ID";
+                string strSQL = "UPDATE Warehouse SET Name = @Name, Manager = @Manager, Contact = @Contact, Address = @Address, Phone = @Phone, Email = @Email, Decription = @Decription WHERE ID = @ID";
                 provider.Connect();
                 nRow = provider.ExeCuteNonQuery(CommandType.Text, strSQL,
 

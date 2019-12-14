@@ -133,6 +133,9 @@
             this.Controls.Add(this.lbNewPWord);
             this.Controls.Add(this.txtOldPassword);
             this.Controls.Add(this.lbOldPWord);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmChangePassword";
             this.Text = "Change Password form";
             this.Load += new System.EventHandler(this.frmChangePassword_Load);

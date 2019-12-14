@@ -30,7 +30,7 @@ namespace GUI.Business.BuyProduct
             price = float.Parse(txtPrice.Text);
             total = (count * price);
 
-            ucImportProduct uc = new ucImportProduct();
+            frmBuyProduct uc = new frmBuyProduct();
             SendData send = new SendData(uc.ReceiveData);
             send(pdID, pdname, unit, count, price, total);
         }
@@ -59,6 +59,7 @@ namespace GUI.Business.BuyProduct
             this.unitTableAdapter.Fill(this.qLBH_v1DataSet7.Unit);
             // TODO: This line of code loads data into the 'qLBH_v1DataSet9.Products' table. You can move, or remove it, as needed.
             this.productsTableAdapter.Fill(this.qLBH_v1DataSet9.Products);
+            this.CenterToParent();
 
         }
 

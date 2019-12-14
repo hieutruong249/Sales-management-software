@@ -243,6 +243,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lkProductID);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmInsertR";
             this.Text = "frmInsertR";
             this.Load += new System.EventHandler(this.frmInsertR_Load);

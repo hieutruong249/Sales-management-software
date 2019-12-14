@@ -47,6 +47,7 @@
     <Compile Include="ExRateDAO.cs" />
     <Compile Include="FatherDAO.cs" />
     <Compile Include="PartsDAO.cs" />
+    <Compile Include="PermissionFormDAO.cs" />
     <Compile Include="ProductDAO.cs" />
     <Compile Include="Provider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
