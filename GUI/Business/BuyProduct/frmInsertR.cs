@@ -67,5 +67,15 @@ namespace GUI.Business.BuyProduct
         {
             this.Close();
         }
+
+        private void lkProductID_TextChanged(object sender, EventArgs e)
+        {
+            lkProductName.EditValue = lkProductID.Text;
+        }
+
+        private void lkProductName_TextChanged(object sender, EventArgs e)
+        {
+            lkProductID.Text = lkProductName.EditValue.ToString();
+        }
     }
 }

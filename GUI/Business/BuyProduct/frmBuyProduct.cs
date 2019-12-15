@@ -8,6 +8,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DTO;
+using BUS;
 
 namespace GUI.Business.BuyProduct
 {
@@ -18,10 +20,59 @@ namespace GUI.Business.BuyProduct
         public static int count, Ccount = 0;
         public static float price, total, TTotal = 0;
         public static int rowHandle = 0;
+        public static BuyProducts bp = new BuyProducts();
+        public static BuyProductDetail bpDetail = new BuyProductDetail();
+        public static BuyProductBUS bus = new BuyProductBUS();
 
         public frmBuyProduct()
         {
             InitializeComponent();
+            DataTable data = new DataTable();
+            txtBill.Text = FindNextID(data);
+           
+        }
+
+        private void frmBuyProduct_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'qLBH_v1DataSet3.Staffs' table. You can move, or remove it, as needed.
+            this.staffsTableAdapter.Fill(this.qLBH_v1DataSet3.Staffs);
+            // TODO: This line of code loads data into the 'qLBH_v1DataSet5.Warehouse' table. You can move, or remove it, as needed.
+            this.warehouseTableAdapter.Fill(this.qLBH_v1DataSet5.Warehouse);
+            // TODO: This line of code loads data into the 'qLBH_v1DataSet8.Suppliers' table. You can move, or remove it, as needed.
+            this.suppliersTableAdapter.Fill(this.qLBH_v1DataSet8.Suppliers);
+
+            lkSupplierName.EditValue = this.qLBH_v1DataSet8.Suppliers.Rows[0][lkSupplierName.Properties.ValueMember];
+            lkWarehouse.EditValue = this.qLBH_v1DataSet5.Warehouse.Rows[0][lkWarehouse.Properties.ValueMember];
+            lkStaffID.EditValue = this.qLBH_v1DataSet3.Staffs.Rows[0][lkStaffID.Properties.ValueMember];
+
+            if (!dtbl.Columns.Contains("ProductID"))
+            {
+                dtbl.Columns.Add("ProductID", typeof(string));
+                dtbl.Columns.Add("ProductName", typeof(string));
+                dtbl.Columns.Add("Unit", typeof(string));
+                dtbl.Columns.Add("Count", typeof(int));
+                dtbl.Columns.Add("Price", typeof(float));
+                dtbl.Columns.Add("Total", typeof(float));
+            }
+            gcItems.DataSource = dtbl;
+
+        }
+
+        public string FindNextID(DataTable dtbl)
+        {
+
+            string txtID = null;
+            if (dtbl.Rows.Count > 0)
+            {
+                string ma = dtbl.Rows[dtbl.Rows.Count - 1]["BillID"].ToString();
+                int lastIndex = int.Parse(ma.Substring(3)) + 1;
+                txtID = "BLL" + lastIndex.ToString("00000");
+            }
+            else
+            {
+                txtID = "BLL00001";
+            }
+            return txtID;
         }
         public void ReceiveData(string ID, string name, string uni, int cou, float pprice, float ttotal)
         {
@@ -42,13 +93,9 @@ namespace GUI.Business.BuyProduct
             row["Total"] = total;
 
             dtbl.Rows.Add(row);
-
-            Ccount += count;
-            TTotal += total;
-
-            //this.lbTotal.Text = Ccount.ToString();
-            //this.txtTotal.Text = TTotal.ToString();
-            MessageBox.Show(Ccount.ToString() + TTotal.ToString());
+            RemoveDuplicates(dtbl);
+            gcItems.DataSource = dtbl;
+           
         }
 
         private void dockPanel1_Click(object sender, EventArgs e)
@@ -88,7 +135,7 @@ namespace GUI.Business.BuyProduct
 
         private void btnInsertR_Click(object sender, EventArgs e)
         {
-            frmUpdateR frm = new frmUpdateR();
+            frmInsertR frm = new frmInsertR();
             frm.Show();
         }
 
@@ -108,32 +155,121 @@ namespace GUI.Business.BuyProduct
             dtbl.Rows.RemoveAt(rowHandle);
         }
 
-        private void frmBuyProduct_Load(object sender, EventArgs e)
+        private void btnCreate_Click(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'qLBH_v1DataSet3.Staffs' table. You can move, or remove it, as needed.
-            this.staffsTableAdapter.Fill(this.qLBH_v1DataSet3.Staffs);
-            // TODO: This line of code loads data into the 'qLBH_v1DataSet5.Warehouse' table. You can move, or remove it, as needed.
-            this.warehouseTableAdapter.Fill(this.qLBH_v1DataSet5.Warehouse);
-            // TODO: This line of code loads data into the 'qLBH_v1DataSet8.Suppliers' table. You can move, or remove it, as needed.
-            this.suppliersTableAdapter.Fill(this.qLBH_v1DataSet8.Suppliers);
+            MessageBox.Show(lkSupplierName.EditValue.ToString());
+        }
 
-            if (!dtbl.Columns.Contains("ProductID"))
+        private void lookUpEdit1_TextChanged(object sender, EventArgs e)
+        {
+            lkSupplierName.Text = lkSupplierID.EditValue.ToString();
+        }
+
+        private void lkSupplierName_TextChanged(object sender, EventArgs e)
+        {
+            lkSupplierID.Text = lkSupplierName.EditValue.ToString();
+
+        }
+
+        public void InsertBill()
+        {
+            bp.BillID = txtBill.Text;
+            bp.SupplierID = lkSupplierID.Text;
+            bp.WarehouseID = lkWarehouse.EditValue.ToString();
+            bp.StaffID = lkStaffID.Text;
+            bp.Phone = txtPhone.Text;
+            bp.Date = txtDate.Text;
+            bp.ExperiDate = txtExdate.Text;
+            bp.Note = txtNote.Text;
+            bp.Address = txtAddress.Text;
+            bp.NumVAT = txtNumVat.Text;
+            bp.Total = 0;
+            foreach (DataRow row in dtbl.Rows)
             {
-                dtbl.Columns.Add("ProductID", typeof(string));
-                dtbl.Columns.Add("ProductName", typeof(string));
-                dtbl.Columns.Add("Unit", typeof(string));
-                dtbl.Columns.Add("Count", typeof(int));
-                dtbl.Columns.Add("Price", typeof(float));
-                dtbl.Columns.Add("Total", typeof(float));
+                bp.Total += int.Parse(row["Count"].ToString());
+
             }
-            gcItems.DataSource = dtbl;
 
+            if (bus.InsertBillBuyProduct(bp) > 0 )
+            {
+                int err = InsertBillDetail();
+                if (err == 0)
+                {
+                    MessageBox.Show("Sussecc");
+
+                }
+                else
+                {
+                    MessageBox.Show("There are " + err.ToString()  +" rows failed while inserting!!!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Fail!!");
+            }
+          
+           
         }
-
-        private void navBarItem1_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        private void RemoveDuplicates(DataTable dt)
         {
+            bp.Total = 0;
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = dt.Rows.Count - 1; i >= 0; i--)
+                {
+                    if (i == 0)
+                    {
+                        break;
+                    }
+                    for (int j = i - 1; j >= 0; j--)
+                    {
+                        if (dt.Rows[i]["ProductID"] == dt.Rows[j]["ProductID"])
+                        {
+                            
+                            dt.Rows[j]["Count"] = (int.Parse(dt.Rows[i]["Count"].ToString()) + int.Parse(dt.Rows[j]["Count"].ToString())).ToString();
+                            dt.Rows[j]["Total"] = (int.Parse(dt.Rows[i]["Total"].ToString()) + int.Parse(dt.Rows[j]["Total"].ToString())).ToString();
+                            dt.Rows[i].Delete();
+                            break;
+                        }
+                    }
 
+
+                }
+                dt.AcceptChanges();
+            }
         }
+
+        public int InsertBillDetail()
+        {
+            int countERR = 0;
+            bpDetail.BillID = txtBill.Text;
+            foreach (DataRow row in dtbl.Rows)
+            {
+                bpDetail.ProductID = row["ProductID"].ToString();
+                bpDetail.ProductName = row["ProductName"].ToString();
+                bpDetail.UnitID = row["Unit"].ToString();
+                bpDetail.Price = double.Parse(row["Price"].ToString());
+                bpDetail.Amount = int.Parse(row["Count"].ToString());
+                bpDetail.Total = double.Parse(row["Total"].ToString());
+
+                if (bus.InsertBillBuyProductDetail(bpDetail) == 0)
+                {
+                    MessageBox.Show("Error: ProductID" + bpDetail.ProductID);
+                    countERR++;
+                }
+
+            }
+           
+            return countERR;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            InsertBill();
+            
+        } 
+
+        
 
         private void navBarItem4_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {

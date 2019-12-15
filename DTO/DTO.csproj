@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas.cs" />
+    <Compile Include="BuyProductDetail.cs" />
     <Compile Include="Categories.cs" />
     <Compile Include="Customers.cs" />
     <Compile Include="ExRates.cs" />
@@ -49,7 +50,7 @@
     <Compile Include="Partss.cs" />
     <Compile Include="PermissionForm.cs" />
     <Compile Include="RoleForm.cs" />
-    <Compile Include="Order.cs" />
+    <Compile Include="BuyProducts.cs" />
     <Compile Include="OrderDetail.cs" />
     <Compile Include="Products.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

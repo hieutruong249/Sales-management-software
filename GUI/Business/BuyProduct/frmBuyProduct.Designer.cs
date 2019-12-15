@@ -81,7 +81,7 @@
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            this.lkSupplierID = new DevExpress.XtraEditors.LookUpEdit();
             this.txtPhone = new DevExpress.XtraEditors.TextEdit();
             this.txtNumVat = new DevExpress.XtraEditors.TextEdit();
             this.txtExdate = new DevExpress.XtraEditors.DateEdit();
@@ -142,7 +142,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBill.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkSupplierID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumVat.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExdate.Properties.CalendarTimeProperties)).BeginInit();
@@ -236,7 +236,6 @@
             this.navBarItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItem1.ImageOptions.LargeImage")));
             this.navBarItem1.ImageOptions.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItem1.ImageOptions.SmallImage")));
             this.navBarItem1.Name = "navBarItem1";
-            this.navBarItem1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem1_LinkClicked);
             // 
             // navBarGroup2
             // 
@@ -332,6 +331,7 @@
             this.btnCreate.Size = new System.Drawing.Size(61, 22);
             this.btnCreate.TabIndex = 38;
             this.btnCreate.Text = "Create";
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnSave
             // 
@@ -343,6 +343,7 @@
             this.btnSave.Size = new System.Drawing.Size(52, 22);
             this.btnSave.TabIndex = 39;
             this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnRefesh
             // 
@@ -533,7 +534,7 @@
             this.groupControl2.Controls.Add(this.labelControl9);
             this.groupControl2.Controls.Add(this.labelControl10);
             this.groupControl2.Controls.Add(this.labelControl11);
-            this.groupControl2.Controls.Add(this.lookUpEdit1);
+            this.groupControl2.Controls.Add(this.lkSupplierID);
             this.groupControl2.Controls.Add(this.txtPhone);
             this.groupControl2.Controls.Add(this.txtNumVat);
             this.groupControl2.Controls.Add(this.txtExdate);
@@ -594,7 +595,7 @@
             // 
             // lkWarehouse
             // 
-            this.lkWarehouse.Location = new System.Drawing.Point(778, 95);
+            this.lkWarehouse.Location = new System.Drawing.Point(778, 99);
             this.lkWarehouse.Name = "lkWarehouse";
             this.lkWarehouse.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -606,7 +607,7 @@
             // 
             // lkStaffID
             // 
-            this.lkStaffID.Location = new System.Drawing.Point(778, 118);
+            this.lkStaffID.Location = new System.Drawing.Point(778, 125);
             this.lkStaffID.Name = "lkStaffID";
             this.lkStaffID.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -618,8 +619,7 @@
             // 
             // txtBill
             // 
-            this.txtBill.Enabled = false;
-            this.txtBill.Location = new System.Drawing.Point(778, 38);
+            this.txtBill.Location = new System.Drawing.Point(778, 49);
             this.txtBill.Name = "txtBill";
             this.txtBill.Size = new System.Drawing.Size(224, 20);
             this.txtBill.TabIndex = 21;
@@ -627,7 +627,7 @@
             // txtDate
             // 
             this.txtDate.EditValue = null;
-            this.txtDate.Location = new System.Drawing.Point(778, 66);
+            this.txtDate.Location = new System.Drawing.Point(778, 75);
             this.txtDate.Name = "txtDate";
             this.txtDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -638,7 +638,7 @@
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(696, 95);
+            this.labelControl8.Location = new System.Drawing.Point(713, 102);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(60, 13);
             this.labelControl8.TabIndex = 19;
@@ -646,7 +646,7 @@
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(696, 69);
+            this.labelControl9.Location = new System.Drawing.Point(713, 76);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(27, 13);
             this.labelControl9.TabIndex = 18;
@@ -654,7 +654,7 @@
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(696, 45);
+            this.labelControl10.Location = new System.Drawing.Point(713, 52);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(16, 13);
             this.labelControl10.TabIndex = 17;
@@ -662,34 +662,35 @@
             // 
             // labelControl11
             // 
-            this.labelControl11.Location = new System.Drawing.Point(696, 121);
+            this.labelControl11.Location = new System.Drawing.Point(713, 128);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(42, 13);
             this.labelControl11.TabIndex = 16;
             this.labelControl11.Text = "Staff ID:";
             // 
-            // lookUpEdit1
+            // lkSupplierID
             // 
-            this.lookUpEdit1.Location = new System.Drawing.Point(461, 42);
-            this.lookUpEdit1.Name = "lookUpEdit1";
-            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lkSupplierID.Location = new System.Drawing.Point(463, 49);
+            this.lkSupplierID.Name = "lkSupplierID";
+            this.lkSupplierID.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit1.Properties.DataSource = this.suppliersBindingSource;
-            this.lookUpEdit1.Properties.DisplayMember = "SupplierID";
-            this.lookUpEdit1.Properties.ValueMember = "SupplierID";
-            this.lookUpEdit1.Size = new System.Drawing.Size(224, 20);
-            this.lookUpEdit1.TabIndex = 15;
+            this.lkSupplierID.Properties.DataSource = this.suppliersBindingSource;
+            this.lkSupplierID.Properties.DisplayMember = "SupplierID";
+            this.lkSupplierID.Properties.ValueMember = "SupplierName";
+            this.lkSupplierID.Size = new System.Drawing.Size(224, 20);
+            this.lkSupplierID.TabIndex = 15;
+            this.lkSupplierID.TextChanged += new System.EventHandler(this.lookUpEdit1_TextChanged);
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(461, 69);
+            this.txtPhone.Location = new System.Drawing.Point(463, 75);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(224, 20);
             this.txtPhone.TabIndex = 14;
             // 
             // txtNumVat
             // 
-            this.txtNumVat.Location = new System.Drawing.Point(461, 95);
+            this.txtNumVat.Location = new System.Drawing.Point(463, 99);
             this.txtNumVat.Name = "txtNumVat";
             this.txtNumVat.Size = new System.Drawing.Size(224, 20);
             this.txtNumVat.TabIndex = 13;
@@ -697,7 +698,7 @@
             // txtExdate
             // 
             this.txtExdate.EditValue = null;
-            this.txtExdate.Location = new System.Drawing.Point(461, 118);
+            this.txtExdate.Location = new System.Drawing.Point(463, 125);
             this.txtExdate.Name = "txtExdate";
             this.txtExdate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -708,7 +709,7 @@
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(379, 98);
+            this.labelControl7.Location = new System.Drawing.Point(401, 102);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(43, 13);
             this.labelControl7.TabIndex = 11;
@@ -716,7 +717,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(379, 118);
+            this.labelControl4.Location = new System.Drawing.Point(401, 128);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(56, 13);
             this.labelControl4.TabIndex = 10;
@@ -724,7 +725,7 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(379, 79);
+            this.labelControl5.Location = new System.Drawing.Point(401, 76);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(34, 13);
             this.labelControl5.TabIndex = 9;
@@ -732,7 +733,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(379, 49);
+            this.labelControl6.Location = new System.Drawing.Point(401, 52);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(56, 13);
             this.labelControl6.TabIndex = 8;
@@ -741,17 +742,17 @@
             // simpleButton1
             // 
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(316, 46);
+            this.simpleButton1.Location = new System.Drawing.Point(350, 47);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
-            this.simpleButton1.Size = new System.Drawing.Size(21, 23);
+            this.simpleButton1.Size = new System.Drawing.Size(23, 23);
             this.simpleButton1.TabIndex = 7;
             this.simpleButton1.Text = "simpleButton1";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(6, 165);
+            this.labelControl3.Location = new System.Drawing.Point(24, 168);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(27, 13);
             this.labelControl3.TabIndex = 6;
@@ -762,19 +763,19 @@
             this.txtAddress.Location = new System.Drawing.Point(114, 76);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(224, 80);
+            this.txtAddress.Size = new System.Drawing.Size(259, 80);
             this.txtAddress.TabIndex = 5;
             // 
             // txtNote
             // 
             this.txtNote.Location = new System.Drawing.Point(114, 162);
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(224, 20);
+            this.txtNote.Size = new System.Drawing.Size(259, 20);
             this.txtNote.TabIndex = 4;
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(6, 76);
+            this.labelControl2.Location = new System.Drawing.Point(24, 79);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(43, 13);
             this.labelControl2.TabIndex = 2;
@@ -789,12 +790,13 @@
             this.lkSupplierName.Properties.DataSource = this.suppliersBindingSource;
             this.lkSupplierName.Properties.DisplayMember = "SupplierName";
             this.lkSupplierName.Properties.ValueMember = "SupplierID";
-            this.lkSupplierName.Size = new System.Drawing.Size(196, 20);
+            this.lkSupplierName.Size = new System.Drawing.Size(230, 20);
             this.lkSupplierName.TabIndex = 1;
+            this.lkSupplierName.TextChanged += new System.EventHandler(this.lkSupplierName_TextChanged);
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(6, 46);
+            this.labelControl1.Location = new System.Drawing.Point(24, 49);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(72, 13);
             this.labelControl1.TabIndex = 0;
@@ -975,7 +977,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBill.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkSupplierID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumVat.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExdate.Properties.CalendarTimeProperties)).EndInit();
@@ -1048,7 +1050,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.LabelControl labelControl11;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
+        private DevExpress.XtraEditors.LookUpEdit lkSupplierID;
         private DevExpress.XtraEditors.TextEdit txtPhone;
         private DevExpress.XtraEditors.TextEdit txtNumVat;
         private DevExpress.XtraEditors.DateEdit txtExdate;

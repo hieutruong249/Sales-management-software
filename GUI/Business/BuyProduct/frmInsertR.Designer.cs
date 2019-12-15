@@ -82,6 +82,7 @@
             this.lkProductID.Properties.ValueMember = "ProductID";
             this.lkProductID.Size = new System.Drawing.Size(100, 20);
             this.lkProductID.TabIndex = 1;
+            this.lkProductID.TextChanged += new System.EventHandler(this.lkProductID_TextChanged);
             // 
             // productsBindingSource
             // 
@@ -104,6 +105,7 @@
             this.lkProductName.Properties.ValueMember = "ProductID";
             this.lkProductName.Size = new System.Drawing.Size(100, 20);
             this.lkProductName.TabIndex = 3;
+            this.lkProductName.TextChanged += new System.EventHandler(this.lkProductName_TextChanged);
             // 
             // label2
             // 

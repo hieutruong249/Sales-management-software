@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AreasBUS.cs" />
+    <Compile Include="BuyProductBUS.cs" />
     <Compile Include="CategoryBUS.cs" />
     <Compile Include="CustomerBUS.cs" />
     <Compile Include="ExRateBUS.cs" />
