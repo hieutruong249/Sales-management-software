@@ -8,16 +8,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DTO;
 
 namespace GUI.Business.SaleProduct
 {
     public partial class frmSellProduct : DevExpress.XtraEditors.XtraForm
     {
         public static DataTable dtbl = new DataTable();
+        public static BuyProducts bp = new BuyProducts();
         public static int indexCurrentRow = 0;
         public static string pdID, pdname, unit, exrate;
         public static int count, Ccount = 0;
-        public static float price, total, discount, TTotal = 0;
+        public static float price, discount, TTotal = 0;
+        public static double total;
         public static int rowHandle = 0;
 
         private void navBarProduct_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
@@ -36,6 +39,16 @@ namespace GUI.Business.SaleProduct
         {
             frmInserCustomer frm = new frmInserCustomer();
             frm.Show();
+        }
+
+        private void lkCustomerName_TextChanged(object sender, EventArgs e)
+        {
+            lkCustomerID.Text = lkCustomerName.EditValue.ToString();
+        }
+
+        private void lkCustomerID_TextChanged(object sender, EventArgs e)
+        {
+            lkCustomerName.EditValue = lkCustomerID.Text;
         }
 
         private void gcItems_Click(object sender, EventArgs e)
@@ -62,15 +75,55 @@ namespace GUI.Business.SaleProduct
             {
 
             }
-           
         }
 
         public frmSellProduct()
         {
             InitializeComponent();
         }
+        private void RemoveDuplicates(DataTable dt)
+        {
+            bp.Total = 0;
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = dt.Rows.Count - 1; i >= 0; i--)
+                {
+                    if (i == 0)
+                    {
+                        break;
+                    }
+                    for (int j = i - 1; j >= 0; j--)
+                    {
+                        if (dt.Rows[i]["ProductID"] == dt.Rows[j]["ProductID"])
+                        {
 
-        public void ReceiveData(string ID, string name, string uni, int cou, float pprice, float ttotal, string exra, float ddiscount)
+                            dt.Rows[j]["Count"] = (int.Parse(dt.Rows[i]["Count"].ToString()) + int.Parse(dt.Rows[j]["Count"].ToString())).ToString();
+                            dt.Rows[j]["Total"] = (int.Parse(dt.Rows[i]["Total"].ToString()) + int.Parse(dt.Rows[j]["Total"].ToString())).ToString();
+                            dt.Rows[i].Delete();
+                            break;
+                        }
+                    }
+                }
+                dt.AcceptChanges();
+            }
+        }
+        public string FindNextID(DataTable dtbl)
+        {
+
+            string txtID = null;
+            if (dtbl.Rows.Count > 0)
+            {
+                string ma = dtbl.Rows[dtbl.Rows.Count - 1]["BillID"].ToString();
+                int lastIndex = int.Parse(ma.Substring(3)) + 1;
+                txtID = "BLS" + lastIndex.ToString("00000");
+            }
+            else
+            {
+                txtID = "BLS00001";
+            }
+            return txtID;
+        }
+        public void ReceiveData(string ID, string name, string uni, int cou, float pprice, double ttotal, string exra, float ddiscount)
         {
             pdID = ID;
             pdname = name;
@@ -92,14 +145,10 @@ namespace GUI.Business.SaleProduct
             row["Total"] = total;
             row["Discount"] = discount;
 
+
             dtbl.Rows.Add(row);
-
-            Ccount += count;
-            TTotal += total;
-
-            //this.txtCount.Text = Ccount.ToString();
-            //this.txtTotal.Text = TTotal.ToString();
-            //MessageBox.Show(Ccount.ToString() + TTotal.ToString());
+            RemoveDuplicates(dtbl);
+            gcItems.DataSource = dtbl;
         }
 
         private void frmSellProduct_Load(object sender, EventArgs e)
@@ -110,6 +159,11 @@ namespace GUI.Business.SaleProduct
             this.warehouseTableAdapter.Fill(this.qLBH_v1DataSet5.Warehouse);
             // TODO: This line of code loads data into the 'qLBH_v1DataSet10.Customer' table. You can move, or remove it, as needed.
             this.customerTableAdapter.Fill(this.qLBH_v1DataSet10.Customer);
+
+            lkCustomerName.EditValue = this.qLBH_v1DataSet10.Customer.Rows[0][lkCustomerName.Properties.ValueMember];
+            lkWarehouse.EditValue = this.qLBH_v1DataSet5.Warehouse.Rows[0][lkWarehouse.Properties.ValueMember];
+            lkStaffID.EditValue = this.qLBH_v1DataSet3.Staffs.Rows[0][lkStaffID.Properties.ValueMember];
+
 
             if (!dtbl.Columns.Contains("ProductID"))
             {

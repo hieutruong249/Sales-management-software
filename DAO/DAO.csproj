@@ -53,6 +53,7 @@
     <Compile Include="Provider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleFormDAO.cs" />
+    <Compile Include="SellProductDAO.cs" />
     <Compile Include="StaffDAO.cs" />
     <Compile Include="SupplierDAO.cs" />
     <Compile Include="UnitDAO.cs" />

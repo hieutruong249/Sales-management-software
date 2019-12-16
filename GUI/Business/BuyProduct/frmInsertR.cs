@@ -26,6 +26,11 @@ namespace GUI.Business.BuyProduct
             this.unitTableAdapter.Fill(this.qLBH_v1DataSet7.Unit);
             // TODO: This line of code loads data into the 'qLBH_v1DataSet9.Products' table. You can move, or remove it, as needed.
             this.productsTableAdapter.Fill(this.qLBH_v1DataSet9.Products);
+
+            lkProductID.EditValue = this.qLBH_v1DataSet9.Products.Rows[0][lkProductID.Properties.ValueMember];
+            lkProductName.EditValue = this.qLBH_v1DataSet9.Products.Rows[0][lkProductName.Properties.ValueMember];
+            lkUnit.EditValue = this.qLBH_v1DataSet7.Unit.Rows[0][lkUnit.Properties.ValueMember];
+
             txtTotal.Text = txtPrice.Text = "0";
             this.CenterToParent();
         }
@@ -49,18 +54,25 @@ namespace GUI.Business.BuyProduct
             send(pdID, pdname, unit, count, price, total);
 
         }
-
+        public double CalculateTotal()
+        {
+            double ttotal = 0;
+            if (!string.IsNullOrEmpty(txtPrice.Text))
+            {
+                float price = float.Parse(txtPrice.Text);
+                int count = int.Parse(mudCount.Value.ToString());
+                ttotal = count * price;
+            }
+            return ttotal;
+        }
         private void txtPrice_TextChanged(object sender, EventArgs e)
         {
-            
-            
+            txtTotal.Text = CalculateTotal().ToString();
         }
 
         private void mudCount_ValueChanged(object sender, EventArgs e)
         {
-            float price = float.Parse(txtPrice.Text);
-            int count = int.Parse(mudCount.Value.ToString());
-            txtTotal.Text = (count * price).ToString();
+            txtTotal.Text = CalculateTotal().ToString();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using Microsoft.SqlServer.Management.Smo;
 using Microsoft.SqlServer.Management.Common;
+using System.IO;
 
 namespace GUI
 {
@@ -19,25 +20,55 @@ namespace GUI
         {
             InitializeComponent();
         }
-
-        private void btnBackup_Click(object sender, EventArgs e)
+        public void CreateFolder(string path)
+        {
+            Directory.CreateDirectory(@"D:\Data");
+          
+        }
+        public bool IsExistsFolder(string path)
+        {
+            if (Directory.Exists(path))
+            {
+                return true;
+            }
+            return false;
+        }
+        public void BackupDB(string path)
         {
             string Servername = @"DESKTOP-59A5HQG\SQLEXPRESS";
             string dataBaseName = "QLBH_v1";
             pBProcessBar.Value = 0;
-            try 
+            try
             {
                 Server dbServer = new Server(new ServerConnection(Servername));
                 Backup dbBackup = new Backup() { Action = BackupActionType.Database, Database = dataBaseName };
-                dbBackup.Devices.AddDevice(@"C:\Data\database.bak",DeviceType.File);
+                dbBackup.Devices.AddDevice(path + @"\database.bak", DeviceType.File);
                 dbBackup.Initialize = true;
                 dbBackup.PercentComplete += DbBackup_PercentComplete;
                 dbBackup.Complete += Dbbackup_Complete;
                 dbBackup.SqlBackupAsync(dbServer);
+                lbLocation.Visible = Enabled;
+                lbLocation.Text = "Location: " + path + @"\database.bak";
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            string path = @"D:\Data";
+            if (IsExistsFolder(path))
+            {
+                BackupDB(path);
+            }
+            else
+            {
+               
+                CreateFolder(path);
+                BackupDB(path);
+
             }
         }
 
@@ -45,9 +76,9 @@ namespace GUI
         {
             if(e.Error != null)
             {
-                lbPer.Invoke((MethodInvoker)delegate 
+                lbStatus.Invoke((MethodInvoker)delegate 
                 {
-                    lbPer.Text = e.Error.Message;
+                    lbStatus.Text = e.Error.Message;
                 });
             }
         }
@@ -63,6 +94,11 @@ namespace GUI
             {
                 lbPer.Text = $"{e.Percent}%";
             });
+        }
+
+        private void frmBackup_Load(object sender, EventArgs e)
+        {
+            this.CenterToParent();
         }
     }
 }

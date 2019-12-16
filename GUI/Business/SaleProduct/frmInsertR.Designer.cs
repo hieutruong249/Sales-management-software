@@ -57,6 +57,8 @@
             this.txtDiscount = new DevExpress.XtraEditors.TextEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.exRateTableAdapter = new GUI.QLBH_v1DataSet11TableAdapters.ExRateTableAdapter();
+            this.lbCurrency = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.lkUnit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet7)).BeginInit();
@@ -106,7 +108,7 @@
             // btnClose
             // 
             this.btnClose.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.ImageOptions.Image")));
-            this.btnClose.Location = new System.Drawing.Point(560, 139);
+            this.btnClose.Location = new System.Drawing.Point(565, 146);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 27;
@@ -116,7 +118,7 @@
             // btnSave
             // 
             this.btnSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.ImageOptions.Image")));
-            this.btnSave.Location = new System.Drawing.Point(454, 139);
+            this.btnSave.Location = new System.Drawing.Point(459, 146);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 26;
@@ -126,22 +128,25 @@
             // txtTotal
             // 
             this.txtTotal.Enabled = false;
-            this.txtTotal.Location = new System.Drawing.Point(451, 93);
+            this.txtTotal.Location = new System.Drawing.Point(407, 101);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(184, 20);
+            this.txtTotal.Properties.Mask.EditMask = "n3";
+            this.txtTotal.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtTotal.Size = new System.Drawing.Size(202, 20);
             this.txtTotal.TabIndex = 25;
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(283, 50);
+            this.txtPrice.Location = new System.Drawing.Point(283, 51);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(131, 20);
+            this.txtPrice.Size = new System.Drawing.Size(165, 20);
             this.txtPrice.TabIndex = 24;
+            this.txtPrice.EditValueChanged += new System.EventHandler(this.txtPrice_EditValueChanged);
             // 
             // lbToTal
             // 
             this.lbToTal.AutoSize = true;
-            this.lbToTal.Location = new System.Drawing.Point(410, 96);
+            this.lbToTal.Location = new System.Drawing.Point(366, 104);
             this.lbToTal.Name = "lbToTal";
             this.lbToTal.Size = new System.Drawing.Size(35, 13);
             this.lbToTal.TabIndex = 23;
@@ -185,6 +190,7 @@
             this.lkProductName.Properties.ValueMember = "ProductID";
             this.lkProductName.Size = new System.Drawing.Size(100, 20);
             this.lkProductName.TabIndex = 18;
+            this.lkProductName.TextChanged += new System.EventHandler(this.lkProductName_TextChanged);
             // 
             // productsBindingSource
             // 
@@ -209,8 +215,9 @@
             // 
             this.mudCount.Location = new System.Drawing.Point(506, 24);
             this.mudCount.Name = "mudCount";
-            this.mudCount.Size = new System.Drawing.Size(131, 21);
+            this.mudCount.Size = new System.Drawing.Size(134, 21);
             this.mudCount.TabIndex = 21;
+            this.mudCount.ValueChanged += new System.EventHandler(this.mudCount_ValueChanged);
             // 
             // lkProductID
             // 
@@ -223,6 +230,7 @@
             this.lkProductID.Properties.ValueMember = "ProductID";
             this.lkProductID.Size = new System.Drawing.Size(100, 20);
             this.lkProductID.TabIndex = 16;
+            this.lkProductID.TextChanged += new System.EventHandler(this.lkProductID_TextChanged);
             // 
             // label1
             // 
@@ -240,10 +248,11 @@
             this.lkExRate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lkExRate.Properties.DataSource = this.exRateBindingSource;
-            this.lkExRate.Properties.DisplayMember = "ProductName";
-            this.lkExRate.Properties.ValueMember = "ProductID";
+            this.lkExRate.Properties.DisplayMember = "Name";
+            this.lkExRate.Properties.ValueMember = "ID";
             this.lkExRate.Size = new System.Drawing.Size(100, 20);
             this.lkExRate.TabIndex = 30;
+            this.lkExRate.EditValueChanged += new System.EventHandler(this.lkExRate_EditValueChanged);
             // 
             // exRateBindingSource
             // 
@@ -266,15 +275,18 @@
             // 
             // txtDiscount
             // 
-            this.txtDiscount.Location = new System.Drawing.Point(506, 51);
+            this.txtDiscount.Location = new System.Drawing.Point(562, 51);
             this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(131, 20);
+            this.txtDiscount.Properties.Mask.EditMask = "p";
+            this.txtDiscount.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtDiscount.Size = new System.Drawing.Size(78, 20);
             this.txtDiscount.TabIndex = 32;
+            this.txtDiscount.EditValueChanged += new System.EventHandler(this.txtDiscount_EditValueChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(448, 54);
+            this.label7.Location = new System.Drawing.Point(504, 54);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(52, 13);
             this.label7.TabIndex = 31;
@@ -284,11 +296,29 @@
             // 
             this.exRateTableAdapter.ClearBeforeFill = true;
             // 
+            // lbCurrency
+            // 
+            this.lbCurrency.Location = new System.Drawing.Point(454, 53);
+            this.lbCurrency.Name = "lbCurrency";
+            this.lbCurrency.Size = new System.Drawing.Size(20, 13);
+            this.lbCurrency.TabIndex = 33;
+            this.lbCurrency.Text = "VND";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(615, 104);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(20, 13);
+            this.labelControl1.TabIndex = 34;
+            this.labelControl1.Text = "VND";
+            // 
             // frmInsertR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(668, 204);
+            this.ClientSize = new System.Drawing.Size(668, 196);
+            this.Controls.Add(this.labelControl1);
+            this.Controls.Add(this.lbCurrency);
             this.Controls.Add(this.txtDiscount);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lkExRate);
@@ -310,7 +340,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmInsertR";
-            this.Text = "frmInsertR";
+            this.Text = "Insert Row ";
             this.Load += new System.EventHandler(this.frmInsertR_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lkUnit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
@@ -360,5 +390,7 @@
         private QLBH_v1DataSet11 qLBH_v1DataSet11;
         private System.Windows.Forms.BindingSource exRateBindingSource;
         private QLBH_v1DataSet11TableAdapters.ExRateTableAdapter exRateTableAdapter;
+        private DevExpress.XtraEditors.LabelControl lbCurrency;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

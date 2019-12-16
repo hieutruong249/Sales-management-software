@@ -81,7 +81,6 @@ namespace GUI
             {
                 Application.Exit();
             }
-
         }
 
         private void btnProducts_ItemClick(object sender, ItemClickEventArgs e)
@@ -252,6 +251,12 @@ namespace GUI
         private void btnInformation_ItemClick(object sender, ItemClickEventArgs e)
         {
             frmAbout frm = new frmAbout();
+            frm.Show();
+        }
+
+        private void btnBackup_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmBackup frm = new frmBackup();
             frm.Show();
         }
     }

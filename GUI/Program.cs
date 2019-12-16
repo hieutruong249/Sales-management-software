@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GUI.Manager_Forms.Area;
-using GUI.Business.BuyProduct;
+using GUI.Business.SaleProduct;
 using GUI.System_Forms;
 
 namespace GUI
@@ -19,7 +19,7 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new frmBackup());
         }
     }
 }

@@ -51,6 +51,7 @@
     <Compile Include="PermisionFormBUS.cs" />
     <Compile Include="ProductBUS.cs" />
     <Compile Include="RoleFormBUS.cs" />
+    <Compile Include="SellProductBUS.cs" />
     <Compile Include="StaffBUS.cs" />
     <Compile Include="SupplierBUS.cs" />
     <Compile Include="UnitBUS.cs" />

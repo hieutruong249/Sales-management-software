@@ -69,7 +69,7 @@
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            this.lkCustomerID = new DevExpress.XtraEditors.LookUpEdit();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.qLBH_v1DataSet10 = new GUI.QLBH_v1DataSet10();
             this.txtPhone = new DevExpress.XtraEditors.TextEdit();
@@ -84,7 +84,7 @@
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtNote = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.lkSupplierName = new DevExpress.XtraEditors.LookUpEdit();
+            this.lkCustomerName = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -129,7 +129,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBill.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkCustomerID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).BeginInit();
@@ -137,7 +137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtExdate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExdate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkSupplierName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkCustomerName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
@@ -405,7 +405,7 @@
             this.groupControl2.Controls.Add(this.labelControl9);
             this.groupControl2.Controls.Add(this.labelControl10);
             this.groupControl2.Controls.Add(this.labelControl11);
-            this.groupControl2.Controls.Add(this.lookUpEdit1);
+            this.groupControl2.Controls.Add(this.lkCustomerID);
             this.groupControl2.Controls.Add(this.txtPhone);
             this.groupControl2.Controls.Add(this.txtNumVat);
             this.groupControl2.Controls.Add(this.txtExdate);
@@ -418,7 +418,7 @@
             this.groupControl2.Controls.Add(this.txtAddress);
             this.groupControl2.Controls.Add(this.txtNote);
             this.groupControl2.Controls.Add(this.labelControl2);
-            this.groupControl2.Controls.Add(this.lkSupplierName);
+            this.groupControl2.Controls.Add(this.lkCustomerName);
             this.groupControl2.Controls.Add(this.labelControl1);
             this.groupControl2.Location = new System.Drawing.Point(12, 12);
             this.groupControl2.Name = "groupControl2";
@@ -559,17 +559,18 @@
             this.labelControl11.TabIndex = 16;
             this.labelControl11.Text = "Staff ID:";
             // 
-            // lookUpEdit1
+            // lkCustomerID
             // 
-            this.lookUpEdit1.Location = new System.Drawing.Point(461, 42);
-            this.lookUpEdit1.Name = "lookUpEdit1";
-            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lkCustomerID.Location = new System.Drawing.Point(461, 42);
+            this.lkCustomerID.Name = "lkCustomerID";
+            this.lkCustomerID.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit1.Properties.DataSource = this.customerBindingSource;
-            this.lookUpEdit1.Properties.DisplayMember = "CustomerID";
-            this.lookUpEdit1.Properties.ValueMember = "CustomerID";
-            this.lookUpEdit1.Size = new System.Drawing.Size(224, 20);
-            this.lookUpEdit1.TabIndex = 15;
+            this.lkCustomerID.Properties.DataSource = this.customerBindingSource;
+            this.lkCustomerID.Properties.DisplayMember = "CustomerID";
+            this.lkCustomerID.Properties.ValueMember = "CustomerID";
+            this.lkCustomerID.Size = new System.Drawing.Size(224, 20);
+            this.lkCustomerID.TabIndex = 15;
+            this.lkCustomerID.TextChanged += new System.EventHandler(this.lkCustomerID_TextChanged);
             // 
             // customerBindingSource
             // 
@@ -680,17 +681,18 @@
             this.labelControl2.TabIndex = 2;
             this.labelControl2.Text = "Address:";
             // 
-            // lkSupplierName
+            // lkCustomerName
             // 
-            this.lkSupplierName.Location = new System.Drawing.Point(114, 43);
-            this.lkSupplierName.Name = "lkSupplierName";
-            this.lkSupplierName.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lkCustomerName.Location = new System.Drawing.Point(114, 43);
+            this.lkCustomerName.Name = "lkCustomerName";
+            this.lkCustomerName.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lkSupplierName.Properties.DataSource = this.customerBindingSource;
-            this.lkSupplierName.Properties.DisplayMember = "CustomerName";
-            this.lkSupplierName.Properties.ValueMember = "CustomerID";
-            this.lkSupplierName.Size = new System.Drawing.Size(196, 20);
-            this.lkSupplierName.TabIndex = 1;
+            this.lkCustomerName.Properties.DataSource = this.customerBindingSource;
+            this.lkCustomerName.Properties.DisplayMember = "CustomerName";
+            this.lkCustomerName.Properties.ValueMember = "CustomerID";
+            this.lkCustomerName.Size = new System.Drawing.Size(196, 20);
+            this.lkCustomerName.TabIndex = 1;
+            this.lkCustomerName.TextChanged += new System.EventHandler(this.lkCustomerName_TextChanged);
             // 
             // labelControl1
             // 
@@ -894,7 +896,7 @@
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.dockPanel1);
             this.Name = "frmSellProduct";
-            this.Text = "frmSellProduct";
+            this.Text = "Sell Product form";
             this.Load += new System.EventHandler(this.frmSellProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.dockPanel1.ResumeLayout(false);
@@ -920,7 +922,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBill.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkCustomerID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).EndInit();
@@ -928,7 +930,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtExdate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExdate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkSupplierName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkCustomerName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
@@ -971,7 +973,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.LabelControl labelControl11;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
+        private DevExpress.XtraEditors.LookUpEdit lkCustomerID;
         private DevExpress.XtraEditors.TextEdit txtPhone;
         private DevExpress.XtraEditors.TextEdit txtNumVat;
         private DevExpress.XtraEditors.DateEdit txtExdate;
@@ -984,7 +986,7 @@
         private System.Windows.Forms.TextBox txtAddress;
         private DevExpress.XtraEditors.TextEdit txtNote;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.LookUpEdit lkSupplierName;
+        private DevExpress.XtraEditors.LookUpEdit lkCustomerName;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControl layoutControl4;
