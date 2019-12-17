@@ -11,7 +11,7 @@ using DevExpress.XtraEditors;
 using DTO;
 using BUS;
 
-namespace GUI.Manager_Forms.Area
+namespace GUI
 {
     public partial class frmUpdateArea : DevExpress.XtraEditors.XtraForm
     {

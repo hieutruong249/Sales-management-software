@@ -76,7 +76,7 @@
             this.btnSave.Location = new System.Drawing.Point(397, 258);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 34;
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -117,7 +117,7 @@
             this.lkArea.Properties.DisplayMember = "Name";
             this.lkArea.Properties.ValueMember = "ID";
             this.lkArea.Size = new System.Drawing.Size(173, 20);
-            this.lkArea.TabIndex = 22;
+            this.lkArea.TabIndex = 2;
             // 
             // areasBindingSource
             // 
@@ -143,7 +143,7 @@
             this.speDiscount.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.speDiscount.Properties.Mask.EditMask = "p";
             this.speDiscount.Size = new System.Drawing.Size(166, 20);
-            this.speDiscount.TabIndex = 20;
+            this.speDiscount.TabIndex = 7;
             // 
             // btnInserArea
             // 
@@ -168,7 +168,7 @@
             this.txtBank.Location = new System.Drawing.Point(377, 160);
             this.txtBank.Name = "txtBank";
             this.txtBank.Size = new System.Drawing.Size(199, 20);
-            this.txtBank.TabIndex = 18;
+            this.txtBank.TabIndex = 8;
             // 
             // labelControl2
             // 
@@ -190,16 +190,16 @@
             // 
             this.labelControl6.Location = new System.Drawing.Point(20, 163);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(22, 13);
+            this.labelControl6.Size = new System.Drawing.Size(44, 13);
             this.labelControl6.TabIndex = 11;
-            this.labelControl6.Text = "STK:";
+            this.labelControl6.Text = "AccBank:";
             // 
             // txtAccBank
             // 
             this.txtAccBank.Location = new System.Drawing.Point(79, 160);
             this.txtAccBank.Name = "txtAccBank";
             this.txtAccBank.Size = new System.Drawing.Size(166, 20);
-            this.txtAccBank.TabIndex = 12;
+            this.txtAccBank.TabIndex = 6;
             // 
             // labelControl5
             // 
@@ -214,7 +214,7 @@
             this.txtEmail.Location = new System.Drawing.Point(79, 134);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(166, 20);
-            this.txtEmail.TabIndex = 10;
+            this.txtEmail.TabIndex = 5;
             // 
             // labelControl4
             // 
@@ -231,7 +231,7 @@
             this.txtPhone.Properties.Mask.EditMask = "(999) 000-0000";
             this.txtPhone.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.txtPhone.Size = new System.Drawing.Size(166, 20);
-            this.txtPhone.TabIndex = 8;
+            this.txtPhone.TabIndex = 4;
             // 
             // lbAddress
             // 
@@ -246,7 +246,7 @@
             this.txtAddress.Location = new System.Drawing.Point(79, 82);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(497, 20);
-            this.txtAddress.TabIndex = 6;
+            this.txtAddress.TabIndex = 3;
             // 
             // lbName
             // 
@@ -261,7 +261,7 @@
             this.txtName.Location = new System.Drawing.Point(79, 56);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(497, 20);
-            this.txtName.TabIndex = 4;
+            this.txtName.TabIndex = 2;
             // 
             // labelControl1
             // 
@@ -277,7 +277,7 @@
             this.txtID.Location = new System.Drawing.Point(79, 30);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(166, 20);
-            this.txtID.TabIndex = 2;
+            this.txtID.TabIndex = 0;
             // 
             // btnClose
             // 
@@ -285,7 +285,7 @@
             this.btnClose.Location = new System.Drawing.Point(515, 258);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 35;
+            this.btnClose.TabIndex = 10;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 

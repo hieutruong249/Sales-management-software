@@ -239,6 +239,9 @@
             this.gridColumn8});
             this.gridView1.GridControl = this.gcSuppliers;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.OptionsBehavior.Editable = false;
             // 
             // gridColumn1
             // 

@@ -330,6 +330,7 @@
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 34;
             this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnRefesh
             // 
@@ -586,6 +587,7 @@
             // 
             this.txtPhone.Location = new System.Drawing.Point(461, 69);
             this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Properties.Mask.EditMask = "99999";
             this.txtPhone.Size = new System.Drawing.Size(224, 20);
             this.txtPhone.TabIndex = 14;
             // 

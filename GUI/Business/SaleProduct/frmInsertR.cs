@@ -96,10 +96,9 @@ namespace GUI.Business.SaleProduct
                 float discount = float.Parse(txtDiscount.EditValue.ToString());
                 if (discount > 1)
                 {
-                    discount = 0;
+                    discount = 1;
                 }
                 float currency = TakeCurrency(int.Parse(lkExRate.EditValue.ToString()));
-               // ttotal = (count*price - discount*(count*price))*currency;
                 ttotal = price*currency*count*(1 - discount);
             }
             return ttotal;

@@ -36,8 +36,9 @@ namespace GUI.Manager_Forms.Supplier
             txtAddress.Text = supplier.Address;
             txtEmail.Text = supplier.Email;
             txtBank.Text = supplier.Bank;
+            txtAccBank.Text = supplier.AccountBank;
             lkArea.Text = supplier.Area;
-            speDiscount.Text = supplier.Discount.ToString();
+            speDiscount.EditValue = supplier.Discount.ToString();
 
         }
 
@@ -60,8 +61,9 @@ namespace GUI.Manager_Forms.Supplier
             supplier.Phone = txtPhone.Text;
             supplier.Email = txtEmail.Text;
             supplier.Bank = txtBank.Text;
-            supplier.Area = lkArea.Text;
-            supplier.Discount = float.Parse(speDiscount.Text);
+            supplier.AccountBank = txtAccBank.Text;
+            supplier.Area = lkArea.EditValue.ToString();
+            supplier.Discount = float.Parse(speDiscount.Value.ToString());
 
             SupplierBUS supplierBUS = new SupplierBUS();
             supplierBUS.UpdateSupplier(supplier);

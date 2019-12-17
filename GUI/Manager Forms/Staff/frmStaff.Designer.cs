@@ -219,6 +219,7 @@
             this.gcStaffs.Name = "gcStaffs";
             this.gcStaffs.Size = new System.Drawing.Size(811, 124);
             this.gcStaffs.TabIndex = 4;
+            this.gcStaffs.UseEmbeddedNavigator = true;
             this.gcStaffs.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             this.gcStaffs.Click += new System.EventHandler(this.gcStaffs_Click);
@@ -236,6 +237,9 @@
             this.gridColumn8});
             this.gridView1.GridControl = this.gcStaffs;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.OptionsBehavior.Editable = false;
             // 
             // gridColumn1
             // 

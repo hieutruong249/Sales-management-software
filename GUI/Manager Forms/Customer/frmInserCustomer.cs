@@ -42,6 +42,10 @@ namespace GUI
         {
             // TODO: This line of code loads data into the 'qLBH_v1DataSet1.Areas' table. You can move, or remove it, as needed.
             this.areasTableAdapter.Fill(this.qLBH_v1DataSet1.Areas);
+
+            lkArea.EditValue = this.qLBH_v1DataSet1.Areas.Rows[0][lkArea.Properties.ValueMember];
+
+
             txtID.Text = str;
 
         }
@@ -50,12 +54,14 @@ namespace GUI
         {
             Customers customers = new Customers();
             customers.CustomerID = txtID.Text;
+            customers.Phone = txtPhone.Text;
             customers.CustomerName = txtName.Text;
             customers.Address = txtAddress.Text;
             customers.Email = txtEmail.Text;
             customers.Bank = txtBank.Text;
-            customers.Area = lkArea.Text;
-            customers.Discount = float.Parse(speDiscount.Text);
+            customers.Area = lkArea.EditValue.ToString();
+            customers.AccountBank = txtAccBank.Text;
+            customers.Discount = float.Parse(txtDiscount.EditValue.ToString());
 
             CustomerBUS customerBUS = new CustomerBUS();
             customerBUS.InsertCustomer(customers);

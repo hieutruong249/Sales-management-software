@@ -70,8 +70,8 @@ namespace GUI.Manager_Forms.Customer
 
         private void btnRefesh_Click(object sender, EventArgs e)
         {
-            gcCustomers.DataSource = dtbl;
             dtbl = customerBUS.ShowCustomer();
+            gcCustomers.DataSource = dtbl;
 
             //send data to insert form
             SendTextID2Form();
@@ -84,8 +84,8 @@ namespace GUI.Manager_Forms.Customer
             btnExport.Enabled = roleForm.Export;
             btnImport.Enabled = roleForm.Import;
 
-            gcCustomers.DataSource = dtbl;
             dtbl = customerBUS.ShowCustomer();
+            gcCustomers.DataSource = dtbl;
 
             //send data to insert form
             SendTextID2Form();

@@ -12,7 +12,7 @@ using BUS;
 using DTO;
 //using Syncfusion.XlsIO;
 
-namespace GUI.Manager_Forms.Area
+namespace GUI
 {
     public partial class frmArea : DevExpress.XtraEditors.XtraForm
     {

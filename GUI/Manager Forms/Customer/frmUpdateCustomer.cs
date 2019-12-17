@@ -31,9 +31,11 @@ namespace GUI.Manager_Forms.Customer
             customer.CustomerName = txtName.Text;
             customer.Address = txtAddress.Text;
             customer.Email = txtEmail.Text;
+            customer.AccountBank = txtAccBank.Text;
+            customer.Phone = txtPhone.Text;
             customer.Bank = txtBank.Text;
-            customer.Area = lkArea.Text;
-            customer.Discount = float.Parse(speDiscount.Text);
+            customer.Area = lkArea.EditValue.ToString();
+            customer.Discount = float.Parse(txtDiscount.EditValue.ToString());
 
             CustomerBUS customerBUS = new CustomerBUS();
             customerBUS.UpdateCustomer(customer);
@@ -57,8 +59,10 @@ namespace GUI.Manager_Forms.Customer
             txtAddress.Text = customer.Address;
             txtEmail.Text = customer.Email;
             txtBank.Text = customer.Bank;
-            lkArea.Text = customer.Area;
-            speDiscount.Text = customer.Discount.ToString();
+            txtPhone.Text = customer.Phone;
+            txtAccBank.Text = customer.AccountBank;
+            lkArea.EditValue = customer.Area;
+            txtDiscount.EditValue = customer.Discount.ToString();
         }
     }
 }

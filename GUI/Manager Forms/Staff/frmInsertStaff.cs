@@ -33,6 +33,9 @@ namespace GUI.Manager_Forms.Staff
             // TODO: This line of code loads data into the 'qLBH_v1DataSet2.Parts' table. You can move, or remove it, as needed.
             this.partsTableAdapter.Fill(this.qLBH_v1DataSet2.Parts);
 
+            lkManager.EditValue = this.qLBH_v1DataSet3.Staffs.Rows[0][lkManager.Properties.ValueMember];
+            lkParts.EditValue = this.qLBH_v1DataSet2.Parts.Rows[0][lkParts.Properties.ValueMember];
+
             txtID.Text = str;
 
         }
@@ -52,10 +55,38 @@ namespace GUI.Manager_Forms.Staff
             staffs.Address = txtID.Text;
             staffs.Email = txtID.Text;
             staffs.Position = txtID.Text;
-            staffs.Parts = lkParts.Text;
-            staffs.Manager = lkManager.Text;
+            staffs.Parts = lkParts.EditValue.ToString();
+            staffs.Manager = lkManager.EditValue.ToString();
+            try
+            {   if (staffBUS.InsertStaff(staffs) > 0)
+                {
+                    MessageBox.Show("Insert susscessfully!!!");
 
-            staffBUS.InsertStaff(staffs);
+                    DataTable data = new DataTable();
+                    data = staffBUS.ShowStaffs();
+                    txtID.Text = FindNextID(data);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Insert fail!!!");
+            }
+        }
+
+        public string FindNextID(DataTable dtbl)
+        {
+            string txtID = null;
+            if (dtbl.Rows.Count > 0)
+            {
+                string ma = dtbl.Rows[dtbl.Rows.Count - 1]["ID"].ToString();
+                int lastIndex = int.Parse(ma.Substring(2)) + 1;
+                txtID = "NV" + lastIndex.ToString("00000");
+            }
+            else
+            {
+                txtID = "NV00001";
+            }
+            return txtID;
         }
     }
 }

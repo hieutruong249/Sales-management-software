@@ -37,7 +37,7 @@ namespace GUI.Manager_Forms.ExRate
             if (dtbl.Rows.Count > 0)
             {
                 string ma = dtbl.Rows[dtbl.Rows.Count - 1]["ID"].ToString();
-                int lastIndex = int.Parse(ma.Substring(2)) + 1;
+                int lastIndex = int.Parse(ma) + 1;
                 txtID = lastIndex.ToString();
             }
             else

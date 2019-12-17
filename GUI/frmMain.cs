@@ -13,7 +13,7 @@ using GUI.Business.Collect_Monney;
 using GUI.Business.BuyProduct;
 using GUI.Help;
 using System.Diagnostics;
-using GUI.Manager_Forms.Area;
+
 using GUI.Manager_Forms.Catergory;
 using GUI.Manager_Forms.Customer;
 using GUI.Manager_Forms.ExRate;
@@ -24,6 +24,7 @@ using GUI.Manager_Forms.Supplier;
 using GUI.Manager_Forms.Unit;
 using GUI.Manager_Forms.Warehouse;
 using DTO;
+
 
 namespace GUI
 {

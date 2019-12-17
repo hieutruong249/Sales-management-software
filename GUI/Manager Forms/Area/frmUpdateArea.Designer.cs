@@ -1,4 +1,4 @@
-﻿namespace GUI.Manager_Forms.Area
+﻿namespace GUI
 {
     partial class frmUpdateArea
     {

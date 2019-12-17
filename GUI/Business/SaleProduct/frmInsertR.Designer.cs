@@ -77,7 +77,7 @@
             // 
             // lkUnit
             // 
-            this.lkUnit.Location = new System.Drawing.Point(283, 24);
+            this.lkUnit.Location = new System.Drawing.Point(392, 25);
             this.lkUnit.Name = "lkUnit";
             this.lkUnit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -108,7 +108,7 @@
             // btnClose
             // 
             this.btnClose.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.ImageOptions.Image")));
-            this.btnClose.Location = new System.Drawing.Point(565, 146);
+            this.btnClose.Location = new System.Drawing.Point(674, 147);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 27;
@@ -118,7 +118,7 @@
             // btnSave
             // 
             this.btnSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.ImageOptions.Image")));
-            this.btnSave.Location = new System.Drawing.Point(459, 146);
+            this.btnSave.Location = new System.Drawing.Point(568, 147);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 26;
@@ -128,17 +128,19 @@
             // txtTotal
             // 
             this.txtTotal.Enabled = false;
-            this.txtTotal.Location = new System.Drawing.Point(407, 101);
+            this.txtTotal.Location = new System.Drawing.Point(516, 102);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Properties.Mask.EditMask = "n3";
             this.txtTotal.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtTotal.Size = new System.Drawing.Size(202, 20);
+            this.txtTotal.Size = new System.Drawing.Size(207, 20);
             this.txtTotal.TabIndex = 25;
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(283, 51);
+            this.txtPrice.Location = new System.Drawing.Point(392, 52);
             this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Properties.Mask.EditMask = "n";
+            this.txtPrice.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtPrice.Size = new System.Drawing.Size(165, 20);
             this.txtPrice.TabIndex = 24;
             this.txtPrice.EditValueChanged += new System.EventHandler(this.txtPrice_EditValueChanged);
@@ -146,7 +148,7 @@
             // lbToTal
             // 
             this.lbToTal.AutoSize = true;
-            this.lbToTal.Location = new System.Drawing.Point(366, 104);
+            this.lbToTal.Location = new System.Drawing.Point(475, 105);
             this.lbToTal.Name = "lbToTal";
             this.lbToTal.Size = new System.Drawing.Size(35, 13);
             this.lbToTal.TabIndex = 23;
@@ -155,7 +157,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(236, 53);
+            this.label6.Location = new System.Drawing.Point(345, 54);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 13);
             this.label6.TabIndex = 22;
@@ -164,7 +166,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(451, 26);
+            this.label3.Location = new System.Drawing.Point(560, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 20;
@@ -173,7 +175,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(236, 27);
+            this.label4.Location = new System.Drawing.Point(345, 28);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(30, 13);
             this.label4.TabIndex = 19;
@@ -183,12 +185,14 @@
             // 
             this.lkProductName.Location = new System.Drawing.Point(101, 50);
             this.lkProductName.Name = "lkProductName";
+            this.lkProductName.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+            this.lkProductName.Properties.BestFitRowCount = 7;
             this.lkProductName.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lkProductName.Properties.DataSource = this.productsBindingSource;
             this.lkProductName.Properties.DisplayMember = "ProductName";
             this.lkProductName.Properties.ValueMember = "ProductID";
-            this.lkProductName.Size = new System.Drawing.Size(100, 20);
+            this.lkProductName.Size = new System.Drawing.Size(238, 20);
             this.lkProductName.TabIndex = 18;
             this.lkProductName.TextChanged += new System.EventHandler(this.lkProductName_TextChanged);
             // 
@@ -213,7 +217,7 @@
             // 
             // mudCount
             // 
-            this.mudCount.Location = new System.Drawing.Point(506, 24);
+            this.mudCount.Location = new System.Drawing.Point(615, 25);
             this.mudCount.Name = "mudCount";
             this.mudCount.Size = new System.Drawing.Size(134, 21);
             this.mudCount.TabIndex = 21;
@@ -223,12 +227,23 @@
             // 
             this.lkProductID.Location = new System.Drawing.Point(101, 24);
             this.lkProductID.Name = "lkProductID";
+            this.lkProductID.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+            this.lkProductID.Properties.BestFitRowCount = 7;
             this.lkProductID.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lkProductID.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ProductID", "Product ID", 74, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ProductName", "Product Name", 77, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CatergoryID", "Catergory ID", 73, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("UnitID", "Unit ID", 43, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Origin", "Origin", 38, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MinInventory", "Min Inventory", 77, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CurrInventory", "Curr Inventory", 82, DevExpress.Utils.FormatType.Numeric, "", true, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.lkProductID.Properties.DataSource = this.productsBindingSource;
             this.lkProductID.Properties.DisplayMember = "ProductID";
+            this.lkProductID.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
             this.lkProductID.Properties.ValueMember = "ProductID";
-            this.lkProductID.Size = new System.Drawing.Size(100, 20);
+            this.lkProductID.Size = new System.Drawing.Size(238, 20);
             this.lkProductID.TabIndex = 16;
             this.lkProductID.TextChanged += new System.EventHandler(this.lkProductID_TextChanged);
             // 
@@ -250,7 +265,7 @@
             this.lkExRate.Properties.DataSource = this.exRateBindingSource;
             this.lkExRate.Properties.DisplayMember = "Name";
             this.lkExRate.Properties.ValueMember = "ID";
-            this.lkExRate.Size = new System.Drawing.Size(100, 20);
+            this.lkExRate.Size = new System.Drawing.Size(141, 20);
             this.lkExRate.TabIndex = 30;
             this.lkExRate.EditValueChanged += new System.EventHandler(this.lkExRate_EditValueChanged);
             // 
@@ -275,7 +290,7 @@
             // 
             // txtDiscount
             // 
-            this.txtDiscount.Location = new System.Drawing.Point(562, 51);
+            this.txtDiscount.Location = new System.Drawing.Point(671, 52);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Properties.Mask.EditMask = "p";
             this.txtDiscount.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
@@ -286,7 +301,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(504, 54);
+            this.label7.Location = new System.Drawing.Point(613, 55);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(52, 13);
             this.label7.TabIndex = 31;
@@ -298,7 +313,7 @@
             // 
             // lbCurrency
             // 
-            this.lbCurrency.Location = new System.Drawing.Point(454, 53);
+            this.lbCurrency.Location = new System.Drawing.Point(563, 54);
             this.lbCurrency.Name = "lbCurrency";
             this.lbCurrency.Size = new System.Drawing.Size(20, 13);
             this.lbCurrency.TabIndex = 33;
@@ -306,7 +321,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(615, 104);
+            this.labelControl1.Location = new System.Drawing.Point(729, 105);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(20, 13);
             this.labelControl1.TabIndex = 34;
@@ -316,7 +331,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(668, 196);
+            this.ClientSize = new System.Drawing.Size(760, 196);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.lbCurrency);
             this.Controls.Add(this.txtDiscount);

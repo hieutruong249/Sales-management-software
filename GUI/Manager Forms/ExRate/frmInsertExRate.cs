@@ -38,12 +38,43 @@ namespace GUI
             exRate.Rate = float.Parse(speRate.Text);
 
             ExRateBUS exRateBUS = new ExRateBUS();
-            exRateBUS.InserCategory(exRate);
+            try
+            {
+                if (exRateBUS.InserCategory(exRate) > 0)
+                {
+                    MessageBox.Show("Insert Susscessfully!!!");
+
+                    DataTable data = new DataTable();
+                    data = exRateBUS.ShowExRate();
+                    txtID.Text = FindNextID(data);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Insert fail!!!");
+            }
         }
 
         private void frmInsertExRate_Load(object sender, EventArgs e)
         {
             txtID.Text = str;
+        }
+
+        public string FindNextID(DataTable dtbl)
+        {
+            string txtID = null;
+            if (dtbl.Rows.Count > 0)
+            {
+                string ma = dtbl.Rows[dtbl.Rows.Count - 1]["ID"].ToString();
+                int lastIndex = int.Parse(ma) + 1;
+                txtID = lastIndex.ToString();
+            }
+            else
+            {
+                txtID = "1";
+            }
+            return txtID;
         }
     }
 }

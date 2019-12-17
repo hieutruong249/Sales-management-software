@@ -64,7 +64,7 @@
             this.txtNote.Location = new System.Drawing.Point(67, 88);
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(188, 20);
-            this.txtNote.TabIndex = 8;
+            this.txtNote.TabIndex = 2;
             // 
             // labelControl3
             // 
@@ -79,7 +79,7 @@
             this.txtName.Location = new System.Drawing.Point(67, 62);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(188, 20);
-            this.txtName.TabIndex = 4;
+            this.txtName.TabIndex = 1;
             // 
             // labelControl2
             // 
@@ -95,7 +95,7 @@
             this.txtID.Location = new System.Drawing.Point(67, 36);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(188, 20);
-            this.txtID.TabIndex = 2;
+            this.txtID.TabIndex = 0;
             // 
             // labelControl1
             // 
@@ -111,7 +111,7 @@
             this.btnSave.Location = new System.Drawing.Point(74, 157);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 32;
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -121,7 +121,7 @@
             this.btnClose.Location = new System.Drawing.Point(192, 157);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 33;
+            this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 

@@ -38,11 +38,11 @@ namespace DAO
             int nRow = 0;
             try
             {
-                string strSQL = "INSERT INTO ExRate VALUES(@ID, @Name, @Rate)";
+                string strSQL = "INSERT INTO ExRate VALUES(@Name, @Rate)";
                 provider.Connect();
                 nRow = provider.ExeCuteNonQuery(CommandType.Text, strSQL,
 
-                        new SqlParameter { ParameterName = "@ID", Value = er.ID },
+                        //new SqlParameter { ParameterName = "@ID", Value = er.ID },
                         new SqlParameter { ParameterName = "@Name", Value = er.Name },
                         new SqlParameter { ParameterName = "@Rate", Value = er.Rate }
 

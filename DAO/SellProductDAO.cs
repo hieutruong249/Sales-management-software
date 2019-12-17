@@ -69,5 +69,61 @@ namespace DAO
             }
 
         }
+
+        public int InsertBillSellProductDetail(SellProductDetail e)
+        {
+            Provider provider = new Provider();
+            int nRow = 0;
+            try
+            {
+                string strSQL = "INSERT INTO SellProductDetail VALUES(@BillID, @ProductID, @ProductName, @UnitID, @ExRate, @Amount, @Price, @Total, @Discount)";
+                provider.Connect();
+                nRow = provider.ExeCuteNonQuery(CommandType.Text, strSQL,
+
+                        new SqlParameter { ParameterName = "@BillID", Value = e.BillID },
+                        new SqlParameter { ParameterName = "@ProductID", Value = e.ProductID },
+                        new SqlParameter { ParameterName = "@ProductName", Value = e.ProductName },
+                        new SqlParameter { ParameterName = "@UnitID", Value = e.UnitID },
+                        new SqlParameter { ParameterName = "@ExRate", Value = e.ExRate },
+                        new SqlParameter { ParameterName = "@Amount", Value = e.Amount },
+                        new SqlParameter { ParameterName = "@Price", Value = e.Price },
+                        new SqlParameter { ParameterName = "@Total", Value = e.Total },
+                        new SqlParameter { ParameterName = "@Discount", Value = e.Discount }
+                    );
+                if (nRow > 0)
+                    return 1;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                provider.DisConnect();
+            }
+            return nRow;
+        }
+
+        public DataTable ShowBill()
+        {
+            Provider provider = new Provider();
+            try
+            {
+                string strSQL = "SELECT* FROM SellProduct";
+                provider.Connect();
+                DataTable dtbl = new DataTable();
+                dtbl = provider.Select(CommandType.Text, strSQL);
+                return dtbl;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                provider.DisConnect();
+            }
+
+        }
     }
 }

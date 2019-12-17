@@ -73,8 +73,11 @@ namespace GUI.Manager_Forms.Supplier
 
         private void frmSupplier_Load(object sender, EventArgs e)
         {
-            //int FormID = int.Parse(this.Tag.ToString());
-            //RoleForm roleForm = GlobalVar.dicmyRoleForm[FormID];
+            int FormID = int.Parse(this.Tag.ToString());
+            RoleForm roleForm = GlobalVar.dicmyRoleForm[FormID];
+           // btnInsert.Enabled = roleForm.f_Insert;
+            btnExport.Enabled = roleForm.Export;
+
             dtbl = supplierBUS.ShowSupplier();
             gcSuppliers.DataSource = dtbl;
 

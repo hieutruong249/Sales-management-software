@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUpdateCustomer));
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.speDiscount = new DevExpress.XtraEditors.SpinEdit();
             this.btnInserArea = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtBank = new DevExpress.XtraEditors.TextEdit();
@@ -50,8 +49,8 @@
             this.txtID = new DevExpress.XtraEditors.TextEdit();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.txtDiscount = new DevExpress.XtraEditors.TextEdit();
             this.lkArea = new DevExpress.XtraEditors.LookUpEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.speDiscount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBank.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAccBank.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).BeginInit();
@@ -61,6 +60,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiscount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkArea.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,25 +70,9 @@
             this.btnSave.Location = new System.Drawing.Point(397, 263);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 24;
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // speDiscount
-            // 
-            this.speDiscount.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.speDiscount.Location = new System.Drawing.Point(79, 186);
-            this.speDiscount.Name = "speDiscount";
-            this.speDiscount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.speDiscount.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.speDiscount.Properties.Mask.EditMask = "p";
-            this.speDiscount.Size = new System.Drawing.Size(166, 20);
-            this.speDiscount.TabIndex = 20;
             // 
             // btnInserArea
             // 
@@ -113,7 +97,7 @@
             this.txtBank.Location = new System.Drawing.Point(393, 160);
             this.txtBank.Name = "txtBank";
             this.txtBank.Size = new System.Drawing.Size(183, 20);
-            this.txtBank.TabIndex = 18;
+            this.txtBank.TabIndex = 8;
             // 
             // labelControl2
             // 
@@ -135,16 +119,16 @@
             // 
             this.labelControl6.Location = new System.Drawing.Point(20, 163);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(22, 13);
+            this.labelControl6.Size = new System.Drawing.Size(44, 13);
             this.labelControl6.TabIndex = 11;
-            this.labelControl6.Text = "STK:";
+            this.labelControl6.Text = "AccBank:";
             // 
             // txtAccBank
             // 
             this.txtAccBank.Location = new System.Drawing.Point(79, 160);
             this.txtAccBank.Name = "txtAccBank";
             this.txtAccBank.Size = new System.Drawing.Size(166, 20);
-            this.txtAccBank.TabIndex = 12;
+            this.txtAccBank.TabIndex = 6;
             // 
             // labelControl5
             // 
@@ -159,7 +143,7 @@
             this.txtEmail.Location = new System.Drawing.Point(79, 134);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(166, 20);
-            this.txtEmail.TabIndex = 10;
+            this.txtEmail.TabIndex = 5;
             // 
             // labelControl4
             // 
@@ -176,7 +160,7 @@
             this.txtPhone.Properties.Mask.EditMask = "(999) 000-0000";
             this.txtPhone.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.txtPhone.Size = new System.Drawing.Size(166, 20);
-            this.txtPhone.TabIndex = 8;
+            this.txtPhone.TabIndex = 4;
             // 
             // lbAddress
             // 
@@ -191,7 +175,7 @@
             this.txtAddress.Location = new System.Drawing.Point(79, 82);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(497, 20);
-            this.txtAddress.TabIndex = 6;
+            this.txtAddress.TabIndex = 3;
             // 
             // lbName
             // 
@@ -206,7 +190,7 @@
             this.txtName.Location = new System.Drawing.Point(79, 56);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(497, 20);
-            this.txtName.TabIndex = 4;
+            this.txtName.TabIndex = 1;
             // 
             // labelControl1
             // 
@@ -221,7 +205,7 @@
             this.txtID.Location = new System.Drawing.Point(79, 30);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(166, 20);
-            this.txtID.TabIndex = 2;
+            this.txtID.TabIndex = 0;
             // 
             // btnClose
             // 
@@ -229,14 +213,14 @@
             this.btnClose.Location = new System.Drawing.Point(515, 263);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 25;
+            this.btnClose.TabIndex = 10;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.txtDiscount);
             this.groupControl1.Controls.Add(this.lkArea);
-            this.groupControl1.Controls.Add(this.speDiscount);
             this.groupControl1.Controls.Add(this.btnInserArea);
             this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Controls.Add(this.txtBank);
@@ -260,6 +244,15 @@
             this.groupControl1.TabIndex = 23;
             this.groupControl1.Text = "Information";
             // 
+            // txtDiscount
+            // 
+            this.txtDiscount.Location = new System.Drawing.Point(79, 186);
+            this.txtDiscount.Name = "txtDiscount";
+            this.txtDiscount.Properties.Mask.EditMask = "p";
+            this.txtDiscount.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtDiscount.Size = new System.Drawing.Size(166, 20);
+            this.txtDiscount.TabIndex = 7;
+            // 
             // lkArea
             // 
             this.lkArea.Location = new System.Drawing.Point(393, 30);
@@ -268,7 +261,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lkArea.Properties.NullText = "[Choose a area...]";
             this.lkArea.Size = new System.Drawing.Size(151, 20);
-            this.lkArea.TabIndex = 21;
+            this.lkArea.TabIndex = 2;
             // 
             // frmUpdateCustomer
             // 
@@ -284,7 +277,6 @@
             this.Name = "frmUpdateCustomer";
             this.Text = "Update Customer form";
             this.Load += new System.EventHandler(this.frmUpdateCustomer_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.speDiscount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBank.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAccBank.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).EndInit();
@@ -295,6 +287,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiscount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkArea.Properties)).EndInit();
             this.ResumeLayout(false);
 
@@ -303,7 +296,6 @@
         #endregion
 
         private DevExpress.XtraEditors.SimpleButton btnSave;
-        private DevExpress.XtraEditors.SpinEdit speDiscount;
         private DevExpress.XtraEditors.SimpleButton btnInserArea;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit txtBank;
@@ -324,5 +316,6 @@
         private DevExpress.XtraEditors.SimpleButton btnClose;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.LookUpEdit lkArea;
+        private DevExpress.XtraEditors.TextEdit txtDiscount;
     }
 }

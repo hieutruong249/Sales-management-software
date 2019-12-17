@@ -20,5 +20,13 @@ namespace BUS
         {
             return dao.ShowCurrency(index);
         }
+        public DataTable ShowBill()
+        {
+            return dao.ShowBill();
+        }
+        public int InsertBillSellProductDetail(SellProductDetail e)
+        {
+            return dao.InsertBillSellProductDetail(e);
+        }
     }
 }

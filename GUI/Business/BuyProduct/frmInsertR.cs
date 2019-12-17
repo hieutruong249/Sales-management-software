@@ -89,5 +89,10 @@ namespace GUI.Business.BuyProduct
         {
             lkProductID.Text = lkProductName.EditValue.ToString();
         }
+
+        private void txtTotal_EditValueChanged(object sender, EventArgs e)
+        {
+            txtTotal.Text = CalculateTotal().ToString();
+        }
     }
 }

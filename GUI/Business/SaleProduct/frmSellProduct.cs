@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DTO;
+using BUS;
 
 namespace GUI.Business.SaleProduct
 {
@@ -16,6 +17,8 @@ namespace GUI.Business.SaleProduct
     {
         public static DataTable dtbl = new DataTable();
         public static BuyProducts bp = new BuyProducts();
+        public static SellProductBUS bus = new SellProductBUS();
+        public static SellProductDetail sp = new SellProductDetail();
         public static int indexCurrentRow = 0;
         public static string pdID, pdname, unit, exrate;
         public static int count, Ccount = 0;
@@ -80,33 +83,51 @@ namespace GUI.Business.SaleProduct
         public frmSellProduct()
         {
             InitializeComponent();
+            DataTable data = new DataTable();
+            data = bus.ShowBill();
+            txtBill.Text = FindNextID(data);
         }
         private void RemoveDuplicates(DataTable dt)
         {
             bp.Total = 0;
-            if (dt.Rows.Count > 0)
+            try
             {
-                for (int i = dt.Rows.Count - 1; i >= 0; i--)
+                if (dt.Rows.Count > 0)
                 {
-                    if (i == 0)
+                    for (int i = dt.Rows.Count - 1; i >= 0; i--)
                     {
-                        break;
-                    }
-                    for (int j = i - 1; j >= 0; j--)
-                    {
-                        if (dt.Rows[i]["ProductID"] == dt.Rows[j]["ProductID"])
+                        if (i == 0)
                         {
-
-                            dt.Rows[j]["Count"] = (int.Parse(dt.Rows[i]["Count"].ToString()) + int.Parse(dt.Rows[j]["Count"].ToString())).ToString();
-                            dt.Rows[j]["Total"] = (int.Parse(dt.Rows[i]["Total"].ToString()) + int.Parse(dt.Rows[j]["Total"].ToString())).ToString();
-                            dt.Rows[i].Delete();
                             break;
                         }
+                        for (int j = i - 1; j >= 0; j--)
+                        {
+                            if (dt.Rows[i]["ProductID"] == dt.Rows[j]["ProductID"])
+                            {
+
+                                dt.Rows[j]["Count"] = (int.Parse(dt.Rows[i]["Count"].ToString()) + int.Parse(dt.Rows[j]["Count"].ToString())).ToString();
+                                dt.Rows[j]["Total"] = (double.Parse(dt.Rows[i]["Total"].ToString()) + double.Parse(dt.Rows[j]["Total"].ToString())).ToString();
+                                dt.Rows[i].Delete();
+                                break;
+                            }
+                        }
                     }
+                    dt.AcceptChanges();
                 }
-                dt.AcceptChanges();
             }
+            catch(Exception ex)
+            {
+
+            }
+           
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            InsertBill();
+           // InsertBillDetail();
+        }
+
         public string FindNextID(DataTable dtbl)
         {
 
@@ -114,6 +135,7 @@ namespace GUI.Business.SaleProduct
             if (dtbl.Rows.Count > 0)
             {
                 string ma = dtbl.Rows[dtbl.Rows.Count - 1]["BillID"].ToString();
+                
                 int lastIndex = int.Parse(ma.Substring(3)) + 1;
                 txtID = "BLS" + lastIndex.ToString("00000");
             }
@@ -123,6 +145,9 @@ namespace GUI.Business.SaleProduct
             }
             return txtID;
         }
+
+
+
         public void ReceiveData(string ID, string name, string uni, int cou, float pprice, double ttotal, string exra, float ddiscount)
         {
             pdID = ID;
@@ -194,6 +219,84 @@ namespace GUI.Business.SaleProduct
         private void btnDeleteR_Click(object sender, EventArgs e)
         {
             dtbl.Rows.RemoveAt(indexCurrentRow);
+        }
+
+        public void InsertBill()
+        {
+            bp.BillID = txtBill.Text;
+            bp.SupplierID = lkCustomerID.Text;
+            bp.WarehouseID = lkWarehouse.EditValue.ToString();
+            bp.StaffID = lkStaffID.Text;
+            bp.Phone = txtPhone.Text;
+            bp.Date = txtDate.Text;
+            bp.ExperiDate = txtExdate.Text;
+            bp.Note = txtNote.Text;
+            bp.Address = txtAddress.Text;
+            bp.NumVAT = txtNumVat.Text;
+            bp.Total = 0;
+            foreach (DataRow row in dtbl.Rows)
+            {
+                bp.Total += int.Parse(row["Total"].ToString());
+
+            }
+            try
+            {
+                if (bus.InsertBillSellProduct(bp) > 0)
+                {
+                    int err = InsertBillDetail();
+                    if (err == 0)
+                    {
+                        MessageBox.Show("Sussecc");
+                        DataTable data = new DataTable();
+                        data = bus.ShowBill();
+                        txtBill.Text = FindNextID(data);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("There are " + err.ToString() + " rows failed while inserting!!!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fail!!");
+
+            }
+          
+        }
+    
+
+        public int InsertBillDetail()
+        {
+            int countERR = 0;
+            sp.BillID = txtBill.Text;
+            try
+            {
+                foreach (DataRow row in dtbl.Rows)
+                {
+                    sp.ProductID = row["ProductID"].ToString();
+                    sp.ProductName = row["ProductName"].ToString();
+                    sp.UnitID = row["Unit"].ToString();
+                    sp.Price = double.Parse(row["Price"].ToString());
+                    sp.Amount = int.Parse(row["Count"].ToString());
+                    sp.Total = double.Parse(row["Total"].ToString());
+                    sp.Amount = int.Parse(row["ExRate"].ToString());
+                    sp.Total = double.Parse(row["Discount"].ToString());
+
+                    if (bus.InsertBillSellProductDetail(sp) == 0)
+                    {
+                        countERR++;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: ProductID" + sp.ProductID);
+
+            }
+            return countERR;
         }
     }
 }

@@ -22,8 +22,8 @@ namespace DAO
                 provider.Connect();
                 nRow = provider.ExeCuteNonQuery(CommandType.Text, strSQL,
 
-                        new SqlParameter { ParameterName = "@CustomerID", Value = spl.SupplierID },
-                        new SqlParameter { ParameterName = "@CustomerName", Value = spl.SupplierName },
+                        new SqlParameter { ParameterName = "@SupplierID", Value = spl.SupplierID },
+                        new SqlParameter { ParameterName = "@SupplierName", Value = spl.SupplierName },
                         new SqlParameter { ParameterName = "@Address", Value = spl.Address },
                         new SqlParameter { ParameterName = "@Phone", Value = spl.Phone },
                         new SqlParameter { ParameterName = "@Area", Value = spl.Area },
@@ -58,8 +58,8 @@ namespace DAO
                 provider.Connect();
                 nRow = provider.ExeCuteNonQuery(CommandType.Text, strSQL,
 
-                        new SqlParameter { ParameterName = "@CustomerID", Value = spl.SupplierID },
-                        new SqlParameter { ParameterName = "@CustomerName", Value = spl.SupplierName },
+                        new SqlParameter { ParameterName = "@SupplierID", Value = spl.SupplierID },
+                        new SqlParameter { ParameterName = "@SupplierName", Value = spl.SupplierName },
                         new SqlParameter { ParameterName = "@Address", Value = spl.Address },
                         new SqlParameter { ParameterName = "@Phone", Value = spl.Phone },
                         new SqlParameter { ParameterName = "@Area", Value = spl.Area },

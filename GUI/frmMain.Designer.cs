@@ -144,7 +144,7 @@
             this.ribbonPage2,
             this.ribbonPage3,
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1091, 147);
+            this.ribbon.Size = new System.Drawing.Size(1258, 147);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // btnExit
@@ -608,7 +608,7 @@
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 822);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1091, 23);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1258, 23);
             // 
             // documentManager1
             // 
@@ -622,7 +622,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1091, 845);
+            this.ClientSize = new System.Drawing.Size(1258, 845);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Glow;
@@ -632,7 +632,6 @@
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;
             this.Tag = "1";
-            this.Text = "Sale Manager Software";
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();

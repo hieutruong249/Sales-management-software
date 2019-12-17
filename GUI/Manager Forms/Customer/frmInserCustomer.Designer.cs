@@ -31,21 +31,21 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInserCustomer));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.txtDiscount = new DevExpress.XtraEditors.TextEdit();
             this.lkArea = new DevExpress.XtraEditors.LookUpEdit();
             this.areasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.qLBH_v1DataSet1 = new GUI.QLBH_v1DataSet1();
-            this.speDiscount = new DevExpress.XtraEditors.SpinEdit();
             this.btnInserArea = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtBank = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
+            this.txtAccBank = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.txtEmail = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
+            this.txtPhone = new DevExpress.XtraEditors.TextEdit();
             this.lbAddress = new DevExpress.XtraEditors.LabelControl();
             this.txtAddress = new DevExpress.XtraEditors.TextEdit();
             this.lbName = new DevExpress.XtraEditors.LabelControl();
@@ -57,14 +57,14 @@
             this.areasTableAdapter = new GUI.QLBH_v1DataSet1TableAdapters.AreasTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiscount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkArea.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.areasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.speDiscount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBank.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccBank.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID.Properties)).BeginInit();
@@ -72,19 +72,19 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.txtDiscount);
             this.groupControl1.Controls.Add(this.lkArea);
-            this.groupControl1.Controls.Add(this.speDiscount);
             this.groupControl1.Controls.Add(this.btnInserArea);
             this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Controls.Add(this.txtBank);
             this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.labelControl7);
             this.groupControl1.Controls.Add(this.labelControl6);
-            this.groupControl1.Controls.Add(this.textEdit5);
+            this.groupControl1.Controls.Add(this.txtAccBank);
             this.groupControl1.Controls.Add(this.labelControl5);
             this.groupControl1.Controls.Add(this.txtEmail);
             this.groupControl1.Controls.Add(this.labelControl4);
-            this.groupControl1.Controls.Add(this.textEdit3);
+            this.groupControl1.Controls.Add(this.txtPhone);
             this.groupControl1.Controls.Add(this.lbAddress);
             this.groupControl1.Controls.Add(this.txtAddress);
             this.groupControl1.Controls.Add(this.lbName);
@@ -97,6 +97,15 @@
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Information";
             // 
+            // txtDiscount
+            // 
+            this.txtDiscount.Location = new System.Drawing.Point(79, 186);
+            this.txtDiscount.Name = "txtDiscount";
+            this.txtDiscount.Properties.Mask.EditMask = "p";
+            this.txtDiscount.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtDiscount.Size = new System.Drawing.Size(166, 20);
+            this.txtDiscount.TabIndex = 7;
+            // 
             // lkArea
             // 
             this.lkArea.Location = new System.Drawing.Point(393, 30);
@@ -108,7 +117,8 @@
             this.lkArea.Properties.NullText = "[Choose a area...]";
             this.lkArea.Properties.ValueMember = "ID";
             this.lkArea.Size = new System.Drawing.Size(157, 20);
-            this.lkArea.TabIndex = 21;
+            this.lkArea.TabIndex = 2;
+            this.lkArea.Tag = "3";
             // 
             // areasBindingSource
             // 
@@ -119,23 +129,6 @@
             // 
             this.qLBH_v1DataSet1.DataSetName = "QLBH_v1DataSet1";
             this.qLBH_v1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // speDiscount
-            // 
-            this.speDiscount.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.speDiscount.Location = new System.Drawing.Point(79, 186);
-            this.speDiscount.Name = "speDiscount";
-            this.speDiscount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.speDiscount.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.speDiscount.Properties.Mask.EditMask = "p";
-            this.speDiscount.Size = new System.Drawing.Size(166, 20);
-            this.speDiscount.TabIndex = 20;
-            this.speDiscount.EditValueChanged += new System.EventHandler(this.spinEdit1_EditValueChanged);
             // 
             // btnInserArea
             // 
@@ -160,7 +153,7 @@
             this.txtBank.Location = new System.Drawing.Point(393, 160);
             this.txtBank.Name = "txtBank";
             this.txtBank.Size = new System.Drawing.Size(183, 20);
-            this.txtBank.TabIndex = 18;
+            this.txtBank.TabIndex = 8;
             // 
             // labelControl2
             // 
@@ -186,12 +179,12 @@
             this.labelControl6.TabIndex = 11;
             this.labelControl6.Text = "Acc Bank:";
             // 
-            // textEdit5
+            // txtAccBank
             // 
-            this.textEdit5.Location = new System.Drawing.Point(79, 160);
-            this.textEdit5.Name = "textEdit5";
-            this.textEdit5.Size = new System.Drawing.Size(166, 20);
-            this.textEdit5.TabIndex = 12;
+            this.txtAccBank.Location = new System.Drawing.Point(79, 160);
+            this.txtAccBank.Name = "txtAccBank";
+            this.txtAccBank.Size = new System.Drawing.Size(166, 20);
+            this.txtAccBank.TabIndex = 6;
             // 
             // labelControl5
             // 
@@ -206,7 +199,7 @@
             this.txtEmail.Location = new System.Drawing.Point(79, 134);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(166, 20);
-            this.txtEmail.TabIndex = 10;
+            this.txtEmail.TabIndex = 5;
             // 
             // labelControl4
             // 
@@ -216,14 +209,14 @@
             this.labelControl4.TabIndex = 7;
             this.labelControl4.Text = "Phone:";
             // 
-            // textEdit3
+            // txtPhone
             // 
-            this.textEdit3.Location = new System.Drawing.Point(79, 108);
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Properties.Mask.EditMask = "(999) 000-0000";
-            this.textEdit3.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
-            this.textEdit3.Size = new System.Drawing.Size(166, 20);
-            this.textEdit3.TabIndex = 8;
+            this.txtPhone.Location = new System.Drawing.Point(79, 108);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Properties.Mask.EditMask = "n0";
+            this.txtPhone.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtPhone.Size = new System.Drawing.Size(166, 20);
+            this.txtPhone.TabIndex = 4;
             // 
             // lbAddress
             // 
@@ -238,7 +231,7 @@
             this.txtAddress.Location = new System.Drawing.Point(79, 82);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(497, 20);
-            this.txtAddress.TabIndex = 6;
+            this.txtAddress.TabIndex = 3;
             // 
             // lbName
             // 
@@ -253,7 +246,8 @@
             this.txtName.Location = new System.Drawing.Point(79, 56);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(497, 20);
-            this.txtName.TabIndex = 4;
+            this.txtName.TabIndex = 1;
+            this.txtName.Tag = "1";
             // 
             // labelControl1
             // 
@@ -268,7 +262,8 @@
             this.txtID.Location = new System.Drawing.Point(79, 30);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(166, 20);
-            this.txtID.TabIndex = 2;
+            this.txtID.TabIndex = 0;
+            this.txtID.Tag = "0";
             // 
             // btnClose
             // 
@@ -276,7 +271,7 @@
             this.btnClose.Location = new System.Drawing.Point(513, 258);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 22;
+            this.btnClose.TabIndex = 10;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click_1);
             // 
@@ -286,7 +281,7 @@
             this.btnSave.Location = new System.Drawing.Point(395, 258);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 21;
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -311,14 +306,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDiscount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkArea.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.areasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.speDiscount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBank.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccBank.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID.Properties)).EndInit();
@@ -335,23 +330,23 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.TextEdit textEdit5;
+        private DevExpress.XtraEditors.TextEdit txtAccBank;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.TextEdit txtEmail;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.TextEdit textEdit3;
+        private DevExpress.XtraEditors.TextEdit txtPhone;
         private DevExpress.XtraEditors.LabelControl lbAddress;
         private DevExpress.XtraEditors.TextEdit txtAddress;
         private DevExpress.XtraEditors.LabelControl lbName;
         private DevExpress.XtraEditors.TextEdit txtName;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit txtID;
-        private DevExpress.XtraEditors.SpinEdit speDiscount;
         private DevExpress.XtraEditors.SimpleButton btnClose;
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraEditors.LookUpEdit lkArea;
         private QLBH_v1DataSet1 qLBH_v1DataSet1;
         private System.Windows.Forms.BindingSource areasBindingSource;
         private QLBH_v1DataSet1TableAdapters.AreasTableAdapter areasTableAdapter;
+        private DevExpress.XtraEditors.TextEdit txtDiscount;
     }
 }

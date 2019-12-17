@@ -41,6 +41,9 @@ namespace GUI
         {
             // TODO: This line of code loads data into the 'qLBH_v1DataSet4.Areas' table. You can move, or remove it, as needed.
             this.areasTableAdapter.Fill(this.qLBH_v1DataSet4.Areas);
+            lkArea.EditValue = this.qLBH_v1DataSet4.Areas.Rows[0][lkArea.Properties.ValueMember];
+
+
             txtID.Text = str;
 
         }
@@ -54,11 +57,42 @@ namespace GUI
             suppliers.Phone = txtPhone.Text;
             suppliers.Email = txtEmail.Text;
             suppliers.Bank = txtBank.Text;
-            suppliers.Area = lkArea.Text;
-            suppliers.Discount = float.Parse(speDiscount.Text);
+            suppliers.Area = lkArea.EditValue.ToString();
+            suppliers.Discount = float.Parse(speDiscount.Value.ToString());
+            try
+            {
+                SupplierBUS supplierBUS = new SupplierBUS();
+                if(supplierBUS.InsertSupplier(suppliers) > 0)
+                {
+                    MessageBox.Show("Insert susscessfully!!!");
 
-            SupplierBUS supplierBUS = new SupplierBUS();
-            supplierBUS.InsertSupplier(suppliers);
+                    DataTable data = new DataTable();
+                    data = supplierBUS.ShowSupplier();
+                    txtID.Text = FindNextID(data);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                //MessageBox.Show("Insert fail!!!");
+
+            }
+        }
+        public string FindNextID(DataTable dtbl)
+        {
+            string txtID = null;
+            if (dtbl.Rows.Count > 0)
+            {
+                string ma = dtbl.Rows[dtbl.Rows.Count - 1]["SupplierID"].ToString();
+                int lastIndex = int.Parse(ma.Substring(3)) + 1;
+                txtID = "NCC" + lastIndex.ToString("00000");
+            }
+            else
+            {
+                txtID = "NCC00001";
+            }
+            return txtID;
         }
     }
 }

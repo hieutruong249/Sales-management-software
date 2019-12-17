@@ -28,6 +28,7 @@ namespace GUI.Business.BuyProduct
         {
             InitializeComponent();
             DataTable data = new DataTable();
+            data = bus.ShowBill();
             txtBill.Text = FindNextID(data);
            
         }
@@ -186,30 +187,34 @@ namespace GUI.Business.BuyProduct
             bp.Total = 0;
             foreach (DataRow row in dtbl.Rows)
             {
-                bp.Total += int.Parse(row["Count"].ToString());
+                bp.Total += int.Parse(row["Total"].ToString());
 
             }
-
-            if (bus.InsertBillBuyProduct(bp) > 0 )
+            try
             {
-                int err = InsertBillDetail();
-                if (err == 0)
+                if (bus.InsertBillBuyProduct(bp) > 0)
                 {
-                    MessageBox.Show("Sussecc");
+                    int err = InsertBillDetail();
+                    if (err == 0)
+                    {
+                        MessageBox.Show("Sussecc");
+                        DataTable data = new DataTable();
+                        data = bus.ShowBill();
+                        txtBill.Text = FindNextID(data);
 
-                }
-                else
-                {
-                    MessageBox.Show("There are " + err.ToString()  +" rows failed while inserting!!!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("There are " + err.ToString() + " rows failed while inserting!!!");
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
                 MessageBox.Show("Fail!!");
             }
-          
-           
         }
+
         private void RemoveDuplicates(DataTable dt)
         {
             bp.Total = 0;
@@ -227,7 +232,7 @@ namespace GUI.Business.BuyProduct
                         {
                             
                             dt.Rows[j]["Count"] = (int.Parse(dt.Rows[i]["Count"].ToString()) + int.Parse(dt.Rows[j]["Count"].ToString())).ToString();
-                            dt.Rows[j]["Total"] = (int.Parse(dt.Rows[i]["Total"].ToString()) + int.Parse(dt.Rows[j]["Total"].ToString())).ToString();
+                            dt.Rows[j]["Total"] = (float.Parse(dt.Rows[i]["Total"].ToString()) + float.Parse(dt.Rows[j]["Total"].ToString())).ToString();
                             dt.Rows[i].Delete();
                             break;
                         }
@@ -243,33 +248,37 @@ namespace GUI.Business.BuyProduct
         {
             int countERR = 0;
             bpDetail.BillID = txtBill.Text;
-            foreach (DataRow row in dtbl.Rows)
+            try
             {
-                bpDetail.ProductID = row["ProductID"].ToString();
-                bpDetail.ProductName = row["ProductName"].ToString();
-                bpDetail.UnitID = row["Unit"].ToString();
-                bpDetail.Price = double.Parse(row["Price"].ToString());
-                bpDetail.Amount = int.Parse(row["Count"].ToString());
-                bpDetail.Total = double.Parse(row["Total"].ToString());
-
-                if (bus.InsertBillBuyProductDetail(bpDetail) == 0)
+                foreach (DataRow row in dtbl.Rows)
                 {
-                    MessageBox.Show("Error: ProductID" + bpDetail.ProductID);
-                    countERR++;
-                }
+                    bpDetail.ProductID = row["ProductID"].ToString();
+                    bpDetail.ProductName = row["ProductName"].ToString();
+                    bpDetail.UnitID = row["Unit"].ToString();
+                    bpDetail.Price = double.Parse(row["Price"].ToString());
+                    bpDetail.Amount = int.Parse(row["Count"].ToString());
+                    bpDetail.Total = double.Parse(row["Total"].ToString());
 
+                    if (bus.InsertBillBuyProductDetail(bpDetail) == 0)
+                    {
+                        countERR++;
+                    }
+
+                }
             }
-           
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: ProductID" + bpDetail.ProductID);
+            }
+
+
             return countERR;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             InsertBill();
-            
         } 
-
-        
 
         private void navBarItem4_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
