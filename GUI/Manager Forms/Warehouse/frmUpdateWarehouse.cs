@@ -33,14 +33,12 @@ namespace GUI.Manager_Forms.Warehouse
 
             txtID.Text = warehouse.ID;
             txtName.Text = warehouse.Name;
-            lkManager.Text = warehouse.Manager;
+            lkManager.EditValue = warehouse.Manager;
             txtContact.Text = warehouse.Contact;
             txtAddress.Text = warehouse.Address;
             txtPhone.Text = warehouse.Phone;
             txtEmail.Text = warehouse.Email;
             txtDescription.Text = warehouse.Decription;
-
-           
 
         }
 
@@ -53,15 +51,27 @@ namespace GUI.Manager_Forms.Warehouse
         {
             warehouse.ID = txtID.Text;
             warehouse.Name = txtName.Text;
-            warehouse.Manager = lkManager.Text;
+            warehouse.Manager = lkManager.EditValue.ToString();
             warehouse.Contact = txtContact.Text;
             warehouse.Address = txtAddress.Text;
             warehouse.Phone = txtPhone.Text;
             warehouse.Email = txtEmail.Text;
             warehouse.Decription = txtDescription.Text;
+            try
+            {
+                WarehouseBUS warehouseBUS = new WarehouseBUS();
+                if (warehouseBUS.UpdateWarehouse(warehouse) > 0)
+                {
+                    MessageBox.Show("Update susscessfully!!!");
+                }
 
-            WarehouseBUS warehouseBUS = new WarehouseBUS();
-            warehouseBUS.UpdateWarehouse(warehouse);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
+
+      
     }
 }

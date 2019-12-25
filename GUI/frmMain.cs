@@ -65,11 +65,12 @@ namespace GUI
                 frm.MdiParent = this;
                 frm.Show();
             }
-            
         }
 
         private void btnLogout_ItemClick(object sender, ItemClickEventArgs e)
         {
+            GlobalVar.dicmyRoleForm.Clear();
+
             frmLogin frm = new frmLogin();
             this.Hide();
             frm.Show();
@@ -98,35 +99,30 @@ namespace GUI
 
         private void btnArea_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
             frmArea frm = new frmArea();
             ShowForm(frm);
         }
 
         private void btnCustomers_ItemClick(object sender, ItemClickEventArgs e)
         {
-           
             frmCustomer frm = new frmCustomer();
             ShowForm(frm);
         }
 
         private void btnWarehouse_ItemClick(object sender, ItemClickEventArgs e)
         {
-         
             frmWarehouse frm = new frmWarehouse();
             ShowForm(frm);
         }
 
         private void btnUnit_ItemClick(object sender, ItemClickEventArgs e)
         {
-         
             frmUnit frm = new frmUnit();
             ShowForm(frm);
         }
 
         private void btnExchange_rate_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
             frmExRate frm = new frmExRate();
             ShowForm(frm);
         }
@@ -165,29 +161,24 @@ namespace GUI
 
         private void btnSuppliers_ItemClick(object sender, ItemClickEventArgs e)
         {
-           
             frmSupplier frm = new frmSupplier();
             ShowForm(frm);
         }
 
         private void btnGroup_product_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
-
             frmCategory frm = new frmCategory();
             ShowForm(frm);
         }
 
         private void btnStaffs_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
             frmStaff frm = new frmStaff();
             ShowForm(frm);
         }
 
         private void btnParts_ItemClick(object sender, ItemClickEventArgs e)
         {
-           
             frmPart frm = new frmPart();
             ShowForm(frm);
         }
@@ -259,6 +250,18 @@ namespace GUI
         {
             frmBackup frm = new frmBackup();
             frm.Show();
+        }
+
+        private void btnHistory_systerm_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmHistory frm = new frmHistory();
+            ShowForm(frm);
+        }
+
+        private void btnReportWarehouse_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmReportWarehouse frm = new frmReportWarehouse();
+            ShowForm(frm);
         }
     }
         

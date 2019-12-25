@@ -22,5 +22,10 @@ namespace GUI.Business.Collect_Monney
         {
 
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

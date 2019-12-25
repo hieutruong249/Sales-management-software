@@ -303,7 +303,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmInserSupplier";
-            this.Text = "frmInserSupplier";
+            this.Text = "Inser supplier form";
             this.Load += new System.EventHandler(this.frmInserSupplier_Load);
             ((System.ComponentModel.ISupportInitialize)(this.speDiscount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBank.Properties)).EndInit();

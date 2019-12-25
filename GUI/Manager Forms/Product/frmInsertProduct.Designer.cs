@@ -31,8 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInsertProduct));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.lkUnit = new DevExpress.XtraEditors.LookUpEdit();
+            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qLBH_v1DataSet7 = new GUI.QLBH_v1DataSet7();
             this.lkCatergory = new DevExpress.XtraEditors.LookUpEdit();
+            this.catergoriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qLBH_v1DataSet6 = new GUI.QLBH_v1DataSet6();
             this.speCurr_Inventory = new DevExpress.XtraEditors.SpinEdit();
             this.speMin_Inventory = new DevExpress.XtraEditors.SpinEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
@@ -47,6 +52,8 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.lkSupplier = new DevExpress.XtraEditors.LookUpEdit();
+            this.suppliersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qLBH_v1DataSet8 = new GUI.QLBH_v1DataSet8();
             this.speRetail = new DevExpress.XtraEditors.SpinEdit();
             this.speWholesale = new DevExpress.XtraEditors.SpinEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
@@ -58,23 +65,21 @@
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.lkWarehouse = new DevExpress.XtraEditors.LookUpEdit();
-            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.warehouseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.qLBH_v1DataSet5 = new GUI.QLBH_v1DataSet5();
-            this.suppliersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.qLBH_v1DataSet8 = new GUI.QLBH_v1DataSet8();
-            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.qLBH_v1DataSet7 = new GUI.QLBH_v1DataSet7();
-            this.catergoriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.qLBH_v1DataSet6 = new GUI.QLBH_v1DataSet6();
             this.warehouseTableAdapter = new GUI.QLBH_v1DataSet5TableAdapters.WarehouseTableAdapter();
             this.catergoriesTableAdapter = new GUI.QLBH_v1DataSet6TableAdapters.CatergoriesTableAdapter();
             this.unitTableAdapter = new GUI.QLBH_v1DataSet7TableAdapters.UnitTableAdapter();
             this.suppliersTableAdapter = new GUI.QLBH_v1DataSet8TableAdapters.SuppliersTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkUnit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkCatergory.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.catergoriesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speCurr_Inventory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speMin_Inventory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrigin.Properties)).BeginInit();
@@ -83,19 +88,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkSupplier.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.suppliersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speRetail.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speWholesale.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spePurchase.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkWarehouse.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.warehouseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.suppliersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.catergoriesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet6)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -121,6 +121,17 @@
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Information";
             // 
+            // pictureEdit1
+            // 
+            this.pictureEdit1.Location = new System.Drawing.Point(276, 122);
+            this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.ErrorImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("pictureEdit1.Properties.ErrorImageOptions.Image")));
+            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.pictureEdit1.Size = new System.Drawing.Size(241, 165);
+            this.pictureEdit1.TabIndex = 8;
+            this.pictureEdit1.Click += new System.EventHandler(this.pictureEdit1_Click);
+            // 
             // lkUnit
             // 
             this.lkUnit.Location = new System.Drawing.Point(114, 121);
@@ -131,7 +142,17 @@
             this.lkUnit.Properties.DisplayMember = "Name";
             this.lkUnit.Properties.ValueMember = "ID";
             this.lkUnit.Size = new System.Drawing.Size(156, 20);
-            this.lkUnit.TabIndex = 37;
+            this.lkUnit.TabIndex = 4;
+            // 
+            // unitBindingSource
+            // 
+            this.unitBindingSource.DataMember = "Unit";
+            this.unitBindingSource.DataSource = this.qLBH_v1DataSet7;
+            // 
+            // qLBH_v1DataSet7
+            // 
+            this.qLBH_v1DataSet7.DataSetName = "QLBH_v1DataSet7";
+            this.qLBH_v1DataSet7.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lkCatergory
             // 
@@ -140,10 +161,20 @@
             this.lkCatergory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lkCatergory.Properties.DataSource = this.catergoriesBindingSource;
-            this.lkCatergory.Properties.DisplayMember = "Name";
-            this.lkCatergory.Properties.ValueMember = "ID";
+            this.lkCatergory.Properties.DisplayMember = "CatName";
+            this.lkCatergory.Properties.ValueMember = "CatID";
             this.lkCatergory.Size = new System.Drawing.Size(403, 20);
-            this.lkCatergory.TabIndex = 36;
+            this.lkCatergory.TabIndex = 1;
+            // 
+            // catergoriesBindingSource
+            // 
+            this.catergoriesBindingSource.DataMember = "Catergories";
+            this.catergoriesBindingSource.DataSource = this.qLBH_v1DataSet6;
+            // 
+            // qLBH_v1DataSet6
+            // 
+            this.qLBH_v1DataSet6.DataSetName = "QLBH_v1DataSet6";
+            this.qLBH_v1DataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // speCurr_Inventory
             // 
@@ -164,7 +195,7 @@
             0,
             0});
             this.speCurr_Inventory.Size = new System.Drawing.Size(156, 20);
-            this.speCurr_Inventory.TabIndex = 13;
+            this.speCurr_Inventory.TabIndex = 7;
             // 
             // speMin_Inventory
             // 
@@ -185,7 +216,7 @@
             0,
             0});
             this.speMin_Inventory.Size = new System.Drawing.Size(156, 20);
-            this.speMin_Inventory.TabIndex = 12;
+            this.speMin_Inventory.TabIndex = 6;
             // 
             // labelControl7
             // 
@@ -210,7 +241,7 @@
             this.txtOrigin.Location = new System.Drawing.Point(114, 147);
             this.txtOrigin.Name = "txtOrigin";
             this.txtOrigin.Size = new System.Drawing.Size(156, 20);
-            this.txtOrigin.TabIndex = 9;
+            this.txtOrigin.TabIndex = 5;
             // 
             // labelControl5
             // 
@@ -233,7 +264,7 @@
             this.txtPdName.Location = new System.Drawing.Point(114, 95);
             this.txtPdName.Name = "txtPdName";
             this.txtPdName.Size = new System.Drawing.Size(403, 20);
-            this.txtPdName.TabIndex = 5;
+            this.txtPdName.TabIndex = 3;
             // 
             // labelControl3
             // 
@@ -248,7 +279,7 @@
             this.txtPdID.Location = new System.Drawing.Point(114, 69);
             this.txtPdID.Name = "txtPdID";
             this.txtPdID.Size = new System.Drawing.Size(403, 20);
-            this.txtPdID.TabIndex = 3;
+            this.txtPdID.TabIndex = 2;
             // 
             // labelControl2
             // 
@@ -292,7 +323,17 @@
             this.lkSupplier.Properties.DisplayMember = "SupplierName";
             this.lkSupplier.Properties.ValueMember = "SupplierID";
             this.lkSupplier.Size = new System.Drawing.Size(415, 20);
-            this.lkSupplier.TabIndex = 22;
+            this.lkSupplier.TabIndex = 9;
+            // 
+            // suppliersBindingSource
+            // 
+            this.suppliersBindingSource.DataMember = "Suppliers";
+            this.suppliersBindingSource.DataSource = this.qLBH_v1DataSet8;
+            // 
+            // qLBH_v1DataSet8
+            // 
+            this.qLBH_v1DataSet8.DataSetName = "QLBH_v1DataSet8";
+            this.qLBH_v1DataSet8.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // speRetail
             // 
@@ -301,20 +342,20 @@
             0,
             0,
             0});
-            this.speRetail.Location = new System.Drawing.Point(102, 91);
+            this.speRetail.Location = new System.Drawing.Point(102, 88);
             this.speRetail.Name = "speRetail";
             this.speRetail.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.speRetail.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.speRetail.Properties.IsFloatValue = false;
-            this.speRetail.Properties.Mask.EditMask = "c3";
+            this.speRetail.Properties.Mask.EditMask = "n2";
             this.speRetail.Properties.MaxValue = new decimal(new int[] {
             276447232,
             23283,
             0,
             0});
             this.speRetail.Size = new System.Drawing.Size(156, 20);
-            this.speRetail.TabIndex = 21;
+            this.speRetail.TabIndex = 11;
             // 
             // speWholesale
             // 
@@ -329,14 +370,14 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.speWholesale.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.speWholesale.Properties.IsFloatValue = false;
-            this.speWholesale.Properties.Mask.EditMask = "c3";
+            this.speWholesale.Properties.Mask.EditMask = "n2";
             this.speWholesale.Properties.MaxValue = new decimal(new int[] {
             276447232,
             23283,
             0,
             0});
             this.speWholesale.Size = new System.Drawing.Size(156, 20);
-            this.speWholesale.TabIndex = 20;
+            this.speWholesale.TabIndex = 12;
             // 
             // labelControl11
             // 
@@ -359,18 +400,18 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.spePurchase.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.spePurchase.Properties.IsFloatValue = false;
-            this.spePurchase.Properties.Mask.EditMask = "c";
+            this.spePurchase.Properties.Mask.EditMask = "n2";
             this.spePurchase.Properties.MaxValue = new decimal(new int[] {
             276447232,
             23283,
             0,
             0});
             this.spePurchase.Size = new System.Drawing.Size(156, 20);
-            this.spePurchase.TabIndex = 17;
+            this.spePurchase.TabIndex = 10;
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(17, 94);
+            this.labelControl9.Location = new System.Drawing.Point(17, 91);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(57, 13);
             this.labelControl9.TabIndex = 16;
@@ -398,7 +439,7 @@
             this.btnSave.Location = new System.Drawing.Point(336, 477);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 33;
+            this.btnSave.TabIndex = 13;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -408,7 +449,7 @@
             this.btnClose.Location = new System.Drawing.Point(454, 477);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 34;
+            this.btnClose.TabIndex = 14;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -430,18 +471,7 @@
             this.lkWarehouse.Properties.DisplayMember = "Name";
             this.lkWarehouse.Properties.ValueMember = "ID";
             this.lkWarehouse.Size = new System.Drawing.Size(146, 20);
-            this.lkWarehouse.TabIndex = 35;
-            // 
-            // pictureEdit1
-            // 
-            this.pictureEdit1.Location = new System.Drawing.Point(276, 122);
-            this.pictureEdit1.Name = "pictureEdit1";
-            this.pictureEdit1.Properties.ErrorImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("pictureEdit1.Properties.ErrorImageOptions.Image")));
-            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.pictureEdit1.Size = new System.Drawing.Size(241, 165);
-            this.pictureEdit1.TabIndex = 38;
-            this.pictureEdit1.Click += new System.EventHandler(this.pictureEdit1_Click);
+            this.lkWarehouse.TabIndex = 0;
             // 
             // warehouseBindingSource
             // 
@@ -452,36 +482,6 @@
             // 
             this.qLBH_v1DataSet5.DataSetName = "QLBH_v1DataSet5";
             this.qLBH_v1DataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // suppliersBindingSource
-            // 
-            this.suppliersBindingSource.DataMember = "Suppliers";
-            this.suppliersBindingSource.DataSource = this.qLBH_v1DataSet8;
-            // 
-            // qLBH_v1DataSet8
-            // 
-            this.qLBH_v1DataSet8.DataSetName = "QLBH_v1DataSet8";
-            this.qLBH_v1DataSet8.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // unitBindingSource
-            // 
-            this.unitBindingSource.DataMember = "Unit";
-            this.unitBindingSource.DataSource = this.qLBH_v1DataSet7;
-            // 
-            // qLBH_v1DataSet7
-            // 
-            this.qLBH_v1DataSet7.DataSetName = "QLBH_v1DataSet7";
-            this.qLBH_v1DataSet7.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // catergoriesBindingSource
-            // 
-            this.catergoriesBindingSource.DataMember = "Catergories";
-            this.catergoriesBindingSource.DataSource = this.qLBH_v1DataSet6;
-            // 
-            // qLBH_v1DataSet6
-            // 
-            this.qLBH_v1DataSet6.DataSetName = "QLBH_v1DataSet6";
-            this.qLBH_v1DataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // warehouseTableAdapter
             // 
@@ -519,8 +519,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkUnit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkCatergory.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.catergoriesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speCurr_Inventory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speMin_Inventory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrigin.Properties)).EndInit();
@@ -530,19 +535,14 @@
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkSupplier.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.suppliersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speRetail.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speWholesale.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spePurchase.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkWarehouse.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.warehouseBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.suppliersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.catergoriesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

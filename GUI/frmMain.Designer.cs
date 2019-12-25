@@ -57,7 +57,7 @@
             this.barButtonItem28 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem29 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem30 = new DevExpress.XtraBars.BarButtonItem();
-            this.btnRevenue = new DevExpress.XtraBars.BarButtonItem();
+            this.btnReportWarehouse = new DevExpress.XtraBars.BarButtonItem();
             this.btnUsermanual = new DevExpress.XtraBars.BarButtonItem();
             this.btnContact = new DevExpress.XtraBars.BarButtonItem();
             this.btnRegister = new DevExpress.XtraBars.BarButtonItem();
@@ -87,6 +87,7 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
+            this.btnReportSale = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
@@ -124,7 +125,7 @@
             this.barButtonItem28,
             this.barButtonItem29,
             this.barButtonItem30,
-            this.btnRevenue,
+            this.btnReportWarehouse,
             this.btnUsermanual,
             this.btnContact,
             this.btnRegister,
@@ -135,9 +136,10 @@
             this.lbNamePC,
             this.lbdate,
             this.lbTime,
-            this.lbNameDB});
+            this.lbNameDB,
+            this.btnReportSale});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 47;
+            this.ribbon.MaxItemId = 48;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage4,
@@ -198,6 +200,7 @@
             this.btnHistory_systerm.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHistory_systerm.ImageOptions.Image")));
             this.btnHistory_systerm.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnHistory_systerm.ImageOptions.LargeImage")));
             this.btnHistory_systerm.Name = "btnHistory_systerm";
+            this.btnHistory_systerm.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHistory_systerm_ItemClick);
             // 
             // btnBackup
             // 
@@ -367,11 +370,14 @@
             this.barButtonItem30.Id = 31;
             this.barButtonItem30.Name = "barButtonItem30";
             // 
-            // btnRevenue
+            // btnReportWarehouse
             // 
-            this.btnRevenue.Caption = "Revenue";
-            this.btnRevenue.Id = 32;
-            this.btnRevenue.Name = "btnRevenue";
+            this.btnReportWarehouse.Caption = "Report warehouse ";
+            this.btnReportWarehouse.Id = 32;
+            this.btnReportWarehouse.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnReportWarehouse.ImageOptions.Image")));
+            this.btnReportWarehouse.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnReportWarehouse.ImageOptions.LargeImage")));
+            this.btnReportWarehouse.Name = "btnReportWarehouse";
+            this.btnReportWarehouse.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnReportWarehouse_ItemClick);
             // 
             // btnUsermanual
             // 
@@ -570,7 +576,8 @@
             // 
             // ribbonPageGroup11
             // 
-            this.ribbonPageGroup11.ItemLinks.Add(this.btnRevenue);
+            this.ribbonPageGroup11.ItemLinks.Add(this.btnReportWarehouse);
+            this.ribbonPageGroup11.ItemLinks.Add(this.btnReportSale);
             this.ribbonPageGroup11.Name = "ribbonPageGroup11";
             this.ribbonPageGroup11.Text = "Report";
             // 
@@ -618,6 +625,14 @@
             this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
             this.tabbedView1});
             // 
+            // btnReportSale
+            // 
+            this.btnReportSale.Caption = "Report sale";
+            this.btnReportSale.Id = 47;
+            this.btnReportSale.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnReportSale.ImageOptions.Image")));
+            this.btnReportSale.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnReportSale.ImageOptions.LargeImage")));
+            this.btnReportSale.Name = "btnReportSale";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -627,11 +642,11 @@
             this.Controls.Add(this.ribbon);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Glow;
             this.IsMdiContainer = true;
-            this.MaximizeBox = false;
             this.Name = "frmMain";
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;
             this.Tag = "1";
+            this.Text = "Sale  Manage Software";
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).EndInit();
@@ -684,7 +699,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem28;
         private DevExpress.XtraBars.BarButtonItem barButtonItem29;
         private DevExpress.XtraBars.BarButtonItem barButtonItem30;
-        private DevExpress.XtraBars.BarButtonItem btnRevenue;
+        private DevExpress.XtraBars.BarButtonItem btnReportWarehouse;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
         private DevExpress.XtraBars.BarButtonItem btnUsermanual;
         private DevExpress.XtraBars.BarButtonItem btnContact;
@@ -700,5 +715,6 @@
         private DevExpress.XtraBars.BarStaticItem lbNameDB;
         private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
+        private DevExpress.XtraBars.BarButtonItem btnReportSale;
     }
 }

@@ -115,7 +115,7 @@
             this.btnImport.Name = "btnImport";
             this.btnImport.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.btnImport.Size = new System.Drawing.Size(76, 38);
-            this.btnImport.TabIndex = 8;
+            this.btnImport.TabIndex = 4;
             this.btnImport.Text = "Import";
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
@@ -127,7 +127,7 @@
             this.btnExport.Name = "btnExport";
             this.btnExport.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.btnExport.Size = new System.Drawing.Size(76, 38);
-            this.btnExport.TabIndex = 6;
+            this.btnExport.TabIndex = 3;
             this.btnExport.Text = "Export";
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
@@ -139,7 +139,7 @@
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.btnInsert.Size = new System.Drawing.Size(73, 38);
-            this.btnInsert.TabIndex = 5;
+            this.btnInsert.TabIndex = 0;
             this.btnInsert.Text = "Insert";
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
@@ -152,7 +152,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.btnDelete.Size = new System.Drawing.Size(75, 38);
-            this.btnDelete.TabIndex = 7;
+            this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -165,7 +165,7 @@
             this.btnClose.Name = "btnClose";
             this.btnClose.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.btnClose.Size = new System.Drawing.Size(70, 38);
-            this.btnClose.TabIndex = 27;
+            this.btnClose.TabIndex = 6;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -178,7 +178,7 @@
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.btnUpdate.Size = new System.Drawing.Size(79, 38);
-            this.btnUpdate.TabIndex = 6;
+            this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -219,6 +219,7 @@
             this.gcWarehoues.Name = "gcWarehoues";
             this.gcWarehoues.Size = new System.Drawing.Size(771, 124);
             this.gcWarehoues.TabIndex = 4;
+            this.gcWarehoues.UseEmbeddedNavigator = true;
             this.gcWarehoues.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             this.gcWarehoues.Click += new System.EventHandler(this.gcWarehoues_Click);
@@ -236,6 +237,9 @@
             this.gridColumn8});
             this.gridView1.GridControl = this.gcWarehoues;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.OptionsBehavior.Editable = false;
             // 
             // gridColumn1
             // 

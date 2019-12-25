@@ -50,8 +50,8 @@
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.suppliersTableAdapter = new GUI.QLBH_v1DataSet8TableAdapters.SuppliersTableAdapter();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.ibImg = new DevExpress.XtraEditors.SvgImageBox();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.lkUnit = new DevExpress.XtraEditors.LookUpEdit();
             this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.qLBH_v1DataSet7 = new GUI.QLBH_v1DataSet7();
@@ -82,9 +82,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ibImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkUnit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet7)).BeginInit();
@@ -131,7 +131,7 @@
             0,
             0,
             0});
-            this.speRetail.Location = new System.Drawing.Point(102, 91);
+            this.speRetail.Location = new System.Drawing.Point(102, 88);
             this.speRetail.Name = "speRetail";
             this.speRetail.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -197,7 +197,7 @@
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(17, 94);
+            this.labelControl9.Location = new System.Drawing.Point(17, 91);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(57, 13);
             this.labelControl9.TabIndex = 16;
@@ -287,19 +287,11 @@
             this.groupControl2.TabIndex = 37;
             this.groupControl2.Text = "Trade information";
             // 
-            // ibImg
-            // 
-            this.ibImg.Location = new System.Drawing.Point(282, 124);
-            this.ibImg.Name = "ibImg";
-            this.ibImg.Size = new System.Drawing.Size(235, 149);
-            this.ibImg.TabIndex = 14;
-            this.ibImg.Text = "svgImageBox1";
-            // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.pictureEdit1);
             this.groupControl1.Controls.Add(this.lkUnit);
             this.groupControl1.Controls.Add(this.lkCatergory);
-            this.groupControl1.Controls.Add(this.ibImg);
             this.groupControl1.Controls.Add(this.speCurr_Inventory);
             this.groupControl1.Controls.Add(this.speMin_Inventory);
             this.groupControl1.Controls.Add(this.labelControl7);
@@ -318,9 +310,20 @@
             this.groupControl1.TabIndex = 36;
             this.groupControl1.Text = "Information";
             // 
+            // pictureEdit1
+            // 
+            this.pictureEdit1.Location = new System.Drawing.Point(276, 121);
+            this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.ErrorImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("pictureEdit1.Properties.ErrorImageOptions.Image")));
+            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.pictureEdit1.Size = new System.Drawing.Size(241, 165);
+            this.pictureEdit1.TabIndex = 38;
+            this.pictureEdit1.Click += new System.EventHandler(this.pictureEdit1_Click);
+            // 
             // lkUnit
             // 
-            this.lkUnit.Location = new System.Drawing.Point(102, 121);
+            this.lkUnit.Location = new System.Drawing.Point(114, 121);
             this.lkUnit.Name = "lkUnit";
             this.lkUnit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -342,14 +345,14 @@
             // 
             // lkCatergory
             // 
-            this.lkCatergory.Location = new System.Drawing.Point(102, 39);
+            this.lkCatergory.Location = new System.Drawing.Point(114, 43);
             this.lkCatergory.Name = "lkCatergory";
             this.lkCatergory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lkCatergory.Properties.DataSource = this.catergoriesBindingSource;
-            this.lkCatergory.Properties.DisplayMember = "Name";
-            this.lkCatergory.Properties.ValueMember = "ID";
-            this.lkCatergory.Size = new System.Drawing.Size(415, 20);
+            this.lkCatergory.Properties.DisplayMember = "CatName";
+            this.lkCatergory.Properties.ValueMember = "CatID";
+            this.lkCatergory.Size = new System.Drawing.Size(403, 20);
             this.lkCatergory.TabIndex = 36;
             // 
             // catergoriesBindingSource
@@ -369,7 +372,7 @@
             0,
             0,
             0});
-            this.speCurr_Inventory.Location = new System.Drawing.Point(102, 198);
+            this.speCurr_Inventory.Location = new System.Drawing.Point(114, 198);
             this.speCurr_Inventory.Name = "speCurr_Inventory";
             this.speCurr_Inventory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -390,7 +393,7 @@
             0,
             0,
             0});
-            this.speMin_Inventory.Location = new System.Drawing.Point(102, 173);
+            this.speMin_Inventory.Location = new System.Drawing.Point(114, 173);
             this.speMin_Inventory.Name = "speMin_Inventory";
             this.speMin_Inventory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -406,7 +409,7 @@
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(17, 205);
+            this.labelControl7.Location = new System.Drawing.Point(17, 201);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(90, 13);
             this.labelControl7.TabIndex = 11;
@@ -424,7 +427,7 @@
             // 
             // txtOrigin
             // 
-            this.txtOrigin.Location = new System.Drawing.Point(102, 147);
+            this.txtOrigin.Location = new System.Drawing.Point(114, 147);
             this.txtOrigin.Name = "txtOrigin";
             this.txtOrigin.Size = new System.Drawing.Size(156, 20);
             this.txtOrigin.TabIndex = 9;
@@ -447,9 +450,9 @@
             // 
             // txtPdName
             // 
-            this.txtPdName.Location = new System.Drawing.Point(102, 95);
+            this.txtPdName.Location = new System.Drawing.Point(114, 95);
             this.txtPdName.Name = "txtPdName";
-            this.txtPdName.Size = new System.Drawing.Size(415, 20);
+            this.txtPdName.Size = new System.Drawing.Size(403, 20);
             this.txtPdName.TabIndex = 5;
             // 
             // labelControl3
@@ -462,9 +465,9 @@
             // 
             // txtPdID
             // 
-            this.txtPdID.Location = new System.Drawing.Point(102, 69);
+            this.txtPdID.Location = new System.Drawing.Point(114, 69);
             this.txtPdID.Name = "txtPdID";
-            this.txtPdID.Size = new System.Drawing.Size(156, 20);
+            this.txtPdID.Size = new System.Drawing.Size(403, 20);
             this.txtPdID.TabIndex = 3;
             // 
             // labelControl2
@@ -477,7 +480,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(17, 42);
+            this.labelControl1.Location = new System.Drawing.Point(17, 46);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(53, 13);
             this.labelControl1.TabIndex = 0;
@@ -508,7 +511,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmUpdateProduct";
-            this.Text = "frmUpdateProduct";
+            this.Text = "Update product form";
             this.Load += new System.EventHandler(this.frmUpdateProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.suppliersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet8)).EndInit();
@@ -522,10 +525,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ibImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkUnit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet7)).EndInit();
@@ -564,7 +567,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private QLBH_v1DataSet8TableAdapters.SuppliersTableAdapter suppliersTableAdapter;
         private DevExpress.XtraEditors.GroupControl groupControl2;
-        private DevExpress.XtraEditors.SvgImageBox ibImg;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.LookUpEdit lkUnit;
         private System.Windows.Forms.BindingSource unitBindingSource;
@@ -585,5 +587,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton btnClose;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit1;
     }
 }

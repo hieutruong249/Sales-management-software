@@ -157,6 +157,7 @@ namespace GUI.Manager_Forms.Warehouse
 
         private void gcWarehoues_Click(object sender, EventArgs e)
         {
+            
             btnUpdate.Enabled = roleForm.f_Update;
             btnDelete.Enabled = roleForm.f_Delete;
 

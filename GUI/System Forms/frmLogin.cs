@@ -39,8 +39,9 @@ namespace GUI
                 {
                     var rol = usB.UsrRolFrm(us);
                     var lst = roleFormBUS.GetListRole(rol.RoleId);
-                    foreach(var rolFrm in lst)
+                    foreach (var rolFrm in lst)
                     {
+                        
                         GlobalVar.dicmyRoleForm.Add(rolFrm.FormID,rolFrm);
                     }
 

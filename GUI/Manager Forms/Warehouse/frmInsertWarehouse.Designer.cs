@@ -82,7 +82,7 @@
             this.txtDescription.Location = new System.Drawing.Point(71, 140);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(275, 20);
-            this.txtDescription.TabIndex = 18;
+            this.txtDescription.TabIndex = 8;
             // 
             // labelControl7
             // 
@@ -91,7 +91,6 @@
             this.labelControl7.Size = new System.Drawing.Size(42, 13);
             this.labelControl7.TabIndex = 13;
             this.labelControl7.Text = "Contact:";
-            this.labelControl7.Click += new System.EventHandler(this.labelControl7_Click);
             // 
             // labelControl6
             // 
@@ -106,7 +105,7 @@
             this.txtAddress.Location = new System.Drawing.Point(71, 61);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(275, 20);
-            this.txtAddress.TabIndex = 12;
+            this.txtAddress.TabIndex = 5;
             // 
             // labelControl5
             // 
@@ -121,7 +120,7 @@
             this.txtEmail.Location = new System.Drawing.Point(71, 115);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(275, 20);
-            this.txtEmail.TabIndex = 10;
+            this.txtEmail.TabIndex = 7;
             // 
             // labelControl4
             // 
@@ -138,7 +137,7 @@
             this.txtPhone.Properties.Mask.EditMask = "(999) 000-0000";
             this.txtPhone.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.txtPhone.Size = new System.Drawing.Size(275, 20);
-            this.txtPhone.TabIndex = 8;
+            this.txtPhone.TabIndex = 6;
             // 
             // lbAddress
             // 
@@ -161,7 +160,7 @@
             this.txtName.Location = new System.Drawing.Point(79, 56);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(267, 20);
-            this.txtName.TabIndex = 4;
+            this.txtName.TabIndex = 2;
             // 
             // labelControl1
             // 
@@ -175,8 +174,8 @@
             // 
             this.txtID.Location = new System.Drawing.Point(79, 30);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(166, 20);
-            this.txtID.TabIndex = 2;
+            this.txtID.Size = new System.Drawing.Size(267, 20);
+            this.txtID.TabIndex = 0;
             // 
             // groupControl1
             // 
@@ -202,7 +201,7 @@
             this.lkManager.Properties.DisplayMember = "ID";
             this.lkManager.Properties.ValueMember = "ID";
             this.lkManager.Size = new System.Drawing.Size(267, 20);
-            this.lkManager.TabIndex = 6;
+            this.lkManager.TabIndex = 3;
             // 
             // staffsBindingSource
             // 
@@ -237,7 +236,7 @@
             this.txtContact.Location = new System.Drawing.Point(71, 35);
             this.txtContact.Name = "txtContact";
             this.txtContact.Size = new System.Drawing.Size(275, 20);
-            this.txtContact.TabIndex = 19;
+            this.txtContact.TabIndex = 4;
             // 
             // btnSave
             // 
@@ -245,7 +244,7 @@
             this.btnSave.Location = new System.Drawing.Point(179, 327);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 36;
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -255,7 +254,7 @@
             this.btnClose.Location = new System.Drawing.Point(297, 327);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 37;
+            this.btnClose.TabIndex = 10;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 

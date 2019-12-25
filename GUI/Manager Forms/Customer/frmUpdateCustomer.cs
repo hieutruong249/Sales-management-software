@@ -36,9 +36,21 @@ namespace GUI.Manager_Forms.Customer
             customer.Bank = txtBank.Text;
             customer.Area = lkArea.EditValue.ToString();
             customer.Discount = float.Parse(txtDiscount.EditValue.ToString());
+            try
+            {
+                CustomerBUS customerBUS = new CustomerBUS();
+                if (customerBUS.UpdateCustomer(customer) > 0)
+                {
+                    MessageBox.Show("Insert susscessfully!!");
+                }
 
-            CustomerBUS customerBUS = new CustomerBUS();
-            customerBUS.UpdateCustomer(customer);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                MessageBox.Show("Insert Fail!!");
+
+            }
         }
 
         private void btnInserArea_Click(object sender, EventArgs e)
@@ -54,6 +66,9 @@ namespace GUI.Manager_Forms.Customer
 
         private void frmUpdateCustomer_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'qLBH_v1DataSet1.Areas' table. You can move, or remove it, as needed.
+            this.areasTableAdapter.Fill(this.qLBH_v1DataSet1.Areas);
+
             txtID.Text = customer.CustomerID;
             txtName.Text = customer.CustomerName;
             txtAddress.Text = customer.Address;

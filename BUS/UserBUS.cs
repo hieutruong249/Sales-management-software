@@ -16,8 +16,8 @@ namespace BUS
         public int InsertUser(User us)
         {
             us.Password = GetMD5(GetMD5(us.Password) + GetMD5(us.Username));
-            string[] date = us.DoB.Split('/');
-            us.DoB = date[1] + "/" + date[0] + "/" + date[2];
+            //string[] date = us.DoB.Split('/');
+            //us.DoB = date[1] + "/" + date[0] + "/" + date[2];
             return usD.InsertUser(us);
         }
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUpdateCustomer));
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnInserArea = new DevExpress.XtraEditors.SimpleButton();
@@ -51,6 +52,9 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.txtDiscount = new DevExpress.XtraEditors.TextEdit();
             this.lkArea = new DevExpress.XtraEditors.LookUpEdit();
+            this.areasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qLBH_v1DataSet1 = new GUI.QLBH_v1DataSet1();
+            this.areasTableAdapter = new GUI.QLBH_v1DataSet1TableAdapters.AreasTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.txtBank.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAccBank.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).BeginInit();
@@ -62,6 +66,8 @@
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkArea.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.areasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -158,7 +164,6 @@
             this.txtPhone.Location = new System.Drawing.Point(79, 108);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Properties.Mask.EditMask = "(999) 000-0000";
-            this.txtPhone.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Simple;
             this.txtPhone.Size = new System.Drawing.Size(166, 20);
             this.txtPhone.TabIndex = 4;
             // 
@@ -259,9 +264,26 @@
             this.lkArea.Name = "lkArea";
             this.lkArea.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lkArea.Properties.DataSource = this.areasBindingSource;
+            this.lkArea.Properties.DisplayMember = "Name";
             this.lkArea.Properties.NullText = "[Choose a area...]";
+            this.lkArea.Properties.ValueMember = "ID";
             this.lkArea.Size = new System.Drawing.Size(151, 20);
             this.lkArea.TabIndex = 2;
+            // 
+            // areasBindingSource
+            // 
+            this.areasBindingSource.DataMember = "Areas";
+            this.areasBindingSource.DataSource = this.qLBH_v1DataSet1;
+            // 
+            // qLBH_v1DataSet1
+            // 
+            this.qLBH_v1DataSet1.DataSetName = "QLBH_v1DataSet1";
+            this.qLBH_v1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // areasTableAdapter
+            // 
+            this.areasTableAdapter.ClearBeforeFill = true;
             // 
             // frmUpdateCustomer
             // 
@@ -289,6 +311,8 @@
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkArea.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.areasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBH_v1DataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -317,5 +341,8 @@
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.LookUpEdit lkArea;
         private DevExpress.XtraEditors.TextEdit txtDiscount;
+        private QLBH_v1DataSet1 qLBH_v1DataSet1;
+        private System.Windows.Forms.BindingSource areasBindingSource;
+        private QLBH_v1DataSet1TableAdapters.AreasTableAdapter areasTableAdapter;
     }
 }

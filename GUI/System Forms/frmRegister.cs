@@ -48,17 +48,24 @@ namespace GUI
                 us.Name = txtName.Text;
                 us.Email = txtEmail.Text;
                 us.DoB = txtDoB.Text;
-                MessageBox.Show(txtDoB.Text);
+                //MessageBox.Show(txtDoB.Text);
+                try 
+                {
+                    if (bll_User.InsertUser(us) != 0)
+                    {
+                        MessageBox.Show("Register successfully");
+                        this.Hide();
 
-                //if (bll_User.InsertUser(us) != 0)
-                //{
-                //    MessageBox.Show("Register successfully");
-                //}
-                //else
-                //{
-                //    MessageBox.Show("ERROR", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
+                        frmLogin frm = new frmLogin();
+                        frm.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("ERROR", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                    throw ex;
+                }
             }
         }
 

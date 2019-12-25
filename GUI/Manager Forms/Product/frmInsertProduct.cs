@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-
+using BUS;
 using DTO;
 
 namespace GUI
@@ -16,6 +16,8 @@ namespace GUI
     public partial class frmInsertProduct : DevExpress.XtraEditors.XtraForm
     {
         public static string str;
+        public static string path = "null";
+
         public void ReceiveTxtID(string textID)
         {
             str = textID;
@@ -37,6 +39,11 @@ namespace GUI
             // TODO: This line of code loads data into the 'qLBH_v1DataSet5.Warehouse' table. You can move, or remove it, as needed.
             this.warehouseTableAdapter.Fill(this.qLBH_v1DataSet5.Warehouse);
 
+            lkCatergory.EditValue = this.qLBH_v1DataSet6.Catergories.Rows[0][lkCatergory.Properties.ValueMember];
+            lkSupplier.EditValue = this.qLBH_v1DataSet8.Suppliers.Rows[0][lkSupplier.Properties.ValueMember];
+            lkWarehouse.EditValue = this.qLBH_v1DataSet5.Warehouse.Rows[0][lkWarehouse.Properties.ValueMember];
+            lkUnit.EditValue = this.qLBH_v1DataSet7.Unit.Rows[0][lkUnit.Properties.ValueMember];
+
             txtPdID.Text = str;
 
         }
@@ -51,19 +58,36 @@ namespace GUI
             Products product = new Products();
             product.ProductID = txtPdID.Text;
             product.ProductName = txtPdName.Text;
-            product.CatergoryID = lkCatergory.Text;
-            product.WarehouseID = txtPdID.Text;
-            product.UnitID = txtPdID.Text;
-            product.MinInventory = int.Parse(speMin_Inventory.Text);
-            product.CurrInventory = int.Parse(speCurr_Inventory.Text);
+            product.CatergoryID = lkCatergory.EditValue.ToString();
+            product.WarehouseID = lkWarehouse.EditValue.ToString();
+            product.UnitID = lkUnit.EditValue.ToString();
+            product.MinInventory = int.Parse(speMin_Inventory.EditValue.ToString());
+            product.CurrInventory = int.Parse(speCurr_Inventory.EditValue.ToString());
             product.Origin = txtOrigin.Text;
-            product.Supplier = lkSupplier.Text;
-            product.Purchase = double.Parse(spePurchase.Text);
-            product.Retail = double.Parse(speRetail.Text);
-            product.Wholesale = double.Parse(speWholesale.Text);
-            product.Image = null;
+            product.Supplier = lkSupplier.EditValue.ToString();
+            product.Purchase = double.Parse(spePurchase.EditValue.ToString());
+            product.Retail = double.Parse(speRetail.EditValue.ToString());
+            product.Wholesale = double.Parse(speWholesale.EditValue.ToString());
+            product.Image = path;
 
-            MessageBox.Show(product.Purchase.ToString());
+            try
+            {
+                ProductBUS bus = new ProductBUS();
+                if (bus.InsertProduct(product) > 0)
+                {
+                    MessageBox.Show("Insert successfully!!!");
+
+                    DataTable data = new DataTable();
+                    data = bus.ShowProducts();
+                    txtPdID.Text = FindNextID(data);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                MessageBox.Show("Insert Fail!!!");
+
+            }
         }
 
         private void pictureEdit1_Click(object sender, EventArgs e)
@@ -71,18 +95,29 @@ namespace GUI
             OpenFileDialog fDialog = new OpenFileDialog();
             fDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
 
-            //AreasBUS categoryBUS = new AreasBUS();
             if (fDialog.ShowDialog() == DialogResult.OK)
             {
                 System.IO.FileInfo fInfo = new System.IO.FileInfo(fDialog.FileName);
-                string path = fInfo.DirectoryName + "\\" + fInfo.Name;
-                pictureEdit1.Image = Image.FromFile(path); ;
-                //MessageBox.Show(path);
-                //DataTable data = new DataTable();
-                //gcSuppliers.DataSource = categoryBUS.ImportFormExcel("Sheet1", path);
-
+                path = fInfo.DirectoryName + "\\" + fInfo.Name;
+                pictureEdit1.Image = Image.FromFile(path); 
 
             }
+        }
+
+        public string FindNextID(DataTable dtbl)
+        {
+            string txtID = null;
+            if (dtbl.Rows.Count > 0)
+            {
+                string ma = dtbl.Rows[dtbl.Rows.Count - 1]["ProductID"].ToString();
+                int lastIndex = int.Parse(ma.Substring(2)) + 1;
+                txtID = "SP" + lastIndex.ToString("00000");
+            }
+            else
+            {
+                txtID = "SP00001";
+            }
+            return txtID;
         }
     }
 }

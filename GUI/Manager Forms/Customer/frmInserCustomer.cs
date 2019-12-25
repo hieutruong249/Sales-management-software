@@ -44,9 +44,8 @@ namespace GUI
             this.areasTableAdapter.Fill(this.qLBH_v1DataSet1.Areas);
 
             lkArea.EditValue = this.qLBH_v1DataSet1.Areas.Rows[0][lkArea.Properties.ValueMember];
-
-
             txtID.Text = str;
+            txtDiscount.EditValue = "0";
 
         }
 
@@ -63,8 +62,21 @@ namespace GUI
             customers.AccountBank = txtAccBank.Text;
             customers.Discount = float.Parse(txtDiscount.EditValue.ToString());
 
-            CustomerBUS customerBUS = new CustomerBUS();
-            customerBUS.InsertCustomer(customers);
+            try
+            {
+                CustomerBUS customerBUS = new CustomerBUS();
+                if (customerBUS.InsertCustomer(customers) > 0)
+                {
+                    MessageBox.Show("Insert Successfull!!");
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                MessageBox.Show("Insert fail!!");
+            }
 
         }
 

@@ -163,11 +163,13 @@ namespace GUI.Manager_Forms.Product
             try
             {
                 var rowHandle = gridView1.FocusedRowHandle;
-                product.ProductID = gridView1.GetRowCellValue(rowHandle, "ID").ToString();
-                product.ProductName = gridView1.GetRowCellValue(rowHandle, "Name").ToString();
+                product.ProductID = gridView1.GetRowCellValue(rowHandle, "ProductID").ToString();
+                product.ProductName = gridView1.GetRowCellValue(rowHandle, "ProductName").ToString();
                 product.CatergoryID = gridView1.GetRowCellValue(rowHandle, "CatergoryID").ToString();
                 product.WarehouseID = gridView1.GetRowCellValue(rowHandle, "WarehouseID").ToString();
-                product.UnitID = gridView1.GetRowCellValue(rowHandle, "Origin").ToString();
+                product.UnitID = gridView1.GetRowCellValue(rowHandle, "UnitID").ToString();
+                product.Origin = gridView1.GetRowCellValue(rowHandle, "Origin").ToString();
+
                 product.MinInventory = int.Parse(gridView1.GetRowCellValue(rowHandle, "MinInventory").ToString());
                 product.CurrInventory = int.Parse(gridView1.GetRowCellValue(rowHandle, "CurrInventory").ToString());
                 product.Supplier = gridView1.GetRowCellValue(rowHandle, "Supplier").ToString();

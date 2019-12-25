@@ -17,5 +17,11 @@ namespace GUI.Business.Collect_Monney
         {
             InitializeComponent();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Parent.Controls.Remove(this);
+
+        }
     }
 }

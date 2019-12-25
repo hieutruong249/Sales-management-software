@@ -301,7 +301,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmInserCustomer";
-            this.Text = "InserCustomer form";
+            this.Text = "Insert customer form";
             this.Load += new System.EventHandler(this.frmInserCustomer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
