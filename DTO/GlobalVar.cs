@@ -10,5 +10,6 @@ namespace DTO
     {
         public static Dictionary<int,RoleForm> dicmyRoleForm = new Dictionary<int,RoleForm>();
         public static string _username = null;
+        public static string namePC = null;
     }
 }

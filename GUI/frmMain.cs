@@ -130,6 +130,7 @@ namespace GUI
         private void frmMain_Load(object sender, EventArgs e)
         {
             lbNamePC.Caption = SystemInformation.ComputerName;
+            GlobalVar.namePC = lbNamePC.Caption;
             if (GlobalVar._username != null)
             {
                 lbUsername.Caption = GlobalVar._username;
@@ -262,6 +263,11 @@ namespace GUI
         {
             frmReportWarehouse frm = new frmReportWarehouse();
             ShowForm(frm);
+        }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Application.Exit();
         }
     }
         

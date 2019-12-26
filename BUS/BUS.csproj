@@ -47,9 +47,11 @@
     <Compile Include="CustomerBUS.cs" />
     <Compile Include="ExRateBUS.cs" />
     <Compile Include="FatherBUS.cs" />
+    <Compile Include="HistoryBUS.cs" />
     <Compile Include="PartsBUS.cs" />
     <Compile Include="PermisionFormBUS.cs" />
     <Compile Include="ProductBUS.cs" />
+    <Compile Include="ReportBUS.cs" />
     <Compile Include="RoleFormBUS.cs" />
     <Compile Include="SellProductBUS.cs" />
     <Compile Include="StaffBUS.cs" />

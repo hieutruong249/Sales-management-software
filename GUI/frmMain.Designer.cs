@@ -69,6 +69,7 @@
             this.lbdate = new DevExpress.XtraBars.BarStaticItem();
             this.lbTime = new DevExpress.XtraBars.BarStaticItem();
             this.lbNameDB = new DevExpress.XtraBars.BarStaticItem();
+            this.btnReportSale = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -87,7 +88,8 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
-            this.btnReportSale = new DevExpress.XtraBars.BarButtonItem();
+            this.Update = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
@@ -137,9 +139,10 @@
             this.lbdate,
             this.lbTime,
             this.lbNameDB,
-            this.btnReportSale});
+            this.btnReportSale,
+            this.barButtonItem1});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 48;
+            this.ribbon.MaxItemId = 49;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage4,
@@ -484,6 +487,14 @@
             this.lbNameDB.ItemAppearance.Normal.Options.UseForeColor = true;
             this.lbNameDB.Name = "lbNameDB";
             // 
+            // btnReportSale
+            // 
+            this.btnReportSale.Caption = "Report sale";
+            this.btnReportSale.Id = 47;
+            this.btnReportSale.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnReportSale.ImageOptions.Image")));
+            this.btnReportSale.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnReportSale.ImageOptions.LargeImage")));
+            this.btnReportSale.Name = "btnReportSale";
+            // 
             // ribbonPage4
             // 
             this.ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -585,7 +596,8 @@
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.ribbonPageGroup12});
+            this.ribbonPageGroup12,
+            this.Update});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Help";
             // 
@@ -625,13 +637,20 @@
             this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
             this.tabbedView1});
             // 
-            // btnReportSale
+            // Update
             // 
-            this.btnReportSale.Caption = "Report sale";
-            this.btnReportSale.Id = 47;
-            this.btnReportSale.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnReportSale.ImageOptions.Image")));
-            this.btnReportSale.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnReportSale.ImageOptions.LargeImage")));
-            this.btnReportSale.Name = "btnReportSale";
+            this.Update.ItemLinks.Add(this.barButtonItem1);
+            this.Update.Name = "Update";
+            this.Update.Text = "Update";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Update";
+            this.barButtonItem1.Id = 48;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // frmMain
             // 
@@ -716,5 +735,7 @@
         private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
         private DevExpress.XtraBars.BarButtonItem btnReportSale;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup Update;
     }
 }

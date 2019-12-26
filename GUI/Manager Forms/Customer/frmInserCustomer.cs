@@ -51,38 +51,83 @@ namespace GUI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Customers customers = new Customers();
-            customers.CustomerID = txtID.Text;
-            customers.Phone = txtPhone.Text;
-            customers.CustomerName = txtName.Text;
-            customers.Address = txtAddress.Text;
-            customers.Email = txtEmail.Text;
-            customers.Bank = txtBank.Text;
-            customers.Area = lkArea.EditValue.ToString();
-            customers.AccountBank = txtAccBank.Text;
-            customers.Discount = float.Parse(txtDiscount.EditValue.ToString());
-
-            try
+            if (checkFields())
             {
-                CustomerBUS customerBUS = new CustomerBUS();
-                if (customerBUS.InsertCustomer(customers) > 0)
+                Customers customers = new Customers();
+                customers.CustomerID = txtID.Text;
+                customers.Phone = txtPhone.Text;
+                customers.CustomerName = txtName.Text;
+                customers.Address = txtAddress.Text;
+                customers.Email = txtEmail.Text;
+                customers.Bank = txtBank.Text;
+                customers.Area = lkArea.EditValue.ToString();
+                customers.AccountBank = txtAccBank.Text;
+                customers.Discount = float.Parse(txtDiscount.EditValue.ToString());
+
+                try
                 {
-                    MessageBox.Show("Insert Successfull!!");
+                    CustomerBUS customerBUS = new CustomerBUS();
+                    if (customerBUS.InsertCustomer(customers) > 0)
+                    {
+                        MessageBox.Show("Insert Successfull!!");
+
+                        DataTable data = new DataTable();
+                        data = customerBUS.ShowCustomer();
+                        txtID.Text = FindNextID(data);
+                    }
                 }
-
-
+                catch (Exception ex)
+                {
+                    //throw ex;
+                    MessageBox.Show("Insert fail!!");
+                }
             }
-            catch (Exception ex)
-            {
-                throw ex;
-                MessageBox.Show("Insert fail!!");
-            }
-
         }
 
         private void btnClose_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+        public bool checkFields()
+        {
+            var name = new RequiredFieldValidator();
+            name.ControlToValidate = txtName;
+
+            if (!name.Validate())
+            {
+                txtName.Focus();
+                return false;
+            }
+            //else if (!Password.Validate())
+            //{
+            //    txtPassword.Focus();
+            //    return false;
+            //}
+
+            return true;
+        }
+
+        public string FindNextID(DataTable dtbl)
+        {
+            string txtID = null;
+            try
+            {
+                if (dtbl.Rows.Count > 0)
+                {
+                    string ma = dtbl.Rows[dtbl.Rows.Count - 1]["CustomerID"].ToString();
+                    int lastIndex = int.Parse(ma.Substring(2)) + 1;
+                    txtID = "KH" + lastIndex.ToString("00000");
+                }
+                else
+                {
+                    txtID = "KH00001";
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return txtID;
         }
     }
 }

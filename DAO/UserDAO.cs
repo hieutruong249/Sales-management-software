@@ -25,7 +25,7 @@ namespace DAO
                         new SqlParameter { ParameterName = "@Name", Value = us.Name },
                         new SqlParameter { ParameterName = "@Email", Value = us.Email },
                         new SqlParameter { ParameterName = "@DoB", Value = us.DoB },
-                        new SqlParameter { ParameterName = "@Pems", Value = 0 }
+                        new SqlParameter { ParameterName = "@Pems", Value = 4 }
                     );
                 if (nRow > 0)
                     return 1;

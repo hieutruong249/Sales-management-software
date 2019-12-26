@@ -9,7 +9,7 @@ using DTO;
 
 namespace BUS
 {
-    public class UnitBUS
+    public class UnitBUS : FatherBUS
     {
         UnitDAO unitDAO = new UnitDAO();
         public int InsertUnit(Units u)

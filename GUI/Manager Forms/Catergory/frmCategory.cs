@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DTO;
 using BUS;
-//using Syncfusion.XlsIO;
+using Syncfusion.XlsIO;
 
 namespace GUI.Manager_Forms.Catergory
 {
@@ -19,6 +19,8 @@ namespace GUI.Manager_Forms.Catergory
         public static DataTable dtbl = new DataTable();
         public static Categories categorie = new Categories();
         public static CategoryBUS categoryBUS = new CategoryBUS();
+        public static int FormID = 6;
+        public static RoleForm roleForm = GlobalVar.dicmyRoleForm[FormID];
         public delegate void SendData(Categories cat);
         public delegate void SendTxtID(String str);
 
@@ -51,20 +53,31 @@ namespace GUI.Manager_Forms.Catergory
         public frmCategory()
         {
             InitializeComponent();
+            int FormID = int.Parse(this.Tag.ToString());
+            RoleForm roleForm = GlobalVar.dicmyRoleForm[FormID];
+
         }
 
         private void frmCategory_Load(object sender, EventArgs e)
         {
             dtbl = categoryBUS.ShowCatergories();
             gcCategories.DataSource = dtbl;
-            //int FormID = int.Parse(this.Tag.ToString());
-            //RoleForm roleForm = GlobalVar.dicmyRoleForm[FormID];
 
-            //btnInsert.Enabled = GlobalVar.myRoleForm.f_Insert;
-            btnInsert.Enabled = Enabled;
+            btnInsert.Enabled = roleForm.f_Insert;
 
             //send data to insert form
             SendTextID2Form();
+
+            //Record history
+            string time = DateTime.Now.ToString();
+            try
+            {
+                categoryBUS.RecordHistory(GlobalVar._username, GlobalVar.namePC, time, this.Text, "Seen", "NULL");
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -85,8 +98,8 @@ namespace GUI.Manager_Forms.Catergory
         {
             //btnUpdate.Enabled = GlobalVar.myRoleForm.f_Update;
             //btnDelete.Enabled = GlobalVar.myRoleForm.f_Delete;
-            btnUpdate.Enabled = Enabled;
-            btnDelete.Enabled = Enabled;
+            btnUpdate.Enabled = roleForm.f_Update;
+            btnDelete.Enabled = roleForm.f_Delete;
   
             var rowHandle = gridView1.FocusedRowHandle;
             categorie.CategoryID = gridView1.GetRowCellValue(rowHandle, "CatID").ToString();
@@ -128,33 +141,33 @@ namespace GUI.Manager_Forms.Catergory
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            ////Create an instance of ExcelEngine
-            //using (ExcelEngine excelEngine = new ExcelEngine())
-            //{
-            //    //Initialize Application
-            //    IApplication application = excelEngine.Excel;
+            //Create an instance of ExcelEngine
+            using (ExcelEngine excelEngine = new ExcelEngine())
+            {
+                //Initialize Application
+                IApplication application = excelEngine.Excel;
 
-            //    //Set the default application version as Excel 2016
-            //    application.DefaultVersion = ExcelVersion.Excel2016;
+                //Set the default application version as Excel 2016
+                application.DefaultVersion = ExcelVersion.Excel2016;
 
-            //    //Create a new workbook
-            //    IWorkbook workbook = application.Workbooks.Create(1);
+                //Create a new workbook
+                IWorkbook workbook = application.Workbooks.Create(1);
 
-            //    //Access first worksheet from the workbook instance
-            //    IWorksheet worksheet = workbook.Worksheets[0];
+                //Access first worksheet from the workbook instance
+                IWorksheet worksheet = workbook.Worksheets[0];
 
-            //    //Exporting DataTable to worksheet
-            //    CategoryBUS categoryBUS = new CategoryBUS();
-            //    DataTable dataTable = new DataTable();
-            //    dataTable = categoryBUS.ShowCatergories();
-            //    worksheet.ImportDataTable(dataTable, true, 1, 1);
-            //    worksheet.UsedRange.AutofitColumns();
+                //Exporting DataTable to worksheet
+                CategoryBUS categoryBUS = new CategoryBUS();
+                DataTable dataTable = new DataTable();
+                dataTable = categoryBUS.ShowCatergories();
+                worksheet.ImportDataTable(dataTable, true, 1, 1);
+                worksheet.UsedRange.AutofitColumns();
 
-            //    //Save the workbook to disk in xlsx format
-            //    workbook.SaveAs("Output.xlsx");
+                //Save the workbook to disk in xlsx format
+                workbook.SaveAs("Output.xlsx");
 
-            //    MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug");
-            //}
+                MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug");
+            }
         }
 
         private void btnImport_Click(object sender, EventArgs e)

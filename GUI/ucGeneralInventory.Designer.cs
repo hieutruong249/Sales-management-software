@@ -55,6 +55,7 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkWarehouses.Properties)).BeginInit();
@@ -70,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -145,6 +147,7 @@
             this.lkWarehouses.Properties.ValueMember = "ID";
             this.lkWarehouses.Size = new System.Drawing.Size(182, 20);
             this.lkWarehouses.TabIndex = 0;
+            this.lkWarehouses.EditValueChanged += new System.EventHandler(this.lkWarehouses_EditValueChanged);
             // 
             // warehouseBindingSource
             // 
@@ -223,12 +226,15 @@
             this.gridColumn7,
             this.gridColumn8});
             this.gridView1.GridControl = this.gcItems;
+            this.gridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "", null, "")});
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowFooter = true;
             // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Product ID";
+            this.gridColumn1.FieldName = "ProductID";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
@@ -236,6 +242,7 @@
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Product name";
+            this.gridColumn2.FieldName = "ProductName";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
@@ -243,6 +250,7 @@
             // gridColumn3
             // 
             this.gridColumn3.Caption = "Unit";
+            this.gridColumn3.FieldName = "UnitID";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
@@ -250,15 +258,17 @@
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Amount";
+            this.gridColumn4.FieldName = "CurrInventory";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "", "{0:0.##}")});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "CurrInventory", "{0:0.##}")});
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
             // 
             // gridColumn5
             // 
             this.gridColumn5.Caption = "Price";
+            this.gridColumn5.FieldName = "Purchase";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
@@ -266,15 +276,17 @@
             // gridColumn6
             // 
             this.gridColumn6.Caption = "Total";
+            this.gridColumn6.FieldName = "Total";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "", "{0:0.##}")});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 5;
             // 
             // gridColumn7
             // 
             this.gridColumn7.Caption = "Category";
+            this.gridColumn7.FieldName = "CatergoryID";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 6;
@@ -282,6 +294,7 @@
             // gridColumn8
             // 
             this.gridColumn8.Caption = "Warehouse";
+            this.gridColumn8.FieldName = "WarehouseID";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 7;
@@ -330,6 +343,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -361,5 +375,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
     }
 }

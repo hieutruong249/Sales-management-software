@@ -43,40 +43,43 @@ namespace GUI
             this.areasTableAdapter.Fill(this.qLBH_v1DataSet4.Areas);
             lkArea.EditValue = this.qLBH_v1DataSet4.Areas.Rows[0][lkArea.Properties.ValueMember];
 
-
             txtID.Text = str;
 
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Suppliers suppliers = new Suppliers();
-            suppliers.SupplierID = txtID.Text;
-            suppliers.SupplierName = txtName.Text;
-            suppliers.Address = txtAddress.Text;
-            suppliers.Phone = txtPhone.Text;
-            suppliers.Email = txtEmail.Text;
-            suppliers.Bank = txtBank.Text;
-            suppliers.Area = lkArea.EditValue.ToString();
-            suppliers.Discount = float.Parse(speDiscount.Value.ToString());
-            try
+            if (checkFields())
             {
-                SupplierBUS supplierBUS = new SupplierBUS();
-                if(supplierBUS.InsertSupplier(suppliers) > 0)
+                Suppliers suppliers = new Suppliers();
+                suppliers.SupplierID = txtID.Text;
+                suppliers.SupplierName = txtName.Text;
+                suppliers.Address = txtAddress.Text;
+                suppliers.Phone = txtPhone.Text;
+                suppliers.Email = txtEmail.Text;
+                suppliers.Bank = txtBank.Text;
+                suppliers.Area = lkArea.EditValue.ToString();
+                suppliers.AccountBank = txtAccBank.Text;
+                suppliers.Discount = float.Parse(speDiscount.Value.ToString());
+                try
                 {
-                    MessageBox.Show("Insert susscessfully!!!");
+                    SupplierBUS supplierBUS = new SupplierBUS();
+                    if (supplierBUS.InsertSupplier(suppliers) > 0)
+                    {
+                        MessageBox.Show("Insert susscessfully!!!");
 
-                    DataTable data = new DataTable();
-                    data = supplierBUS.ShowSupplier();
-                    txtID.Text = FindNextID(data);
+                        DataTable data = new DataTable();
+                        data = supplierBUS.ShowSupplier();
+                        txtID.Text = FindNextID(data);
+                    }
+
                 }
+                catch (Exception ex)
+                {
+                    throw ex;
+                    MessageBox.Show("Insert fail!!!");
 
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-                //MessageBox.Show("Insert fail!!!");
-
+                }
             }
         }
         public string FindNextID(DataTable dtbl)
@@ -93,6 +96,19 @@ namespace GUI
                 txtID = "NCC00001";
             }
             return txtID;
+        }
+
+        public bool checkFields()
+        {
+            var name = new RequiredFieldValidator();
+            name.ControlToValidate = txtName;
+
+            if (!name.Validate())
+            {
+                txtName.Focus();
+                return false;
+            }
+            return true;
         }
     }
 }

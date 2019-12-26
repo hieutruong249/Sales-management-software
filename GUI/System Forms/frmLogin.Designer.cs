@@ -133,6 +133,7 @@
             this.Name = "frmLogin";
             this.Text = "Login form";
             this.Load += new System.EventHandler(this.XtraForm1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLogin_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUsername.Properties)).EndInit();
             this.ResumeLayout(false);

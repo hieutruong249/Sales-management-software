@@ -38,32 +38,36 @@ namespace GUI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Warehouses warehouses = new Warehouses();
-            warehouses.ID = txtID.Text;
-            warehouses.Name = txtName.Text;
-            warehouses.Manager = lkManager.EditValue.ToString();
-            warehouses.Contact = txtContact.Text;
-            warehouses.Address = txtAddress.Text;
-            warehouses.Phone = txtPhone.Text;
-            warehouses.Email = txtEmail.Text;
-            warehouses.Decription = txtDescription.Text;
-            try
+            if (checkFields())
             {
-                WarehouseBUS warehouseBUS = new WarehouseBUS();
-                if(warehouseBUS.InsertWarehouse(warehouses) > 0)
+                Warehouses warehouses = new Warehouses();
+                warehouses.ID = txtID.Text;
+                warehouses.Name = txtName.Text;
+                warehouses.Manager = lkManager.EditValue.ToString();
+                warehouses.Contact = txtContact.Text;
+                warehouses.Address = txtAddress.Text;
+                warehouses.Phone = txtPhone.Text;
+                warehouses.Email = txtEmail.Text;
+                warehouses.Decription = txtDescription.Text;
+                try
                 {
-                    MessageBox.Show("Insert successfully!!!");
+                    WarehouseBUS warehouseBUS = new WarehouseBUS();
+                    if (warehouseBUS.InsertWarehouse(warehouses) > 0)
+                    {
+                        MessageBox.Show("Insert successfully!!!");
 
-                    DataTable data = new DataTable();
-                    data = warehouseBUS.ShowWarehouses();
-                    txtID.Text = FindNextID(data);
+                        DataTable data = new DataTable();
+                        data = warehouseBUS.ShowWarehouses();
+                        txtID.Text = FindNextID(data);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Insert Fail!!!");
+                    throw ex;
                 }
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Insert Fail!!!");
-                throw ex;
             }
         }
 
@@ -87,6 +91,20 @@ namespace GUI
                 txtID = "K00001";
             }
             return txtID;
+        }
+
+        public bool checkFields()
+        {
+            var name = new RequiredFieldValidator();
+            name.ControlToValidate = txtName;
+
+            if (!name.Validate())
+            {
+                txtName.Focus();
+                return false;
+            }
+
+            return true;
         }
     }
 }

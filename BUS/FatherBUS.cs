@@ -15,5 +15,9 @@ namespace BUS
         {
             return fatherDAO.ImportFormExcel(sheetname,path);
         }
+        public int RecordHistory(string userName, string pc, string time, string business, string action, string obj)
+        {
+            return fatherDAO.RecordHistory(userName,pc,time,business,action,obj);
+        }
     }
 }

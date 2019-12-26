@@ -21,13 +21,14 @@ namespace GUI
         {
             InitializeComponent();
             this.CenterToScreen();
+            this.KeyPreview = true;
         }
 
         private void XtraForm1_Load(object sender, EventArgs e)
         {
 
         }
-
+       
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (checkFields())
@@ -41,8 +42,8 @@ namespace GUI
                     var lst = roleFormBUS.GetListRole(rol.RoleId);
                     foreach (var rolFrm in lst)
                     {
-                        
-                        GlobalVar.dicmyRoleForm.Add(rolFrm.FormID,rolFrm);
+
+                        GlobalVar.dicmyRoleForm.Add(rolFrm.FormID, rolFrm);
                     }
 
                     MessageBox.Show("Login successfully" + rol.RoleId);
@@ -57,6 +58,7 @@ namespace GUI
                     MessageBox.Show("ERROR", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+           
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -92,6 +94,17 @@ namespace GUI
             frmRegister frm = new frmRegister();
             this.Hide();
             frm.Show();
+        }
+
+        private void frmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.Focus();
+
+                //btnLogin_Click(new object(), new EventArgs());
+                btnLogin.PerformClick();
+            }
         }
     }
 }

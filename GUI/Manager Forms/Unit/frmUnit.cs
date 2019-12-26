@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using BUS;
 using DTO;
-//using Syncfusion.XlsIO;
+using Syncfusion.XlsIO;
 
 namespace GUI.Manager_Forms.Unit
 {
@@ -71,6 +71,17 @@ namespace GUI.Manager_Forms.Unit
 
             //send data to Insert form
             SendTextID2Form();
+
+            //Record history
+            string time = DateTime.Now.ToString();
+            try
+            {
+                unitBUS.RecordHistory(GlobalVar._username, GlobalVar.namePC, time, this.Text, "Seen", "NULL");
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void btnRefesh_Click(object sender, EventArgs e)
@@ -111,32 +122,32 @@ namespace GUI.Manager_Forms.Unit
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            //using (ExcelEngine excelEngine = new ExcelEngine())
-            //{
-            //    //Initialize Application
-            //    IApplication application = excelEngine.Excel;
+            using (ExcelEngine excelEngine = new ExcelEngine())
+            {
+                //Initialize Application
+                IApplication application = excelEngine.Excel;
 
-            //    //Set the default application version as Excel 2016
-            //    application.DefaultVersion = ExcelVersion.Excel2016;
+                //Set the default application version as Excel 2016
+                application.DefaultVersion = ExcelVersion.Excel2016;
 
-            //    //Create a new workbook
-            //    IWorkbook workbook = application.Workbooks.Create(1);
+                //Create a new workbook
+                IWorkbook workbook = application.Workbooks.Create(1);
 
-            //    //Access first worksheet from the workbook instance
-            //    IWorksheet worksheet = workbook.Worksheets[0];
+                //Access first worksheet from the workbook instance
+                IWorksheet worksheet = workbook.Worksheets[0];
 
-            //    //Exporting DataTable to worksheet
-            //    UnitBUS bus = new UnitBUS();
-            //    DataTable dataTable = new DataTable();
-            //    dataTable = bus.ShowUnit();
-            //    worksheet.ImportDataTable(dataTable, true, 1, 1);
-            //    worksheet.UsedRange.AutofitColumns();
+                //Exporting DataTable to worksheet
+                UnitBUS bus = new UnitBUS();
+                DataTable dataTable = new DataTable();
+                dataTable = bus.ShowUnit();
+                worksheet.ImportDataTable(dataTable, true, 1, 1);
+                worksheet.UsedRange.AutofitColumns();
 
-            //    //Save the workbook to disk in xlsx format
-            //    workbook.SaveAs("Output.xlsx");
+                //Save the workbook to disk in xlsx format
+                workbook.SaveAs("Output.xlsx");
 
-            //    MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug");
-            //}
+                MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug");
+            }
 
         }
 

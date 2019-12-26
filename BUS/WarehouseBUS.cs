@@ -9,7 +9,7 @@ using DTO;
 
 namespace BUS
 {
-    public class WarehouseBUS
+    public class WarehouseBUS : FatherBUS
     {
         WarehouseDAO warehouseDAO = new WarehouseDAO();
         public int InsertWarehouse(Warehouses wh)

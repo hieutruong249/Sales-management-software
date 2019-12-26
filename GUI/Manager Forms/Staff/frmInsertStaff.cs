@@ -47,29 +47,34 @@ namespace GUI.Manager_Forms.Staff
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            StaffBUS staffBUS = new StaffBUS();
-            Staffs staffs = new Staffs();
-            staffs.ID = txtID.Text;
-            staffs.Name = txtID.Text;
-            staffs.Phone = txtID.Text;
-            staffs.Address = txtID.Text;
-            staffs.Email = txtID.Text;
-            staffs.Position = txtID.Text;
-            staffs.Parts = lkParts.EditValue.ToString();
-            staffs.Manager = lkManager.EditValue.ToString();
-            try
-            {   if (staffBUS.InsertStaff(staffs) > 0)
-                {
-                    MessageBox.Show("Insert susscessfully!!!");
-
-                    DataTable data = new DataTable();
-                    data = staffBUS.ShowStaffs();
-                    txtID.Text = FindNextID(data);
-                }
-            }
-            catch(Exception ex)
+            if (checkFields())
             {
-                MessageBox.Show("Insert fail!!!");
+                StaffBUS staffBUS = new StaffBUS();
+                Staffs staffs = new Staffs();
+                staffs.ID = txtID.Text;
+                staffs.Name = txtID.Text;
+                staffs.Phone = txtID.Text;
+                staffs.Address = txtID.Text;
+                staffs.Email = txtID.Text;
+                staffs.Position = txtID.Text;
+                staffs.Parts = lkParts.EditValue.ToString();
+                staffs.Manager = lkManager.EditValue.ToString();
+                try
+                {
+                    if (staffBUS.InsertStaff(staffs) > 0)
+                    {
+                        MessageBox.Show("Insert susscessfully!!!");
+
+                        DataTable data = new DataTable();
+                        data = staffBUS.ShowStaffs();
+                        txtID.Text = FindNextID(data);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Insert fail!!!");
+                }
+
             }
         }
 
@@ -87,6 +92,20 @@ namespace GUI.Manager_Forms.Staff
                 txtID = "NV00001";
             }
             return txtID;
+        }
+
+        public bool checkFields()
+        {
+            var name = new RequiredFieldValidator();
+            name.ControlToValidate = txtName;
+
+            if (!name.Validate())
+            {
+                txtName.Focus();
+                return false;
+            }
+
+            return true;
         }
     }
 }

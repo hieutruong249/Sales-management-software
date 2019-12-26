@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using BUS;
 using DTO;
-//using Syncfusion.XlsIO;
+using Syncfusion.XlsIO;
 
 namespace GUI.Manager_Forms.Supplier
 {
@@ -73,16 +73,25 @@ namespace GUI.Manager_Forms.Supplier
 
         private void frmSupplier_Load(object sender, EventArgs e)
         {
-            int FormID = int.Parse(this.Tag.ToString());
-            RoleForm roleForm = GlobalVar.dicmyRoleForm[FormID];
-           // btnInsert.Enabled = roleForm.f_Insert;
+            btnInsert.Enabled = roleForm.f_Insert;
             btnExport.Enabled = roleForm.Export;
 
             dtbl = supplierBUS.ShowSupplier();
             gcSuppliers.DataSource = dtbl;
 
-            ////send data to insert form
+            //send data to insert form
             SendTextID2Form();
+
+            //Record history
+            string time = DateTime.Now.ToString();
+            try
+            {
+                supplierBUS.RecordHistory(GlobalVar._username, GlobalVar.namePC, time, this.Text, "Seen", "NULL");
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -116,8 +125,6 @@ namespace GUI.Manager_Forms.Supplier
         {
             btnUpdate.Enabled = roleForm.f_Update;
             btnDelete.Enabled = roleForm.f_Delete;
-            //btnUpdate.Enabled = Enabled;
-            //btnDelete.Enabled = Enabled;
             try
             {
                 var rowHandle = gridView1.FocusedRowHandle;
@@ -143,32 +150,32 @@ namespace GUI.Manager_Forms.Supplier
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            //using (ExcelEngine excelEngine = new ExcelEngine())
-            //{
-            //    //Initialize Application
-            //    IApplication application = excelEngine.Excel;
+            using (ExcelEngine excelEngine = new ExcelEngine())
+            {
+                //Initialize Application
+                IApplication application = excelEngine.Excel;
 
-            //    //Set the default application version as Excel 2016
-            //    application.DefaultVersion = ExcelVersion.Excel2016;
+                //Set the default application version as Excel 2016
+                application.DefaultVersion = ExcelVersion.Excel2016;
 
-            //    //Create a new workbook
-            //    IWorkbook workbook = application.Workbooks.Create(1);
+                //Create a new workbook
+                IWorkbook workbook = application.Workbooks.Create(1);
 
-            //    //Access first worksheet from the workbook instance
-            //    IWorksheet worksheet = workbook.Worksheets[0];
+                //Access first worksheet from the workbook instance
+                IWorksheet worksheet = workbook.Worksheets[0];
 
-            //    //Exporting DataTable to worksheet
-            //    SupplierBUS bus = new SupplierBUS();
-            //    DataTable dataTable = new DataTable();
-            //    dataTable = bus.ShowSupplier();
-            //    worksheet.ImportDataTable(dataTable, true, 1, 1);
-            //    worksheet.UsedRange.AutofitColumns();
+                //Exporting DataTable to worksheet
+                SupplierBUS bus = new SupplierBUS();
+                DataTable dataTable = new DataTable();
+                dataTable = bus.ShowSupplier();
+                worksheet.ImportDataTable(dataTable, true, 1, 1);
+                worksheet.UsedRange.AutofitColumns();
 
-            //    //Save the workbook to disk in xlsx format
-            //    workbook.SaveAs("Output.xlsx");
+                //Save the workbook to disk in xlsx format
+                workbook.SaveAs("Output.xlsx");
 
-            //    MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug");
-            //}
+                MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug");
+            }
         }
 
         private void btnImport_Click(object sender, EventArgs e)

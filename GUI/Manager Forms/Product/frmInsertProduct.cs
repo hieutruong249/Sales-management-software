@@ -55,39 +55,43 @@ namespace GUI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Products product = new Products();
-            product.ProductID = txtPdID.Text;
-            product.ProductName = txtPdName.Text;
-            product.CatergoryID = lkCatergory.EditValue.ToString();
-            product.WarehouseID = lkWarehouse.EditValue.ToString();
-            product.UnitID = lkUnit.EditValue.ToString();
-            product.MinInventory = int.Parse(speMin_Inventory.EditValue.ToString());
-            product.CurrInventory = int.Parse(speCurr_Inventory.EditValue.ToString());
-            product.Origin = txtOrigin.Text;
-            product.Supplier = lkSupplier.EditValue.ToString();
-            product.Purchase = double.Parse(spePurchase.EditValue.ToString());
-            product.Retail = double.Parse(speRetail.EditValue.ToString());
-            product.Wholesale = double.Parse(speWholesale.EditValue.ToString());
-            product.Image = path;
-
-            try
+            if (checkFields())
             {
-                ProductBUS bus = new ProductBUS();
-                if (bus.InsertProduct(product) > 0)
-                {
-                    MessageBox.Show("Insert successfully!!!");
+                Products product = new Products();
+                product.ProductID = txtPdID.Text;
+                product.ProductName = txtPdName.Text;
+                product.CatergoryID = lkCatergory.EditValue.ToString();
+                product.WarehouseID = lkWarehouse.EditValue.ToString();
+                product.UnitID = lkUnit.EditValue.ToString();
+                product.MinInventory = int.Parse(speMin_Inventory.EditValue.ToString());
+                product.CurrInventory = int.Parse(speCurr_Inventory.EditValue.ToString());
+                product.Origin = txtOrigin.Text;
+                product.Supplier = lkSupplier.EditValue.ToString();
+                product.Purchase = double.Parse(spePurchase.EditValue.ToString());
+                product.Retail = double.Parse(speRetail.EditValue.ToString());
+                product.Wholesale = double.Parse(speWholesale.EditValue.ToString());
+                product.Image = path;
 
-                    DataTable data = new DataTable();
-                    data = bus.ShowProducts();
-                    txtPdID.Text = FindNextID(data);
+                try
+                {
+                    ProductBUS bus = new ProductBUS();
+                    if (bus.InsertProduct(product) > 0)
+                    {
+                        MessageBox.Show("Insert successfully!!!");
+
+                        DataTable data = new DataTable();
+                        data = bus.ShowProducts();
+                        txtPdID.Text = FindNextID(data);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                    MessageBox.Show("Insert Fail!!!");
+
                 }
             }
-            catch (Exception ex)
-            {
-                throw ex;
-                MessageBox.Show("Insert Fail!!!");
 
-            }
         }
 
         private void pictureEdit1_Click(object sender, EventArgs e)
@@ -118,6 +122,19 @@ namespace GUI
                 txtID = "SP00001";
             }
             return txtID;
+        }
+
+        public bool checkFields()
+        {
+            var name = new RequiredFieldValidator();
+            name.ControlToValidate = txtPdName;
+
+            if (!name.Validate())
+            {
+                txtPdName.Focus();
+                return false;
+            }
+            return true;
         }
     }
 }

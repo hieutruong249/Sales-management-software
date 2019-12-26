@@ -10,7 +10,7 @@ using DTO;
 
 namespace BUS
 {
-    public class PartsBUS
+    public class PartsBUS : FatherBUS
     {
         PartsDAO partsDAO = new PartsDAO();
         public DataTable ShowParts()

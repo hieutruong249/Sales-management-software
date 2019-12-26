@@ -125,7 +125,7 @@ namespace GUI.Business.SaleProduct
         private void btnSave_Click(object sender, EventArgs e)
         {
             InsertBill();
-           // InsertBillDetail();
+            //InsertBillDetail();
         }
 
         public string FindNextID(DataTable dtbl)
@@ -281,7 +281,7 @@ namespace GUI.Business.SaleProduct
                     sp.Price = double.Parse(row["Price"].ToString());
                     sp.Amount = int.Parse(row["Count"].ToString());
                     sp.Total = double.Parse(row["Total"].ToString());
-                    sp.Amount = int.Parse(row["ExRate"].ToString());
+                    sp.ExRate = int.Parse(row["ExRate"].ToString());
                     sp.Total = double.Parse(row["Discount"].ToString());
 
                     if (bus.InsertBillSellProductDetail(sp) == 0)

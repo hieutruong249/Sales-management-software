@@ -47,11 +47,13 @@
     <Compile Include="CustomerDAO.cs" />
     <Compile Include="ExRateDAO.cs" />
     <Compile Include="FatherDAO.cs" />
+    <Compile Include="HistoryDAO.cs" />
     <Compile Include="PartsDAO.cs" />
     <Compile Include="PermissionFormDAO.cs" />
     <Compile Include="ProductDAO.cs" />
     <Compile Include="Provider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportDAO.cs" />
     <Compile Include="RoleFormDAO.cs" />
     <Compile Include="SellProductDAO.cs" />
     <Compile Include="StaffDAO.cs" />

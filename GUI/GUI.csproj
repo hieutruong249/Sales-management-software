@@ -161,6 +161,9 @@
     <Compile Include="Business\Collect Monney\frmCollectMoney.Designer.cs">
       <DependentUpon>frmCollectMoney.cs</DependentUpon>
     </Compile>
+    <Compile Include="WfValidation Components\RequiredFieldValidator.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="System Forms\frmBackup.cs">
       <SubType>Form</SubType>
     </Compile>

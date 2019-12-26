@@ -9,7 +9,7 @@ using DTO;
 
 namespace BUS
 {
-    public class ExRateBUS
+    public class ExRateBUS: FatherBUS
     {
         ExRateDAO exRateDAO = new ExRateDAO();
         public int InserCategory(ExRates er)
