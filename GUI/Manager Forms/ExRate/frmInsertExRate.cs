@@ -16,13 +16,11 @@ namespace GUI
     public partial class frmInsertExRate : DevExpress.XtraEditors.XtraForm
     {
         public static string str;
+
         public frmInsertExRate()
         {
             InitializeComponent();
-        }
-        public void ReceiveTxtID(string textID)
-        {
-            str = textID;
+            this.CenterToParent();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -40,7 +38,7 @@ namespace GUI
             ExRateBUS exRateBUS = new ExRateBUS();
             try
             {
-                if (exRateBUS.InserCategory(exRate) > 0)
+                if (exRateBUS.InsertExRate(exRate) > 0)
                 {
                     MessageBox.Show("Insert Susscessfully!!!");
 
@@ -76,5 +74,11 @@ namespace GUI
             }
             return txtID;
         }
+
+        public void ReceiveTxtID(string textID)
+        {
+            str = textID;
+        }
+
     }
 }

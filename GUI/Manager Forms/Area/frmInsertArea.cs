@@ -21,10 +21,7 @@ namespace GUI
         public frmInsertArea()
         {
             InitializeComponent();
-        }
-        public void ReceiveTxtID(string textID)
-        {
-            str = textID;
+            this.CenterToParent();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -63,6 +60,11 @@ namespace GUI
         private void frmInsertArea_Load(object sender, EventArgs e)
         {
             txtID.Text = str;
+        }
+
+        public void ReceiveTxtID(string textID)
+        {
+            str = textID;
         }
 
         public bool checkFields()

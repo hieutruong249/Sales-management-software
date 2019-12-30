@@ -16,13 +16,11 @@ namespace GUI.Manager_Forms.ExRate
     public partial class frmUpdateExRate : DevExpress.XtraEditors.XtraForm
     {
         public static ExRates exRate = new ExRates();
+
         public frmUpdateExRate()
         {
             InitializeComponent();
-        }
-        public void ReceiveData(ExRates rate)
-        {
-            exRate = rate;
+            this.CenterToParent();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -37,7 +35,7 @@ namespace GUI.Manager_Forms.ExRate
             exRate.Rate = float.Parse(speRate.Text);
 
             ExRateBUS exRateBUS = new ExRateBUS();
-            exRateBUS.UpdateCategory(exRate);
+            exRateBUS.UpdateExRate(exRate);
         }
 
         private void frmUpdateExRate_Load(object sender, EventArgs e)
@@ -45,6 +43,11 @@ namespace GUI.Manager_Forms.ExRate
             txtID.Text = exRate.ID.ToString();
             txtName.Text = exRate.Name;
             speRate.Text = exRate.Rate.ToString();
+        }
+
+        public void ReceiveData(ExRates rate)
+        {
+            exRate = rate;
         }
     }
 }

@@ -16,10 +16,7 @@ namespace GUI.Manager_Forms.Customer
     public partial class frmUpdateCustomer : DevExpress.XtraEditors.XtraForm
     {
         public static Customers customer = new Customers();
-        public void ReceiveData(Customers u)
-        {
-            customer = u;
-        }
+
         public frmUpdateCustomer()
         {
             InitializeComponent();
@@ -36,23 +33,23 @@ namespace GUI.Manager_Forms.Customer
             customer.Bank = txtBank.Text;
             customer.Area = lkArea.EditValue.ToString();
             customer.Discount = float.Parse(txtDiscount.EditValue.ToString());
-            CustomerBUS customerBUS = new CustomerBUS();
-            customerBUS.UpdateCustomer(customer);
-            //try
-            //{
-            //    CustomerBUS customerBUS = new CustomerBUS();
-            //    if (customerBUS.UpdateCustomer(customer) > 0)
-            //    {
-            //        MessageBox.Show("Insert susscessfully!!");
-            //    }
+            // CustomerBUS customerBUS = new CustomerBUS();
+            // customerBUS.UpdateCustomer(customer);
+            try
+            {
+                CustomerBUS customerBUS = new CustomerBUS();
+                if (customerBUS.UpdateCustomer(customer) > 0)
+                {
+                    MessageBox.Show("Insert susscessfully!!");
+                }
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //    MessageBox.Show("Insert Fail!!");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                MessageBox.Show("Insert Fail!!");
 
-            //}
+            }
         }
 
         private void btnInserArea_Click(object sender, EventArgs e)

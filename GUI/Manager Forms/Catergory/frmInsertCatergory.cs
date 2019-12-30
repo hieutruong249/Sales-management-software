@@ -21,11 +21,10 @@ namespace GUI
             InitializeComponent();
             this.CenterToParent();
         }
-        public void ReceiveTxtID(string textID)
+        private void frmInsertCatergory_Load(object sender, EventArgs e)
         {
-            str = textID;
+            txtID.Text = str;
         }
-
 
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -56,11 +55,6 @@ namespace GUI
                 }
             }
             
-        }
-
-        private void frmInsertCatergory_Load(object sender, EventArgs e)
-        {
-            txtID.Text = str;
         }
 
         private void btnClose_Click_1(object sender, EventArgs e)
@@ -97,5 +91,12 @@ namespace GUI
             }
             return txtID;
         }
+
+        public void ReceiveTxtID(string textID)
+        {
+            str = textID;
+        }
+
+
     }
 }

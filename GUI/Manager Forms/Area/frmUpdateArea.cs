@@ -17,13 +17,11 @@ namespace GUI
     {
         AreasBUS areasBUS = new AreasBUS();
         public static Areas area = new Areas();
+
         public frmUpdateArea()
         {
             InitializeComponent();
-        }
-        public void ReceiveData(Areas a)
-        {
-            area = a;
+            this.CenterToParent();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -45,6 +43,11 @@ namespace GUI
             txtID.Text = area.ID;
             txtName.Text = area.Name;
             txtNote.Text = area.Note;
+        }
+
+        public void ReceiveData(Areas a)
+        {
+            area = a;
         }
     }
 }

@@ -12,15 +12,15 @@ namespace BUS
     public class ExRateBUS: FatherBUS
     {
         ExRateDAO exRateDAO = new ExRateDAO();
-        public int InserCategory(ExRates er)
+        public int InsertExRate(ExRates er)
         {
             return exRateDAO.InsertExRate(er);
         }
-        public int UpdateCategory(ExRates er)
+        public int UpdateExRate(ExRates er)
         {
             return exRateDAO.UpdateExRate(er);
         }
-        public int DeleteCategory(ExRates er)
+        public int DeleteExRate(ExRates er)
         {
             return exRateDAO.DeleteExRate(er);
         }

@@ -16,10 +16,6 @@ namespace GUI
     public partial class frmInserCustomer : DevExpress.XtraEditors.XtraForm
     {
         public static string str;
-        public void ReceiveTxtID(string textID)
-        {
-            str = textID;
-        }
 
         public frmInserCustomer()
         {
@@ -129,5 +125,11 @@ namespace GUI
             }
             return txtID;
         }
+
+        public void ReceiveTxtID(string textID)
+        {
+            str = textID;
+        }
+
     }
 }
