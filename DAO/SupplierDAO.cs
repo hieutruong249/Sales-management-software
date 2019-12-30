@@ -129,6 +129,28 @@ namespace DAO
             }
 
         }
+
+        public DataTable ShowSupplier(string supplierID)
+        {
+            Provider provider = new Provider();
+            try
+            {
+                string strSQL = "SELECT* FROM Suppliers WHERE SupplierID = '" + supplierID + "'";
+                provider.Connect();
+                DataTable dtbl = new DataTable();
+                dtbl = provider.Select(CommandType.Text, strSQL);
+                return dtbl;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                provider.DisConnect();
+            }
+
+        }
     }
 }
 

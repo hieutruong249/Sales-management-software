@@ -15,9 +15,11 @@ namespace GUI.Business.SaleProduct
 {
     public partial class frmSellProduct : DevExpress.XtraEditors.XtraForm
     {
-        public static DataTable dtbl = new DataTable();
+        public static DataTable dtbl = new DataTable(); //gcItems
+        public static DataTable data = new DataTable(); //data of customer
         public static BuyProducts bp = new BuyProducts();
         public static SellProductBUS bus = new SellProductBUS();
+        public static CustomerBUS customerBUS = new CustomerBUS();
         public static SellProductDetail sp = new SellProductDetail();
         public static int indexCurrentRow = 0;
         public static string pdID, pdname, unit, exrate;
@@ -25,6 +27,46 @@ namespace GUI.Business.SaleProduct
         public static float price, discount, TTotal = 0;
         public static double total;
         public static int rowHandle = 0;
+
+        public frmSellProduct()
+        {
+            InitializeComponent();
+
+            DataTable data = new DataTable();
+            data = bus.ShowBill();
+            txtBill.Text = FindNextID(data);
+            txtDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
+        }
+
+        private void frmSellProduct_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'qLBH_v1DataSet3.Staffs' table. You can move, or remove it, as needed.
+            this.staffsTableAdapter.Fill(this.qLBH_v1DataSet3.Staffs);
+            // TODO: This line of code loads data into the 'qLBH_v1DataSet5.Warehouse' table. You can move, or remove it, as needed.
+            this.warehouseTableAdapter.Fill(this.qLBH_v1DataSet5.Warehouse);
+            // TODO: This line of code loads data into the 'qLBH_v1DataSet10.Customer' table. You can move, or remove it, as needed.
+            this.customerTableAdapter.Fill(this.qLBH_v1DataSet10.Customer);
+
+            lkCustomerName.EditValue = this.qLBH_v1DataSet10.Customer.Rows[0][lkCustomerName.Properties.ValueMember];
+            lkWarehouse.EditValue = this.qLBH_v1DataSet5.Warehouse.Rows[0][lkWarehouse.Properties.ValueMember];
+            lkStaffID.EditValue = this.qLBH_v1DataSet3.Staffs.Rows[0][lkStaffID.Properties.ValueMember];
+
+
+            if (!dtbl.Columns.Contains("ProductID"))
+            {
+                dtbl.Columns.Add("ProductID", typeof(string));
+                dtbl.Columns.Add("ProductName", typeof(string));
+                dtbl.Columns.Add("Unit", typeof(string));
+                dtbl.Columns.Add("ExRate", typeof(string));
+                dtbl.Columns.Add("Count", typeof(int));
+                dtbl.Columns.Add("Price", typeof(float));
+                dtbl.Columns.Add("Total", typeof(float));
+                dtbl.Columns.Add("Discount", typeof(float));
+            }
+            gcItems.DataSource = dtbl;
+            LoadData();
+
+        }
 
         private void navBarProduct_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
@@ -47,11 +89,34 @@ namespace GUI.Business.SaleProduct
         private void lkCustomerName_TextChanged(object sender, EventArgs e)
         {
             lkCustomerID.Text = lkCustomerName.EditValue.ToString();
+            LoadData();
         }
 
         private void lkCustomerID_TextChanged(object sender, EventArgs e)
         {
             lkCustomerName.EditValue = lkCustomerID.Text;
+            LoadData();
+        }
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnInsertR_Click(object sender, EventArgs e)
+        {
+            frmInsertR frm = new frmInsertR();
+            frm.Show();
+        }
+
+        private void btnDeleteR_Click(object sender, EventArgs e)
+        {
+            dtbl.Rows.RemoveAt(indexCurrentRow);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            InsertBill();
+            //InsertBillDetail();
         }
 
         private void gcItems_Click(object sender, EventArgs e)
@@ -80,13 +145,6 @@ namespace GUI.Business.SaleProduct
             }
         }
 
-        public frmSellProduct()
-        {
-            InitializeComponent();
-            DataTable data = new DataTable();
-            data = bus.ShowBill();
-            txtBill.Text = FindNextID(data);
-        }
         private void RemoveDuplicates(DataTable dt)
         {
             bp.Total = 0;
@@ -122,12 +180,6 @@ namespace GUI.Business.SaleProduct
            
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            InsertBill();
-            //InsertBillDetail();
-        }
-
         public string FindNextID(DataTable dtbl)
         {
 
@@ -145,8 +197,6 @@ namespace GUI.Business.SaleProduct
             }
             return txtID;
         }
-
-
 
         public void ReceiveData(string ID, string name, string uni, int cou, float pprice, double ttotal, string exra, float ddiscount)
         {
@@ -170,55 +220,9 @@ namespace GUI.Business.SaleProduct
             row["Total"] = total;
             row["Discount"] = discount;
 
-
             dtbl.Rows.Add(row);
             RemoveDuplicates(dtbl);
             gcItems.DataSource = dtbl;
-        }
-
-        private void frmSellProduct_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'qLBH_v1DataSet3.Staffs' table. You can move, or remove it, as needed.
-            this.staffsTableAdapter.Fill(this.qLBH_v1DataSet3.Staffs);
-            // TODO: This line of code loads data into the 'qLBH_v1DataSet5.Warehouse' table. You can move, or remove it, as needed.
-            this.warehouseTableAdapter.Fill(this.qLBH_v1DataSet5.Warehouse);
-            // TODO: This line of code loads data into the 'qLBH_v1DataSet10.Customer' table. You can move, or remove it, as needed.
-            this.customerTableAdapter.Fill(this.qLBH_v1DataSet10.Customer);
-
-            lkCustomerName.EditValue = this.qLBH_v1DataSet10.Customer.Rows[0][lkCustomerName.Properties.ValueMember];
-            lkWarehouse.EditValue = this.qLBH_v1DataSet5.Warehouse.Rows[0][lkWarehouse.Properties.ValueMember];
-            lkStaffID.EditValue = this.qLBH_v1DataSet3.Staffs.Rows[0][lkStaffID.Properties.ValueMember];
-
-
-            if (!dtbl.Columns.Contains("ProductID"))
-            {
-                dtbl.Columns.Add("ProductID", typeof(string));
-                dtbl.Columns.Add("ProductName", typeof(string));
-                dtbl.Columns.Add("Unit", typeof(string));
-                dtbl.Columns.Add("ExRate", typeof(string));
-                dtbl.Columns.Add("Count", typeof(int));
-                dtbl.Columns.Add("Price", typeof(float));
-                dtbl.Columns.Add("Total", typeof(float));
-                dtbl.Columns.Add("Discount", typeof(float));
-            }
-            gcItems.DataSource = dtbl;
-
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnInsertR_Click(object sender, EventArgs e)
-        {
-            frmInsertR frm = new frmInsertR();
-            frm.Show();
-        }
-
-        private void btnDeleteR_Click(object sender, EventArgs e)
-        {
-            dtbl.Rows.RemoveAt(indexCurrentRow);
         }
 
         public void InsertBill()
@@ -234,11 +238,12 @@ namespace GUI.Business.SaleProduct
             bp.Address = txtAddress.Text;
             bp.NumVAT = txtNumVat.Text;
             bp.Total = 0;
+
             foreach (DataRow row in dtbl.Rows)
             {
                 bp.Total += int.Parse(row["Total"].ToString());
-
             }
+
             try
             {
                 if (bus.InsertBillSellProduct(bp) > 0)
@@ -263,9 +268,7 @@ namespace GUI.Business.SaleProduct
                 MessageBox.Show("Fail!!");
 
             }
-          
         }
-    
 
         public int InsertBillDetail()
         {
@@ -288,7 +291,6 @@ namespace GUI.Business.SaleProduct
                     {
                         countERR++;
                     }
-
                 }
             }
             catch (Exception ex)
@@ -297,6 +299,14 @@ namespace GUI.Business.SaleProduct
 
             }
             return countERR;
+        }
+
+        public void LoadData()
+        {
+            data = customerBUS.ShowCustomer(lkCustomerID.Text);
+            txtPhone.Text = data.Rows[0]["Phone"].ToString();
+            txtAddress.Text = data.Rows[0]["Address"].ToString();
+
         }
     }
 }

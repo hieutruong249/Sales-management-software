@@ -142,5 +142,27 @@ namespace DAO
             }
 
         }
+
+        public DataTable ShowProducts(string productID)
+        {
+            Provider provider = new Provider();
+            try
+            {
+                string strSQL = "SELECT* FROM Products WHERE ProductID = '" + productID + "'";
+                provider.Connect();
+                DataTable dtbl = new DataTable();
+                dtbl = provider.Select(CommandType.Text, strSQL);
+                return dtbl;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                provider.DisConnect();
+            }
+
+        }
     }
 }

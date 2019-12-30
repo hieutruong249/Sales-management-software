@@ -8,12 +8,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using BUS;
 
 namespace GUI.Business.BuyProduct
 {
     public partial class frmInsertR : DevExpress.XtraEditors.XtraForm
     {
-        public delegate void SendData(string pdID, string pdname, string unit, int count, float price, float total);
+        public delegate void SendData(string pdID, string pdname, string unit, int count, double price, double total);
+        public static DataTable dtbl = new DataTable();
+        public static ProductBUS bus = new ProductBUS();
+        public static int minInventory = 0;
           
         public frmInsertR()
         {
@@ -31,21 +35,21 @@ namespace GUI.Business.BuyProduct
             lkProductName.EditValue = this.qLBH_v1DataSet9.Products.Rows[0][lkProductName.Properties.ValueMember];
             lkUnit.EditValue = this.qLBH_v1DataSet7.Unit.Rows[0][lkUnit.Properties.ValueMember];
 
-            txtTotal.Text = txtPrice.Text = "0";
+            LoadData();
             this.CenterToParent();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             string pdID, pdname, unit;
-            float price, total;
+            double price, total;
             int count;
 
             pdID = lkProductID.Text;
             pdname = lkProductName.Text;
-            unit = lkUnit.Text;
+            unit = lkUnit.EditValue.ToString();
             count = int.Parse(mudCount.Value.ToString());
-            price = float.Parse(txtPrice.Text);
+            price = double.Parse(txtPrice.EditValue.ToString());
             total = (count * price);
             
 
@@ -54,17 +58,7 @@ namespace GUI.Business.BuyProduct
             send(pdID, pdname, unit, count, price, total);
 
         }
-        public double CalculateTotal()
-        {
-            double ttotal = 0;
-            if (!string.IsNullOrEmpty(txtPrice.Text))
-            {
-                float price = float.Parse(txtPrice.Text);
-                int count = int.Parse(mudCount.Value.ToString());
-                ttotal = count * price;
-            }
-            return ttotal;
-        }
+
         private void txtPrice_TextChanged(object sender, EventArgs e)
         {
             txtTotal.Text = CalculateTotal().ToString();
@@ -83,16 +77,39 @@ namespace GUI.Business.BuyProduct
         private void lkProductID_TextChanged(object sender, EventArgs e)
         {
             lkProductName.EditValue = lkProductID.Text;
+            LoadData();
         }
 
         private void lkProductName_TextChanged(object sender, EventArgs e)
         {
             lkProductID.Text = lkProductName.EditValue.ToString();
+            LoadData();
         }
 
         private void txtTotal_EditValueChanged(object sender, EventArgs e)
         {
             txtTotal.Text = CalculateTotal().ToString();
+        }
+
+        public double CalculateTotal()
+        {
+            double ttotal = 0;
+            if (!string.IsNullOrEmpty(txtPrice.Text))
+            {
+                double price = float.Parse(txtPrice.EditValue.ToString());
+                int count = int.Parse(mudCount.Value.ToString());
+                ttotal = count * price;
+            }
+            return ttotal;
+        }
+
+        public void LoadData()
+        {
+            dtbl = bus.ShowProducts(lkProductID.EditValue.ToString());
+            lkUnit.EditValue = dtbl.Rows[0]["UnitID"];
+            txtPrice.EditValue = dtbl.Rows[0]["Purchase"];
+            minInventory = int.Parse(dtbl.Rows[0]["MinInventory"].ToString());
+            mudCount.Maximum = int.Parse(dtbl.Rows[0]["CurrInventory"].ToString()) - minInventory;
         }
     }
 }

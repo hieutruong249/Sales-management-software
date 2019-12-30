@@ -67,7 +67,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(12, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 0;
@@ -116,7 +116,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 39);
+            this.label2.Location = new System.Drawing.Point(12, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 13);
             this.label2.TabIndex = 2;
@@ -127,9 +127,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(581, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.Size = new System.Drawing.Size(48, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Count:";
+            this.label3.Text = "Amount:";
             // 
             // label4
             // 
@@ -151,7 +151,7 @@
             // lbToTal
             // 
             this.lbToTal.AutoSize = true;
-            this.lbToTal.Location = new System.Drawing.Point(393, 89);
+            this.lbToTal.Location = new System.Drawing.Point(393, 92);
             this.lbToTal.Name = "lbToTal";
             this.lbToTal.Size = new System.Drawing.Size(35, 13);
             this.lbToTal.TabIndex = 9;
@@ -160,7 +160,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(393, 42);
+            this.label6.Location = new System.Drawing.Point(393, 45);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 13);
             this.label6.TabIndex = 8;
@@ -277,7 +277,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmInsertR";
-            this.Text = "frmInsertR";
+            this.Text = "Insert Row";
             this.Load += new System.EventHandler(this.frmInsertR_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lkProductID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();

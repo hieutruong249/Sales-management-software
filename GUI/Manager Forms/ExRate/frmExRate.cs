@@ -19,41 +19,21 @@ namespace GUI.Manager_Forms.ExRate
     {
         public delegate void SendData(ExRates rate);
         public delegate void SendTxtID(String str);
+        public delegate void SendTag(int tag);
         public static ExRateBUS exRateBUS = new ExRateBUS();
         public static DataTable dtbl = new DataTable();
         public static ExRates rate = new ExRates();
-        public static int FormID = 6;
+        public static int FormID = 9;
         public static RoleForm roleForm = GlobalVar.dicmyRoleForm[FormID];
+        public static string fileName = null;
 
         public frmExRate()
         {
             InitializeComponent();
-            int FormID = int.Parse(this.Tag.ToString());
-            RoleForm roleForm = GlobalVar.dicmyRoleForm[FormID];
+            //int FormID = int.Parse(this.Tag.ToString());
+            //RoleForm roleForm = GlobalVar.dicmyRoleForm[FormID];
         }
-        public string FindNextID(DataTable dtbl)
-        {
-            string txtID = null;
-            if (dtbl.Rows.Count > 0)
-            {
-                string ma = dtbl.Rows[dtbl.Rows.Count - 1]["ID"].ToString();
-                int lastIndex = int.Parse(ma) + 1;
-                txtID = lastIndex.ToString();
-            }
-            else
-            {
-                txtID = "1";
-            }
-            return txtID;
-        }
-        public void SendTextID2Form()
-        {
-            string txtID = null;
-            txtID = FindNextID(dtbl);
-            frmInsertExRate frm = new frmInsertExRate();
-            SendTxtID send = new SendTxtID(frm.ReceiveTxtID);
-            send(txtID);
-        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -70,7 +50,6 @@ namespace GUI.Manager_Forms.ExRate
 
         private void frmExRate_Load(object sender, EventArgs e)
         {
-            
             btnInsert.Enabled = roleForm.f_Insert;
             btnExport.Enabled = roleForm.Export;
 
@@ -137,6 +116,39 @@ namespace GUI.Manager_Forms.ExRate
 
         private void btnExport_Click(object sender, EventArgs e)
         {
+            frmInputNameFile frm = new frmInputNameFile();
+            SendTag sendTag = new SendTag(frm.ReceiveTag);
+            sendTag(FormID);
+            frm.Show();
+        }
+
+        public string FindNextID(DataTable dtbl)
+        {
+            string txtID = null;
+            if (dtbl.Rows.Count > 0)
+            {
+                string ma = dtbl.Rows[dtbl.Rows.Count - 1]["ID"].ToString();
+                int lastIndex = int.Parse(ma) + 1;
+                txtID = lastIndex.ToString();
+            }
+            else
+            {
+                txtID = "1";
+            }
+            return txtID;
+        }
+
+        public void SendTextID2Form()
+        {
+            string txtID = null;
+            txtID = FindNextID(dtbl);
+            frmInsertExRate frm = new frmInsertExRate();
+            SendTxtID send = new SendTxtID(frm.ReceiveTxtID);
+            send(txtID);
+        }
+
+        public void Export(DataTable dataTable)
+        {
             //Create an instance of ExcelEngine
             using (ExcelEngine excelEngine = new ExcelEngine())
             {
@@ -153,16 +165,27 @@ namespace GUI.Manager_Forms.ExRate
                 IWorksheet worksheet = workbook.Worksheets[0];
 
                 //Exporting DataTable to worksheet
-                ExRateBUS bus = new ExRateBUS();
-                DataTable dataTable = new DataTable();
-                dataTable = bus.ShowExRate();
                 worksheet.ImportDataTable(dataTable, true, 1, 1);
                 worksheet.UsedRange.AutofitColumns();
 
                 //Save the workbook to disk in xlsx format
-                workbook.SaveAs("Output.xlsx");
+                workbook.SaveAs(fileName + ".xlsx");
 
-                MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug");
+            }
+        }
+
+        public void ReceiveFileName(string str)
+        {
+            fileName = str;
+
+            if (!string.IsNullOrEmpty(fileName))
+            {
+                DataTable dataTable = new DataTable();
+                dataTable = exRateBUS.ShowExRate();
+
+                Export(dataTable);
+
+                MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug\" + fileName + ".xlsx");
             }
         }
     }

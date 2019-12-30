@@ -23,14 +23,15 @@ namespace GUI
         public static Areas areas = new Areas();
         public delegate void SendData(Areas areas);
         public delegate void SendTxtID(String str);
-        
+        public static string fileName = null;
+        public delegate void SendTag(int tag);
 
         public frmArea()
         {
             InitializeComponent();
             //Permission
-            int FormID = int.Parse(this.Tag.ToString());
-            RoleForm roleForm = GlobalVar.dicmyRoleForm[FormID];
+            //int FormID = int.Parse(this.Tag.ToString());
+            //RoleForm roleForm = GlobalVar.dicmyRoleForm[FormID];
         }
 
         public string FindNextID(DataTable dtbl)
@@ -58,7 +59,6 @@ namespace GUI
             send(txtID);
         }
 
-
         private void groupControl1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -71,7 +71,6 @@ namespace GUI
 
         private void frmArea_Load(object sender, EventArgs e)
         {
-            
             dt = areasBUS.ShowArea();
             gcAreas.DataSource = dt;
             
@@ -95,16 +94,13 @@ namespace GUI
 
         private void gcAreas_DoubleClick(object sender, EventArgs e)
         {
-            
             btnUpdate.Enabled = roleForm.f_Update;
             btnDelete.Enabled = roleForm.f_Delete;
-            
            
             var rowHandle = gridView1.FocusedRowHandle;
             areas.ID = gridView1.GetRowCellValue(rowHandle, "ID").ToString();
             areas.Name = gridView1.GetRowCellValue(rowHandle, "Name").ToString();
             areas.Note = gridView1.GetRowCellValue(rowHandle, "Note").ToString();
-
 
             frmUpdateArea frm = new frmUpdateArea();
             SendData send = new SendData(frm.ReceiveData);
@@ -136,7 +132,7 @@ namespace GUI
         {
             try
             {
-                if(areasBUS.DeleteArea(areas) != 0)
+                if(areasBUS.DeleteArea(areas.ID) != 0)
                 {
                     MessageBox.Show("Delete successfull!!!");
                 }
@@ -148,6 +144,14 @@ namespace GUI
         }
 
         private void btnExport_Click(object sender, EventArgs e)
+        {
+            frmInputNameFile frm = new frmInputNameFile();
+            SendTag sendTag = new SendTag(frm.ReceiveTag);
+            sendTag(6);
+            frm.Show();
+        }
+
+        public void Export(DataTable dataTable)
         {
             //Create an instance of ExcelEngine
             using (ExcelEngine excelEngine = new ExcelEngine())
@@ -165,17 +169,30 @@ namespace GUI
                 IWorksheet worksheet = workbook.Worksheets[0];
 
                 //Exporting DataTable to worksheet
-                AreasBUS areasBUS = new AreasBUS();
-                DataTable dataTable = new DataTable();
-                dataTable = areasBUS.ShowArea();
                 worksheet.ImportDataTable(dataTable, true, 1, 1);
                 worksheet.UsedRange.AutofitColumns();
 
                 //Save the workbook to disk in xlsx format
-                workbook.SaveAs("Output.xlsx");
+                workbook.SaveAs(fileName + ".xlsx");
 
-                MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug");
             }
         }
+
+        public void ReceiveFileName(string str)
+        {
+            fileName = str;
+
+            if (!string.IsNullOrEmpty(fileName))
+            {
+                DataTable data = new DataTable();
+                data = areasBUS.ShowArea();
+
+                Export(data);
+
+                MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug\" + fileName + ".xlsx");
+            }
+        }
+
+        
     }
 }

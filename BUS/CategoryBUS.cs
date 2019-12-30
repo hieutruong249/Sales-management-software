@@ -16,17 +16,25 @@ namespace BUS
         {
             return cgD.InserCategory(cg);
         }
+
         public int UpdateCategory(Categories cg)
         {
             return cgD.UpdateCategory(cg);
         }
+
         public int DeleteCategory(Categories cg)
         {
             return cgD.DeleteCategory(cg);
         }
+
         public DataTable ShowCatergories()
         {
             return cgD.ShowCatergories();
+        }
+
+        public DataTable ShowCatergories(string categoryID)
+        {
+            return cgD.ShowCatergories(categoryID);
         }
     }
 }

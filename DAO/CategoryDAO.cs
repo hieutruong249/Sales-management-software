@@ -66,6 +66,7 @@ namespace DAO
             }
             return nRow;
         }
+
         public int DeleteCategory(Categories cg)
         {
             Provider provider = new Provider();
@@ -97,6 +98,28 @@ namespace DAO
             try
             {
                 string strSQL = "SELECT* FROM Catergories";
+                provider.Connect();
+                DataTable dtbl = new DataTable();
+                dtbl = provider.Select(CommandType.Text, strSQL);
+                return dtbl;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                provider.DisConnect();
+            }
+
+        }
+
+        public DataTable ShowCatergories(string categoryID)
+        {
+            Provider provider = new Provider();
+            try
+            {
+                string strSQL = "SELECT* FROM Catergories WHERE CatID = '" + categoryID + "'";
                 provider.Connect();
                 DataTable dtbl = new DataTable();
                 dtbl = provider.Select(CommandType.Text, strSQL);

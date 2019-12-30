@@ -20,55 +20,31 @@ namespace GUI
         {
             InitializeComponent();
         }
-        public void CreateFolder(string path)
+
+        private void frmBackup_Load(object sender, EventArgs e)
         {
-            Directory.CreateDirectory(@"D:\Data");
-          
+            this.CenterToParent();
         }
-        public bool IsExistsFolder(string path)
-        {
-            if (Directory.Exists(path))
-            {
-                return true;
-            }
-            return false;
-        }
-        public void BackupDB(string path)
-        {
-            string Servername = @"DESKTOP-59A5HQG\SQLEXPRESS";
-            string dataBaseName = "QLBH_v1";
-            pBProcessBar.Value = 0;
-            try
-            {
-                Server dbServer = new Server(new ServerConnection(Servername));
-                Backup dbBackup = new Backup() { Action = BackupActionType.Database, Database = dataBaseName };
-                dbBackup.Devices.AddDevice(path + @"\database.bak", DeviceType.File);
-                dbBackup.Initialize = true;
-                dbBackup.PercentComplete += DbBackup_PercentComplete;
-                dbBackup.Complete += Dbbackup_Complete;
-                dbBackup.SqlBackupAsync(dbServer);
-                lbLocation.Visible = Enabled;
-                lbLocation.Text = "Location: " + path + @"\database.bak";
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+
         private void btnBackup_Click(object sender, EventArgs e)
         {
-            string path = @"D:\Data";
-            if (IsExistsFolder(path))
-            {
-                BackupDB(path);
-            }
-            else
-            {
-               
-                CreateFolder(path);
-                BackupDB(path);
+            string path = null;
 
+            FolderBrowserDialog fDialog = new FolderBrowserDialog();
+            if (fDialog.ShowDialog() == DialogResult.OK)
+            {
+                path = fDialog.SelectedPath;
+                path = path + @"\Dbbackup";
+
+                if (IsExistsFolder(path))
+                {
+                    BackupDB(path);
+                }
+                else
+                {
+                    CreateFolder(path);
+                    BackupDB(path);
+                }
             }
         }
 
@@ -96,9 +72,40 @@ namespace GUI
             });
         }
 
-        private void frmBackup_Load(object sender, EventArgs e)
+        public bool IsExistsFolder(string path)
         {
-            this.CenterToParent();
+            return (Directory.Exists(path) ? true : false);
         }
+
+        public void CreateFolder(string path)
+        {
+            Directory.CreateDirectory(path);
+        }
+
+        public void BackupDB(string path)
+        {
+            string Servername = @"DESKTOP-59A5HQG\SQLEXPRESS";
+            string dataBaseName = "QLBH_v1";
+            pBProcessBar.Value = 0;
+            lbPer.Text = "0%";
+            try
+            {
+                Server dbServer = new Server(new ServerConnection(Servername));
+                Backup dbBackup = new Backup() { Action = BackupActionType.Database, Database = dataBaseName };
+                dbBackup.Devices.AddDevice(path + @"\database.bak", DeviceType.File);
+                dbBackup.Initialize = true;
+                dbBackup.PercentComplete += DbBackup_PercentComplete;
+                dbBackup.Complete += Dbbackup_Complete;
+                dbBackup.SqlBackupAsync(dbServer);
+                lbLocation.Visible = Enabled;
+                lbLocation.Text = "Location: " + path + @"\database.bak";
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

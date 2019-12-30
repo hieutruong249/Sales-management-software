@@ -37,7 +37,7 @@ namespace GUI.Manager_Forms.Supplier
             txtEmail.Text = supplier.Email;
             txtBank.Text = supplier.Bank;
             txtAccBank.Text = supplier.AccountBank;
-            lkArea.Text = supplier.Area;
+            lkArea.EditValue = supplier.Area;
             speDiscount.EditValue = supplier.Discount.ToString();
 
         }

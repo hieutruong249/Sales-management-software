@@ -22,11 +22,12 @@ namespace GUI
             InitializeComponent();
             this.CenterToScreen();
             this.KeyPreview = true;
+            
         }
 
         private void XtraForm1_Load(object sender, EventArgs e)
         {
-
+            txtUsername.Select();
         }
        
         private void btnLogin_Click(object sender, EventArgs e)
@@ -36,29 +37,35 @@ namespace GUI
                 User us = new User();
                 us.Username = txtUsername.Text;
                 us.Password = txtPassword.Text;
-                if (usB.IsLoginSuccess(us) != 0)
+                try
                 {
-                    var rol = usB.UsrRolFrm(us);
-                    var lst = roleFormBUS.GetListRole(rol.RoleId);
-                    foreach (var rolFrm in lst)
+                    if (usB.IsLoginSuccess(us) != 0)
                     {
+                        var rol = usB.UsrRolFrm(us);
+                        var lst = roleFormBUS.GetListRole(rol.RoleId);
+                        foreach (var rolFrm in lst)
+                        {
+                            GlobalVar.dicmyRoleForm.Add(rolFrm.FormID, rolFrm);
+                        }
 
-                        GlobalVar.dicmyRoleForm.Add(rolFrm.FormID, rolFrm);
+                        MessageBox.Show("Login successfully" + rol.RoleId);
+                        GlobalVar._username = txtUsername.Text;
+                        frmMain frm = new frmMain();
+                        this.Hide();
+                        frm.Show();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Login Fail!!!");
                     }
 
-                    MessageBox.Show("Login successfully" + rol.RoleId);
-                    GlobalVar._username = txtUsername.Text;
-                    frmMain frm = new frmMain();
-                    this.Hide();
-                    frm.Show();
-
                 }
-                else
+                catch (Exception ex)
                 {
                     MessageBox.Show("ERROR", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-           
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -66,6 +73,24 @@ namespace GUI
             txtUsername.ResetText();
             txtPassword.ResetText();
         }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            frmRegister frm = new frmRegister();
+            this.Hide();
+            frm.Show();
+        }
+
+        private void frmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.Focus();
+                //btnLogin_Click(new object(), new EventArgs());
+                btnLogin.PerformClick();
+            }
+        }
+
         public bool checkFields()
         {
             var Username = new CheckUserName();
@@ -73,7 +98,6 @@ namespace GUI
 
             var Password = new CheckPassword();
             Password.ControlToValidate = txtPassword;
-
 
             if (!Username.Validate())
             {
@@ -89,22 +113,5 @@ namespace GUI
             return true;
         }
 
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            frmRegister frm = new frmRegister();
-            this.Hide();
-            frm.Show();
-        }
-
-        private void frmLogin_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btnLogin.Focus();
-
-                //btnLogin_Click(new object(), new EventArgs());
-                btnLogin.PerformClick();
-            }
-        }
     }
 }

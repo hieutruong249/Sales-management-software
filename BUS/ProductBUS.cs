@@ -28,6 +28,9 @@ namespace BUS
         {
             return productDAO.DeleteProduct(u);
         }
-
+        public DataTable ShowProducts(string productID)
+        {
+            return productDAO.ShowProducts(productID);
+        }
     }
 }

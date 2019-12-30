@@ -91,17 +91,17 @@ namespace DAO
             }
             return nRow;
         }
-        public int DeleteArea(Areas area)
+        public int DeleteArea(string areaID)
         {
             Provider provider = new Provider();
             int nRow = 0;
             try
             {
-                string strSQL = "DELETE FROM Areas WHERE ID = @ID";
+                string strSQL = "DELETE FROM Areas WHERE ID = '" + areaID + "'";
                 provider.Connect();
                 nRow = provider.ExeCuteNonQuery(CommandType.Text, strSQL,
 
-                        new SqlParameter { ParameterName = "@ID", Value = area.ID }
+                        new SqlParameter { ParameterName = "@ID", Value = areaID }
                         
                     );
                 if (nRow > 0)

@@ -36,6 +36,7 @@ namespace GUI
         public frmMain()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         private bool IsFormActived(Form form)

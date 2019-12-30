@@ -53,7 +53,7 @@ namespace DAO
             int nRow = 0;
             try
             {
-                string strSQL = "Update Customer set CustomerName = @CustomerName, Address = @Address, Phone = @Phone, Area = @Area, AccountBank = @AccountBank, Email = @Email, Bank = @Bank, Discount = @Discount WHERE CustomerID = @CustomerID,";
+                string strSQL = "Update Customer set CustomerName = @CustomerName, Address = @Address, Phone = @Phone, Area = @Area, AccountBank = @AccountBank, Email = @Email, Bank = @Bank, Discount = @Discount WHERE CustomerID = @CustomerID";
                 provider.Connect();
                 nRow = provider.ExeCuteNonQuery(CommandType.Text, strSQL,
 
@@ -81,16 +81,17 @@ namespace DAO
             }
             return nRow;
         }
-        public int DeleteCustomer(Customers ctm)
+
+        public int DeleteCustomer(string CustomerID)
         {
             Provider provider = new Provider();
             int nRow = 0;
             try
             {
-                string strSQL = "DELETE Customer where  CustomerID = @CustomerID";
+                string strSQL = "DELETE Customer where CustomerID = '" + CustomerID + "'";
                 provider.Connect();
                 nRow = provider.ExeCuteNonQuery(CommandType.Text, strSQL,
-                        new SqlParameter { ParameterName = "@CustomerID,", Value = ctm.CustomerID }
+                        new SqlParameter { ParameterName = "@CustomerID", Value = CustomerID }
                     );
                 if (nRow > 0)
                     return 1;
@@ -112,6 +113,28 @@ namespace DAO
             try
             {
                 string strSQL = "SELECT* FROM Customer";
+                provider.Connect();
+                DataTable dtbl = new DataTable();
+                dtbl = provider.Select(CommandType.Text, strSQL);
+                return dtbl;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                provider.DisConnect();
+            }
+
+        }
+
+        public DataTable ShowCustomer(string customerID)
+        {
+            Provider provider = new Provider();
+            try
+            {
+                string strSQL = "SELECT* FROM Customer WHERE CustomerID = '" + customerID + "'";
                 provider.Connect();
                 DataTable dtbl = new DataTable();
                 dtbl = provider.Select(CommandType.Text, strSQL);

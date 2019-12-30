@@ -15,22 +15,26 @@ namespace GUI.Business.BuyProduct
 {
     public partial class frmBuyProduct : DevExpress.XtraEditors.XtraForm
     {
-        public static DataTable dtbl = new DataTable();
+        public static DataTable dtbl = new DataTable(); //gcItems
+        public static DataTable data = new DataTable(); //Data of supplier
         public static string pdID, pdname, unit;
         public static int count, Ccount = 0;
-        public static float price, total, TTotal = 0;
+        public static double price, total = 0;
         public static int rowHandle = 0;
         public static BuyProducts bp = new BuyProducts();
         public static BuyProductDetail bpDetail = new BuyProductDetail();
         public static BuyProductBUS bus = new BuyProductBUS();
+        public static SupplierBUS supplierBUS = new SupplierBUS();
 
         public frmBuyProduct()
         {
             InitializeComponent();
+
             DataTable data = new DataTable();
             data = bus.ShowBill();
             txtBill.Text = FindNextID(data);
-           
+            txtDate.EditValue = DateTime.Now.ToString("MM/dd/yyyy");
+
         }
 
         private void frmBuyProduct_Load(object sender, EventArgs e)
@@ -52,10 +56,11 @@ namespace GUI.Business.BuyProduct
                 dtbl.Columns.Add("ProductName", typeof(string));
                 dtbl.Columns.Add("Unit", typeof(string));
                 dtbl.Columns.Add("Count", typeof(int));
-                dtbl.Columns.Add("Price", typeof(float));
-                dtbl.Columns.Add("Total", typeof(float));
+                dtbl.Columns.Add("Price", typeof(double));
+                dtbl.Columns.Add("Total", typeof(double));
             }
             gcItems.DataSource = dtbl;
+            LoadData();
 
         }
 
@@ -75,7 +80,8 @@ namespace GUI.Business.BuyProduct
             }
             return txtID;
         }
-        public void ReceiveData(string ID, string name, string uni, int cou, float pprice, float ttotal)
+
+        public void ReceiveData(string ID, string name, string uni, int cou, double pprice, double ttotal)
         {
             pdID = ID;
             pdname = name;
@@ -164,12 +170,36 @@ namespace GUI.Business.BuyProduct
         private void lookUpEdit1_TextChanged(object sender, EventArgs e)
         {
             lkSupplierName.Text = lkSupplierID.EditValue.ToString();
+            LoadData();
         }
 
         private void lkSupplierName_TextChanged(object sender, EventArgs e)
         {
             lkSupplierID.Text = lkSupplierName.EditValue.ToString();
+            LoadData();
+        }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            InsertBill();
+        }
+
+        private void navBarItem4_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            frmInsertProduct frm = new frmInsertProduct();
+            frm.Show();
+        }
+
+        private void navBarCustomer_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            frmInserCustomer frm = new frmInserCustomer();
+            frm.Show();
+        }
+
+        private void navBarWarehouse_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            frmInsertWarehouse frm = new frmInsertWarehouse();
+            frm.Show();
         }
 
         public void InsertBill()
@@ -187,7 +217,7 @@ namespace GUI.Business.BuyProduct
             bp.Total = 0;
             foreach (DataRow row in dtbl.Rows)
             {
-                bp.Total += int.Parse(row["Total"].ToString());
+                bp.Total += double.Parse(row["Total"].ToString());
 
             }
             try
@@ -197,7 +227,8 @@ namespace GUI.Business.BuyProduct
                     int err = InsertBillDetail();
                     if (err == 0)
                     {
-                        MessageBox.Show("Sussecc");
+                        MessageBox.Show("Successfully!!!");
+
                         DataTable data = new DataTable();
                         data = bus.ShowBill();
                         txtBill.Text = FindNextID(data);
@@ -232,13 +263,11 @@ namespace GUI.Business.BuyProduct
                         {
                             
                             dt.Rows[j]["Count"] = (int.Parse(dt.Rows[i]["Count"].ToString()) + int.Parse(dt.Rows[j]["Count"].ToString())).ToString();
-                            dt.Rows[j]["Total"] = (float.Parse(dt.Rows[i]["Total"].ToString()) + float.Parse(dt.Rows[j]["Total"].ToString())).ToString();
+                            dt.Rows[j]["Total"] = (double.Parse(dt.Rows[i]["Total"].ToString()) + double.Parse(dt.Rows[j]["Total"].ToString())).ToString();
                             dt.Rows[i].Delete();
                             break;
                         }
                     }
-
-
                 }
                 dt.AcceptChanges();
             }
@@ -268,34 +297,16 @@ namespace GUI.Business.BuyProduct
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: ProductID" + bpDetail.ProductID);
+                MessageBox.Show("Error: ProductID " + bpDetail.ProductID);
             }
-
-
             return countERR;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        public void LoadData()
         {
-            InsertBill();
-        } 
-
-        private void navBarItem4_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {
-            frmInsertProduct frm = new frmInsertProduct();
-            frm.Show();
-        }
-
-        private void navBarCustomer_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {
-            frmInserCustomer frm = new frmInserCustomer();
-            frm.Show();
-        }
-
-        private void navBarWarehouse_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {
-            frmInsertWarehouse frm = new frmInsertWarehouse();
-            frm.Show();
+            data = supplierBUS.ShowSupplier(lkSupplierID.Text);
+            txtPhone.Text = data.Rows[0]["Phone"].ToString();
+            txtAddress.Text = data.Rows[0]["Address"].ToString();
         }
     }
 }

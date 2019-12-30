@@ -16,14 +16,17 @@ namespace BUS
         {
             return areaDAO.InsertArea(area);
         }
+
         public int UpdateArea(Areas area)
         {
             return areaDAO.UpdateArea(area);
         }
-        public int DeleteArea(Areas area)
+
+        public int DeleteArea(string area)
         {
             return areaDAO.DeleteArea(area);
         }
+
         public DataTable ShowArea()
         {
             return areaDAO.ShowArea();

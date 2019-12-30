@@ -16,17 +16,24 @@ namespace BUS
         {
             return customerDAO.InsertCustomer(ctm);
         }
+
         public int UpdateCustomer(Customers ctm)
         {
             return customerDAO.UpdateCustomer(ctm);
         }
-        public int DeleteCustomer(Customers ctm)
+        public int DeleteCustomer(string ctm)
         {
             return customerDAO.DeleteCustomer(ctm);
         }
+
         public DataTable ShowCustomer()
         {
             return customerDAO.ShowCustomer();
+        }
+
+        public DataTable ShowCustomer(string customerID)
+        {
+            return customerDAO.ShowCustomer(customerID);
         }
     }
 }

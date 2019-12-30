@@ -28,5 +28,9 @@ namespace BUS
         {
             return supplierDAO.ShowSupplier();
         }
+        public DataTable ShowSupplier(string supplierID)
+        {
+            return supplierDAO.ShowSupplier(supplierID);
+        }
     }
 }

@@ -16,6 +16,10 @@ namespace GUI.Business.SaleProduct
     {
         public delegate void SendData(string pdID, string pdname, string unit, int count, float price, double total, string extra, float discount);
         public static SellProductBUS bus = new SellProductBUS();
+        public static DataTable dtbl = new DataTable();
+        public static ProductBUS productBUS = new ProductBUS();
+        public static int minInventory = 0;
+
 
         public frmInsertR()
         {
@@ -36,9 +40,10 @@ namespace GUI.Business.SaleProduct
             lkUnit.EditValue = this.qLBH_v1DataSet7.Unit.Rows[0][lkUnit.Properties.ValueMember];
             lkExRate.EditValue = this.qLBH_v1DataSet11.ExRate.Rows[0][lkExRate.Properties.ValueMember];
 
-            txtTotal.Text = txtPrice.Text = "0";
+           // txtTotal.Text = txtPrice.Text = "0";
             txtDiscount.Text = "0";
             this.CenterToParent();
+            LoadData();
 
         }
 
@@ -107,11 +112,13 @@ namespace GUI.Business.SaleProduct
         private void lkProductID_TextChanged(object sender, EventArgs e)
         {
             lkProductName.EditValue = lkProductID.Text;
+            LoadData();
         }
 
         private void lkProductName_TextChanged(object sender, EventArgs e)
         {
             lkProductID.Text = lkProductName.EditValue.ToString();
+            LoadData();
         }
 
         private void txtPrice_EditValueChanged(object sender, EventArgs e)
@@ -129,6 +136,15 @@ namespace GUI.Business.SaleProduct
             txtTotal.Text = CalculateTotal().ToString();
             lbCurrency.Text = lkExRate.Text;
            
+        }
+
+        public void LoadData()
+        {
+            dtbl = productBUS.ShowProducts(lkProductID.EditValue.ToString());
+            lkUnit.EditValue = dtbl.Rows[0]["UnitID"];
+            txtPrice.EditValue = dtbl.Rows[0]["Purchase"];
+            minInventory = int.Parse(dtbl.Rows[0]["MinInventory"].ToString());
+            mudCount.Maximum = int.Parse(dtbl.Rows[0]["CurrInventory"].ToString()) - minInventory;
         }
     }
 }

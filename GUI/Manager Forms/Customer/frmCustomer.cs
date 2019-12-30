@@ -19,48 +19,20 @@ namespace GUI.Manager_Forms.Customer
     {
         public delegate void SendData(Customers customer);
         public delegate void SendTxtID(String str);
+        public delegate void SendTag(int tag);
         public static CustomerBUS customerBUS = new CustomerBUS();
         public static DataTable dtbl = new DataTable();
         public static Customers customer = new Customers();
-        public static int FormID = 6;
+        public static int FormID = 8;
         public static RoleForm roleForm = GlobalVar.dicmyRoleForm[FormID];
+        public static string fileName = null;
 
-        public string FindNextID(DataTable dtbl)
-        {
-            string txtID = null;
-            try
-            {
-                if (dtbl.Rows.Count > 0)
-                {
-                    string ma = dtbl.Rows[dtbl.Rows.Count - 1]["CustomerID"].ToString();
-                    int lastIndex = int.Parse(ma.Substring(2)) + 1;
-                    txtID = "KH" + lastIndex.ToString("00000");
-                }
-                else
-                {
-                    txtID = "KH00001";
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return txtID;
-        }
-        public void SendTextID2Form()
-        {
-            string txtID = null;
-            txtID = FindNextID(dtbl);
-            frmInserCustomer frm = new frmInserCustomer();
-            SendTxtID send = new SendTxtID(frm.ReceiveTxtID);
-            send(txtID);
-        }
 
         public frmCustomer()
         {
             InitializeComponent();
-            int FormID = int.Parse(this.Tag.ToString());
-            RoleForm roleForm = GlobalVar.dicmyRoleForm[FormID];
+            //int FormID = int.Parse(this.Tag.ToString());
+            //RoleForm roleForm = GlobalVar.dicmyRoleForm[FormID];
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -79,7 +51,6 @@ namespace GUI.Manager_Forms.Customer
 
         private void frmCustomer_Load(object sender, EventArgs e)
         {
-
             btnInsert.Enabled = roleForm.f_Insert;
             btnExport.Enabled = roleForm.Export;
             btnImport.Enabled = roleForm.Import;
@@ -116,10 +87,10 @@ namespace GUI.Manager_Forms.Customer
 
         private void gcCustomers_Click(object sender, EventArgs e)
         {
-            
+
             btnUpdate.Enabled = roleForm.f_Update;
             btnDelete.Enabled = roleForm.f_Delete;
-            
+
             var rowHandle = gridView1.FocusedRowHandle;
             customer.CustomerID = gridView1.GetRowCellValue(rowHandle, "CustomerID").ToString();
             customer.CustomerName = gridView1.GetRowCellValue(rowHandle, "CustomerName").ToString();
@@ -139,6 +110,137 @@ namespace GUI.Manager_Forms.Customer
 
         private void btnExport_Click(object sender, EventArgs e)
         {
+            frmInputNameFile frm = new frmInputNameFile();
+            SendTag sendTag = new SendTag(frm.ReceiveTag);
+            sendTag(8);
+            frm.Show();
+            
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fDialog = new OpenFileDialog();
+            fDialog.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
+
+           
+            if (fDialog.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.FileInfo fInfo = new System.IO.FileInfo(fDialog.FileName);
+                string path = fInfo.DirectoryName + "\\" + fInfo.Name;
+                DataTable data = new DataTable();
+                data = customerBUS.ImportFormExcel("Sheet1", path);
+                Import(data);
+                //gcCustomers.DataSource = categoryBUS.ImportFormExcel("Sheet1", path);
+
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(customer.CustomerID);
+            try
+            {
+                if (customerBUS.DeleteCustomer(customer.CustomerID) != 0)
+                {
+                    MessageBox.Show("Delete successfull!!!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Delete Fail!!!");
+            }
+        }
+
+        public string FindNextID(DataTable dtbl)
+        {
+            string txtID = null;
+            try
+            {
+                if (dtbl.Rows.Count > 0)
+                {
+                    string ma = dtbl.Rows[dtbl.Rows.Count - 1]["CustomerID"].ToString();
+                    int lastIndex = int.Parse(ma.Substring(2)) + 1;
+                    txtID = "KH" + lastIndex.ToString("00000");
+                }
+                else
+                {
+                    txtID = "KH00001";
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return txtID;
+        }
+
+        public void SendTextID2Form()
+        {
+            string txtID = null;
+            txtID = FindNextID(dtbl);
+            frmInserCustomer frm = new frmInserCustomer();
+            SendTxtID send = new SendTxtID(frm.ReceiveTxtID);
+            send(txtID);
+        }
+
+        public bool IsExistsCustomerID(string customerID)
+        {
+            DataTable data = new DataTable();
+            data = customerBUS.ShowCustomer(customerID);
+
+            return (data.Rows.Count > 0 ? true : false);
+        }
+
+        public void Import(DataTable data)
+        {
+            int err, inserted, exists;
+            inserted = err = exists = 0;
+            
+            try
+            {
+                foreach (DataRow row in data.Rows)
+                {
+                    customer.CustomerID = row["CustomerID"].ToString();
+                    if (!IsExistsCustomerID(customer.CustomerID))
+                    {
+                        customer.CustomerName = row["CustomerName"].ToString();
+                        customer.Area = row["Area"].ToString();
+                        customer.Address = row["Address"].ToString();
+                        customer.Phone = row["Phone"].ToString();
+                        customer.Email = row["Email"].ToString();
+                        customer.Bank = row["Bank"].ToString();
+                        customer.Discount = float.Parse(row["Discount"].ToString());
+                        customer.AccountBank = row["AccountBank"].ToString();
+                        
+                        if (customerBUS.InsertCustomer(customer) != 0)
+                        {
+                            inserted = inserted + 1;
+                        }
+                        else
+                        {
+                            err++;
+                        }
+                    }
+                    else
+                    {
+                        exists++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: CustomerID " + customer.CustomerID);
+            }
+
+            MessageBox.Show("Inserted: " + inserted + "Rows" + "\n" +
+                "Error: " + err + " Rows" + "\n" +
+                "Exists: " + exists + " Rows" + "\n" +
+                "Total: " + data.Rows.Count + " Rows!!!");
+
+        }
+
+        public void Export(DataTable dataTable)
+        {
             //Create an instance of ExcelEngine
             using (ExcelEngine excelEngine = new ExcelEngine())
             {
@@ -155,48 +257,30 @@ namespace GUI.Manager_Forms.Customer
                 IWorksheet worksheet = workbook.Worksheets[0];
 
                 //Exporting DataTable to worksheet
-                CategoryBUS categoryBUS = new CategoryBUS();
-                DataTable dataTable = new DataTable();
-                dataTable = categoryBUS.ShowCatergories();
                 worksheet.ImportDataTable(dataTable, true, 1, 1);
                 worksheet.UsedRange.AutofitColumns();
 
                 //Save the workbook to disk in xlsx format
-                workbook.SaveAs("Output.xlsx");
-
-                MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug");
+                workbook.SaveAs(fileName + ".xlsx");
+               
             }
         }
 
-        private void btnImport_Click(object sender, EventArgs e)
+        public void ReceiveFileName(string str)
         {
-            OpenFileDialog fDialog = new OpenFileDialog();
-            fDialog.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
+            fileName = str;
 
-            AreasBUS categoryBUS = new AreasBUS();
-            if (fDialog.ShowDialog() == DialogResult.OK)
+            if (!string.IsNullOrEmpty(fileName))
             {
-                System.IO.FileInfo fInfo = new System.IO.FileInfo(fDialog.FileName);
-                string path = fInfo.DirectoryName + "\\" + fInfo.Name;
-                //DataTable data = new DataTable();
-                gcCustomers.DataSource = categoryBUS.ImportFormExcel("Sheet1", path);
+                DataTable dataTable = new DataTable();
+                dataTable = customerBUS.ShowCustomer();
 
+                Export(dataTable);
+
+                MessageBox.Show("Export successfull!!\n" + @"Path: ..\QuanLyBanHang\GUI\bin\Debug\" + fileName + ".xlsx");
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (customerBUS.DeleteCustomer(customer) != 0)
-                {
-                    MessageBox.Show("Delete successfull!!!");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Delete Fail!!!");
-            }
-        }
+        
     }
 }

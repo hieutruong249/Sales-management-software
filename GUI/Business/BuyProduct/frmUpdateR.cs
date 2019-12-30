@@ -15,7 +15,7 @@ namespace GUI.Business.BuyProduct
     {
         
 
-        public delegate void SendData(string pdID, string pdname, string unit, int count, float price, float total);
+        public delegate void SendData(string pdID, string pdname, string unit, int count, double price, double total);
 
         private void btnSave_Click(object sender, EventArgs e)
         {
